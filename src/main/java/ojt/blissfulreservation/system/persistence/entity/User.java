@@ -111,11 +111,11 @@ public class User {
     /**
      * <h2>deleteAt</h2>
      * <p>
-     * deleteAt
+     * deletedAt
      * </p>
      */
     @Column(name = "deleted_at")
-    private LocalDateTime deleteAt;
+    private LocalDateTime deletedAt;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();

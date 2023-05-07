@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="homeforall" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/homePage.jsp" />
+    </definition>
+    <definition name="userLogin" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation | Login" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/user-login.jsp" />
+    </definition>
+    <definition name="userRegister" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation | Register" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/user-register.jsp" />
+    </definition>
+    <definition name="homeforuser" extends="tiles2">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/homePage.jsp" />
+    </definition>
+    <definition name="homeforadmin" extends="tiles3">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/homePage.jsp" />
+    </definition>
+    <definition name="viewUserList" extends="tiles3">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/user-list.jsp" />
+    </definition>
+</tiles-definitions>       
