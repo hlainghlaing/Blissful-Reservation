@@ -4,6 +4,8 @@ package ojt.blissfulreservation.system.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,7 @@ public class MainContorller {
     
     @RequestMapping(value = "/HomeUser")
     public String homePageforuser() {
-        return "homeforadmin";
+        return "homeforuser";
     }
     
     @RequestMapping(value = "/HomeAdmin")
@@ -59,5 +61,13 @@ public class MainContorller {
         List<User> userList = userService.doGetList();
         model.addAttribute("userList", userList);
         return "viewUserList";
+    }
+    
+    @RequestMapping(value = "/delete")
+    public String deleteUser(HttpServletRequest request) {
+        int userId = Integer.parseInt(request.getParameter("id"));
+        User user = userService.doGetById(userId);
+        userService.doDelete(user);
+        return "redirect:/UserList";
     }
 }

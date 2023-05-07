@@ -47,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
      * SELECT_User_BY_ID_HQL
      * </p>
      */
-    public static final String SELECT_User_BY_ID_HQL = "FROM User u WHERE u.user_id = :id ";
+    public static final String SELECT_User_BY_ID_HQL = "FROM User u WHERE u.userId = :id ";
 
     /**
      * <h2>dbSave</h2>
