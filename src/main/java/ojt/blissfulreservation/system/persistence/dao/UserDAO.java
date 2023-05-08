@@ -18,6 +18,8 @@ public interface UserDAO {
     public void dbSave(User user);
 
     public User dbGetById(int id);
+    
+    public User dbFindByEmail(String email);
 
     public List<User> dbGetList();
 

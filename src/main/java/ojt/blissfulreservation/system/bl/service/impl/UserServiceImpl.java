@@ -26,6 +26,11 @@ public class UserServiceImpl implements UserService {
     public User doGetById(int id) {
         return userDao.dbGetById(id);
     }
+    
+    @Override
+    public User doFindByEmail(String email) {
+        return userDao.dbFindByEmail(email);
+    }
 
     @Override
     public List<User> doGetList() {

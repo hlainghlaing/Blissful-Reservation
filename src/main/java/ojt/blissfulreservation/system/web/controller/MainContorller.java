@@ -51,7 +51,7 @@ public class MainContorller {
     }
     
     @RequestMapping(value = "/save",method= RequestMethod.POST)
-    public String createUser(@ModelAttribute User user,ModelAndView model) {
+    public String createUser(@ModelAttribute User user) {
         userService.doSave(user);
         return "redirect:/HomeUser";
     }
@@ -70,4 +70,23 @@ public class MainContorller {
         userService.doDelete(user);
         return "redirect:/UserList";
     }
+    
+    @RequestMapping(value = "/forgot-password")
+    public String getUserEmail() {
+        return "userProfile";
+        }
+    
+    @RequestMapping(value = "/updatepassword")
+    public String updateUserPassword(@ModelAttribute("email") String email, Model model) {
+        User user = userService.doFindByEmail(email);
+        user.setPassword(null);
+        model.addAttribute("user", user);
+        return "update-password";
+        }
+    
+    @RequestMapping(value = "updateUserPassword")
+    public String updatePassword(@ModelAttribute User user) {
+        userService.doUpdate(user);
+        return "redirect:/Login";
+     }
 }

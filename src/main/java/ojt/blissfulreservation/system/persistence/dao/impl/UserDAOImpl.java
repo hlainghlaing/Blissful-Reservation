@@ -50,6 +50,14 @@ public class UserDAOImpl implements UserDAO {
     public static final String SELECT_User_BY_ID_HQL = "FROM User u WHERE u.userId = :id ";
 
     /**
+     * <h2>SELECT_User_BY_EMAIL_HQL</h2>
+     * <p>
+     * SELECT_User_BY_EMAIL_HQL
+     * </p>
+     */
+    public static final String SELECT_User_BY_EMAIL_HQL = "FROM User u WHERE u.email = :email ";
+
+    /**
      * <h2>dbSave</h2>
      * <p>
      * 
@@ -64,7 +72,8 @@ public class UserDAOImpl implements UserDAO {
         user.setUpdatedAt(null);
         user.setDeletedAt(null);
         this.sessionFactory.getCurrentSession().save(user);
-        JOptionPane.showInternalMessageDialog(null,"Success");;
+        JOptionPane.showInternalMessageDialog(null, "Success");
+        ;
     }
 
     /**
@@ -80,6 +89,14 @@ public class UserDAOImpl implements UserDAO {
     public User dbGetById(int id) {
         Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_ID_HQL);
         query.setParameter("id", id);
+        User user = query.uniqueResult();
+        return user;
+    }
+
+    @Override
+    public User dbFindByEmail(String email) {
+        Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_EMAIL_HQL);
+        query.setParameter("email", email);
         User user = query.uniqueResult();
         return user;
     }

@@ -21,12 +21,21 @@
         <put-attribute name="body"
             value="/WEB-INF/pages/user-register.jsp" />
     </definition>
+    <definition name="userProfile" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/user-profile.jsp" />
+    </definition>
+    
     <definition name="homeforuser" extends="tiles2">
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"
             value="/WEB-INF/pages/homePage.jsp" />
     </definition>
+    
+    
     <definition name="homeforadmin" extends="tiles3">
         <put-attribute name="title"
             value="BlissfulReservation" />
