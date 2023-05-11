@@ -25,4 +25,5 @@ public interface UserService {
     public void doUpdate(User user);
 
     public void doDelete(User user);
+    
 }

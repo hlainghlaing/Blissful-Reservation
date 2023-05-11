@@ -69,7 +69,7 @@ public class User {
      * password
      * </p>
      */
-    @Column(name = "password", nullable = false, length = 20)
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
 
     /**

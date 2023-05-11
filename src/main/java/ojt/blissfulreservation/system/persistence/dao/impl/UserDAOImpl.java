@@ -4,16 +4,19 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import ojt.blissfulreservation.system.persistence.dao.UserDAO;
 import ojt.blissfulreservation.system.persistence.entity.User;
 
 @Repository
+@Transactional
 public class UserDAOImpl implements UserDAO {
     /**
      * <h2>sessionFactory</h2>
@@ -57,6 +60,9 @@ public class UserDAOImpl implements UserDAO {
      */
     public static final String SELECT_User_BY_EMAIL_HQL = "FROM User u WHERE u.email = :email ";
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     /**
      * <h2>dbSave</h2>
      * <p>
@@ -67,13 +73,13 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public void dbSave(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoleType("1");
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(null);
         user.setDeletedAt(null);
         this.sessionFactory.getCurrentSession().save(user);
         JOptionPane.showInternalMessageDialog(null, "Success");
-        ;
     }
 
     /**
@@ -97,8 +103,11 @@ public class UserDAOImpl implements UserDAO {
     public User dbFindByEmail(String email) {
         Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_EMAIL_HQL);
         query.setParameter("email", email);
-        User user = query.uniqueResult();
-        return user;
+        try {
+            return query.uniqueResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -126,6 +135,7 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public void dbUpdate(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setUpdatedAt(LocalDateTime.now());
         this.sessionFactory.getCurrentSession().update(user);
     }
@@ -143,5 +153,4 @@ public class UserDAOImpl implements UserDAO {
         user.setDeletedAt(LocalDateTime.now());
         this.sessionFactory.getCurrentSession().update(user);
     }
-
 }

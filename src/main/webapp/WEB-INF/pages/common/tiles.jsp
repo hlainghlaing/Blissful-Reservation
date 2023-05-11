@@ -10,8 +10,14 @@
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>
-  <tiles:insertAttribute name="header" />
-  <tiles:insertAttribute name="body" />
-  <tiles:insertAttribute name="footer" />
+  <div class="wrapper">
+    <tiles:insertAttribute name="header" />
+    <div class="main-container">
+      <tiles:insertAttribute name="body" />
+    </div>
+    <footer id="footer">
+      <tiles:insertAttribute name="footer" />
+    </footer>
+  </div>
 </body>
 </html>

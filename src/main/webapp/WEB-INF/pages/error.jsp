@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-  Hello From Home Page
-  <a href="HomeUser">HomeUser</a>
-  <a href="HomeAdmin">HomeAdmin</a>
+  <c:if test="${not empty errorMessage}">
+    <div style="color: red">${errorMessage}</div>
+  </c:if>
 </body>
 </html>
