@@ -15,82 +15,66 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ojt.blissfulreservation.system.bl.service.UserService;
-import ojt.blissfulreservation.system.persistence.entity.User;
+import ojt.blissfulreservation.system.web.form.UserForm;
 
 @Controller
 public class UserContorller {
     @Autowired
     private UserService userService;
 
-
-    @RequestMapping(value = "/Register", method = RequestMethod.GET)
-    public ModelAndView register(ModelAndView model) {
-        User user = new User();
-        model.addObject("user", user);
-        model.setViewName("userRegister");
-        return model;
-    }
-
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute User user) {
-        userService.doSave(user);
-        return "redirect:/Home";
-    }
-
     @RequestMapping(value = "/UserList")
     public String viewUserList(Model model) {
-        List<User> userList = userService.doGetList();
+        List<UserForm> userList = userService.doGetList();
         model.addAttribute("userList", userList);
         return "viewUserList";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete-user", method = RequestMethod.GET)
     public String deleteUser(HttpServletRequest request, @RequestParam("id") int userId) {
-        User user = userService.doGetById(userId);
+        UserForm user = userService.doGetById(userId);
         userService.doDelete(user);
         return "redirect:/UserList";
     }
 
     @RequestMapping(value = "/forgot-password")
-    public String getUserEmail(Model model,@ModelAttribute("email") String email) {
-        model.addAttribute("email",email);
+    public String getUserEmail(Model model, @ModelAttribute("email") String email) {
+        model.addAttribute("email", email);
         return "userProfile";
     }
 
     @ExceptionHandler(Exception.class)
     public ModelAndView handleInvalidEmailException(Exception ex) {
         ModelAndView mav = new ModelAndView("userProfile");
-        mav.addObject("errorMessage", ex.getMessage());
+        mav.addObject("errormsg", "Invalid Email!");
         return mav;
     }
 
     @RequestMapping(value = "/editpassword")
     public String updateUserPassword(@ModelAttribute("email") String email, Model model) throws Exception {
-        User user = userService.doFindByEmail(email);
-        if (user == null || !user.getEmail().equals(email)) {
-            throw new Exception("Invalid email address.");
-        } else {
-            user.setPassword(null);
-            model.addAttribute("user", user);
-            return "changePassword";
+        UserForm user = userService.doFindByEmail(email);
+        if(user == null) {
+            throw new Exception ("Invalid Email");
         }
+        user.setPassword(null);
+        model.addAttribute("user", user);
+        return "changePassword";
     }
 
     @RequestMapping(value = "/updateUserPassword")
-    public String updatePassword(@ModelAttribute User user) {
+    public String updatePassword(@ModelAttribute("user") UserForm user) {
         userService.doUpdate(user);
         return "redirect:/Login";
     }
 
     @RequestMapping(value = "/edit-user", method = RequestMethod.GET)
     public String editUser(HttpServletRequest request, Model model, @RequestParam("id") int id) {
-        User user = userService.doGetById(id);
+        UserForm user = userService.doGetById(id);
         model.addAttribute("user", user);
         return "updateUser";
     }
 
     @RequestMapping(value = "/update-user", method = RequestMethod.POST)
-    public String updateUser(@ModelAttribute User user) {
+    public String updateUser(@ModelAttribute UserForm user) {
         userService.doUpdate(user);
         return "redirect:/UserList";
     }

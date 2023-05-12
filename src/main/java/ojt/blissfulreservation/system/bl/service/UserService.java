@@ -2,7 +2,10 @@ package ojt.blissfulreservation.system.bl.service;
 
 import java.util.List;
 
-import ojt.blissfulreservation.system.persistence.entity.User;
+import ojt.blissfulreservation.system.web.form.UserForm;
+
+
+
 
 /**
  * <h2>UserService Class</h2>
@@ -14,16 +17,18 @@ import ojt.blissfulreservation.system.persistence.entity.User;
  *
  */
 public interface UserService {
-    public void doSave(User user);
+    public void doSave(UserForm user);
 
-    public User doGetById(int id);
+    public UserForm doGetById(int id);
 
-    public User doFindByEmail(String email);
+    public UserForm doFindByEmail(String email);
+    
+    public UserForm doFindUserByPhoneNo(String phoneNo);
+    
+    public List<UserForm> doGetList();
 
-    public List<User> doGetList();
+    public void doUpdate(UserForm user);
 
-    public void doUpdate(User user);
-
-    public void doDelete(User user);
+    public void doDelete(UserForm user);
     
 }

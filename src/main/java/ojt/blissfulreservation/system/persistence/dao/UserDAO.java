@@ -20,6 +20,8 @@ public interface UserDAO {
     public User dbGetById(int id);
     
     public User dbFindByEmail(String email);
+    
+    public User dbFindUserByPhoneNo(String PhoneNo);
 
     public List<User> dbGetList();
 

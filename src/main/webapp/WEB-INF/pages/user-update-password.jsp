@@ -5,12 +5,10 @@
 <form:form action="updateUserPassword" method="post"
   modelAttribute="user">
   <label for="password">Enter New Password : </label>
-  <c:if test="${not empty error}">
-    <div style="color: red">${error}</div>
-  </c:if>
   <br>
   <br>
-  <form:input path="password" />
+  <form:input path="password" pattern=".{6,}"
+    title="Password must be at least 6 characters long." />
   <form:hidden path="userId" />
   <form:hidden path="email" />
   <form:hidden path="userName" />

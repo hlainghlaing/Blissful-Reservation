@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import ojt.blissfulreservation.system.persistence.dao.UserDAO;
@@ -60,8 +59,13 @@ public class UserDAOImpl implements UserDAO {
      */
     public static final String SELECT_User_BY_EMAIL_HQL = "FROM User u WHERE u.email = :email ";
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    /**
+     * <h2> SELECT_User_BY_PHONE_HQL</h2>
+     * <p>
+     * SELECT_User_BY_PHONE_HQL
+     * </p>
+     */
+    public static final String SELECT_User_BY_PHONE_HQL = "FROM User u WHERE u.phoneNo = :phoneNo ";
 
     /**
      * <h2>dbSave</h2>
@@ -73,11 +77,6 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public void dbSave(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoleType("1");
-        user.setCreatedAt(LocalDateTime.now());
-        user.setUpdatedAt(null);
-        user.setDeletedAt(null);
         this.sessionFactory.getCurrentSession().save(user);
         JOptionPane.showInternalMessageDialog(null, "Success");
     }
@@ -99,15 +98,36 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
+    /**
+     * <h2>dbFindByEmail</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param email
+     * @return User
+     */
     @Override
     public User dbFindByEmail(String email) {
         Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_EMAIL_HQL);
         query.setParameter("email", email);
-        try {
-            return query.uniqueResult();
-        } catch (Exception e) {
-            return null;
-        }
+        return query.uniqueResult();
+    }
+
+    /**
+     * <h2> dbFindUserByPhoneNo </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param phoneNo
+     * @return User
+     */
+    @Override
+    public User dbFindUserByPhoneNo(String phoneNo) {
+        Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_PHONE_HQL);
+        query.setParameter("phoneNo", phoneNo);
+        return query.uniqueResult();
     }
 
     /**
@@ -135,8 +155,6 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public void dbUpdate(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setUpdatedAt(LocalDateTime.now());
         this.sessionFactory.getCurrentSession().update(user);
     }
 
@@ -150,7 +168,6 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public void dbDelete(User user) {
-        user.setDeletedAt(LocalDateTime.now());
         this.sessionFactory.getCurrentSession().update(user);
     }
 }

@@ -20,7 +20,7 @@
             password-parameter="password"
             default-target-url="/dashboard" />
         <logout logout-url="/logout"
-            logout-success-url="/user-login.jsp" />
+            logout-success-url="/Login" />
     </http>
 
     <authentication-manager>

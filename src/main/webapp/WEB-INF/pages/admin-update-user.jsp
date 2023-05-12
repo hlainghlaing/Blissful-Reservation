@@ -13,7 +13,8 @@
         <br /> <br /> <label for="email">Email:</label>
         <form:input path="email" required="required" />
         <br /> <br /> <label for="password">Password:</label>
-        <form:input path="password" required="required" />
+        <form:input path="password" required="required" pattern=".{6,}"
+          title="Password must be at least 6 characters long." />
         <br /> <br /> <label for="phoneNo">Phone No:</label>
         <form:input path="phoneNo" required="required" />
         <br /> <br />

@@ -30,7 +30,7 @@
           <td>${user.deletedAt}</td>
           <td>${user.roleType}</td>
           <td><a href="edit-user?id=${user.userId}">Edit</a> &nbsp;&nbsp; <a
-            href="delete?id=${user.userId}"> Delete</a></td>
+            href="delete-user?id=${user.userId}"> Delete</a></td>
         </tr>
       </c:forEach>
     </table>

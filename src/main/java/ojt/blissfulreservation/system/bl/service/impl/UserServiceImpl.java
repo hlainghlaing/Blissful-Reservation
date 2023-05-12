@@ -1,8 +1,14 @@
 package ojt.blissfulreservation.system.bl.service.impl;
 
-import java.util.Collection;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JOptionPane;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,45 +16,77 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ojt.blissfulreservation.system.bl.service.UserService;
 import ojt.blissfulreservation.system.persistence.dao.UserDAO;
 import ojt.blissfulreservation.system.persistence.entity.User;
+import ojt.blissfulreservation.system.web.form.UserForm;
+
 
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserDAO userDao;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Override
-    public void doSave(User user) {
+    public void doSave(UserForm userForm) {
+        userForm.setPassword(passwordEncoder.encode(userForm.getPassword()));
+        userForm.setRoleType("1");
+        userForm.setCreatedAt(LocalDateTime.now());
+        User user = new User(userForm);
         this.userDao.dbSave(user);
     }
 
     @Override
-    public User doGetById(int id) {
-        return userDao.dbGetById(id);
+    public UserForm doGetById(int id) {
+        UserForm userForm = new UserForm(userDao.dbGetById(id));
+        return userForm;
     }
 
     @Override
-    public User doFindByEmail(String email) {
-        return userDao.dbFindByEmail(email);
+    public UserForm doFindByEmail(String email) {
+        UserForm userForm = new UserForm(userDao.dbFindByEmail(email));
+        return userForm;
     }
 
     @Override
-    public List<User> doGetList() {
-        return userDao.dbGetList();
+    public UserForm doFindUserByPhoneNo(String phoneNo) {
+        UserForm userForm = new UserForm(userDao.dbFindUserByPhoneNo(phoneNo));
+        return userForm;
     }
 
     @Override
-    public void doUpdate(User user) {
+    public List<UserForm> doGetList() {
+        List<User> userList = userDao.dbGetList();
+        List<UserForm> userFormList = new ArrayList<>();
+        for (User user : userList) {
+            UserForm userForm = new UserForm(user);
+            userFormList.add(userForm);
+        }
+        return userFormList;
+    }
+
+    @Override
+    public void doUpdate(UserForm userForm) {
+        userForm.setPassword(passwordEncoder.encode(userForm.getPassword()));
+        userForm.setUpdatedAt(LocalDateTime.now());
+        User user = new User(userForm);
         userDao.dbUpdate(user);
     }
 
     @Override
-    public void doDelete(User user) {
-        userDao.dbDelete(user);
+    public void doDelete(UserForm userForm) {
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?");
+        if (option == JOptionPane.YES_OPTION) {
+            userForm.setDeletedAt(LocalDateTime.now());
+            User user = new User(userForm);
+            userDao.dbDelete(user);
+        }
     }
 
     @Override
@@ -67,11 +105,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             }
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
-//        String role = user.getRoleType().equals("0") ? "ADMIN" : "USER";
-//
-//        List<GrantedAuthority> authorities = new ArrayList<>();
-//        authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
-//        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 
 }
