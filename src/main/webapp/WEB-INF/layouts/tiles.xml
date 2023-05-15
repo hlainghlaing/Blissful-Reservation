@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="tiles1"
+        template="/WEB-INF/pages/common/tiles.jsp">
+        <put-attribute name="header"
+            value="/WEB-INF/pages/common/inc/header-for-all.jsp">
+        </put-attribute>
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer"
+            value="/WEB-INF/pages/common/inc/footer.jsp">
+        </put-attribute>
+    </definition>
+
+    <definition name="tiles2"
+        template="/WEB-INF/pages/common/tiles.jsp">
+        <put-attribute name="header"
+            value="/WEB-INF/pages/common/inc/header-for-user.jsp">
+        </put-attribute>
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer"
+            value="/WEB-INF/pages/common/inc/footer.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="tiles3"
+        template="/WEB-INF/pages/common/tiles.jsp">
+        <put-attribute name="header"
+            value="/WEB-INF/pages/common/inc/header-for-admin.jsp">
+        </put-attribute>
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer"
+            value="/WEB-INF/pages/common/inc/footer.jsp">
+        </put-attribute>
+    </definition>
+</tiles-definitions>

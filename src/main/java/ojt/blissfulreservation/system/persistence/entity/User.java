@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ojt.blissfulreservation.system.web.form.UserForm;
 
 /**
  * <h2>User Class</h2>
@@ -69,7 +70,7 @@ public class User {
      * password
      * </p>
      */
-    @Column(name = "password", nullable = false, length = 20)
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
 
     /**
@@ -111,12 +112,24 @@ public class User {
     /**
      * <h2>deleteAt</h2>
      * <p>
-     * deleteAt
+     * deletedAt
      * </p>
      */
     @Column(name = "deleted_at")
-    private LocalDateTime deleteAt;
-    
+    private LocalDateTime deletedAt;
+
+    public User(UserForm userForm) {
+        this.userId = userForm.getUserId();
+        this.userName = userForm.getUserName();
+        this.email = userForm.getEmail();
+        this.password = userForm.getPassword();
+        this.roleType = userForm.getRoleType();
+        this.phoneNo = userForm.getPhoneNo();
+        this.createdAt = userForm.getCreatedAt();
+        this.updatedAt = userForm.getUpdatedAt();
+        this.deletedAt = userForm.getDeletedAt();
+    }
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 }
