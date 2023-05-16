@@ -2,6 +2,7 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h1>Login Page</h1>
+<p>${successMessage}</p>
 <font color="red"> ${SPRING_SECURITY_LAST_EXCEPTION.message} </font>
 <form action="<%=request.getContextPath()%>/Login" method="POST">
   <label for="email">Enter Email:</label> <input type="email" id="email" name="email" /><br /> <br />

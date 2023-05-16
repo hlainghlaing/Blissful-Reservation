@@ -1,9 +1,7 @@
 package ojt.blissfulreservation.system.persistence.dao.impl;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
@@ -14,6 +12,15 @@ import org.springframework.stereotype.Repository;
 import ojt.blissfulreservation.system.persistence.dao.UserDAO;
 import ojt.blissfulreservation.system.persistence.entity.User;
 
+/**
+ * <h2>UserDAOImpl Class</h2>
+ * <p>
+ * Process for Displaying UserDAOImpl
+ * </p>
+ * 
+ * @author KhinYadanarHlaing
+ *
+ */
 @Repository
 @Transactional
 public class UserDAOImpl implements UserDAO {
@@ -25,15 +32,6 @@ public class UserDAOImpl implements UserDAO {
      */
     @Autowired
     SessionFactory sessionFactory;
-
-    /**
-     * <h2>dbSave</h2>
-     * <p>
-     * 
-     * </p>
-     * 
-     * @param user
-     */
 
     /**
      * <h2>SELECT_User_HQL</h2>
@@ -60,7 +58,7 @@ public class UserDAOImpl implements UserDAO {
     public static final String SELECT_User_BY_EMAIL_HQL = "FROM User u WHERE u.email = :email ";
 
     /**
-     * <h2> SELECT_User_BY_PHONE_HQL</h2>
+     * <h2>SELECT_User_BY_PHONE_HQL</h2>
      * <p>
      * SELECT_User_BY_PHONE_HQL
      * </p>
@@ -78,7 +76,6 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void dbSave(User user) {
         this.sessionFactory.getCurrentSession().save(user);
-        JOptionPane.showInternalMessageDialog(null, "Success");
     }
 
     /**
@@ -115,7 +112,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     /**
-     * <h2> dbFindUserByPhoneNo </h2>
+     * <h2>dbFindUserByPhoneNo</h2>
      * <p>
      * 
      * </p>

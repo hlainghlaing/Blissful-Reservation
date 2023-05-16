@@ -17,7 +17,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ojt.blissfulreservation.system.web.form.HotelForm;
 
+/**
+ * <h2>Hotel Class</h2>
+ * <p>
+ * Process for Displaying Hotel
+ * </p>
+ * 
+ * @author KhinYadanarHlaing
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -116,6 +126,30 @@ public class Hotel {
     @Column(name = "deleted_at")
     private LocalDateTime deleteAt;
 
+    /**
+     * <h2>rooms</h2>
+     * <p>
+     * rooms
+     * </p>
+     */
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Room> rooms = new ArrayList<>();
+
+    /**
+     * <h2>Constructor for Hotel</h2>
+     * <p>
+     * Constructor for Hotel
+     * </p>
+     * 
+     * @param hotelform
+     */
+    public Hotel(HotelForm hotelform) {
+        this.hotelId = hotelform.getHotelId();
+        this.hotelName = hotelform.getHotelName();
+        this.rating = hotelform.getRating();
+        this.address = hotelform.getAddress();
+        this.city = hotelform.getCity();
+        this.phone = hotelform.getPhone();
+        this.hotelImg = hotelform.getHotelImg();
+    }
 }

@@ -21,6 +21,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * <h2> Room Class</h2>
+ * <p>
+ * Process for Displaying Room
+ * </p>
+ * 
+ * @author KhinYadanarHlaing
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -110,17 +119,32 @@ public class Room {
      */
     @Column(name = "deleted_at")
     private LocalDateTime deleteAt;
-    
+
     /**
-     * <h2> hotel</h2>
+     * <h2>hotelId</h2>
+     * <p>
+     * hotelId
+     * </p>
+     */
+    @Column(name = "hotel_id", columnDefinition = "INT(4) ZEROFILL", insertable = false, updatable = false)
+    private int hotelId;
+
+    /**
+     * <h2>hotel</h2>
      * <p>
      * hotel
      * </p>
      */
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
-    
+
+    /**
+     * <h2> bookings</h2>
+     * <p>
+     * bookings
+     * </p>
+     */
     @OneToMany(mappedBy = "room")
     private List<Booking> bookings = new ArrayList<>();
 }

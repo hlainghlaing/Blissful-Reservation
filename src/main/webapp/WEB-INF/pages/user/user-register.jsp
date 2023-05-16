@@ -2,8 +2,11 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div>
+<section>
   <div class="cmn-inner">
+    <c:if test="${not empty errormsg}">
+      <div style="color: red">${errormsg}</div>
+    </c:if>
     <form:form action="save" method="post" modelAttribute="user">
       <div class="user-register-form">
         <label for="userName">Name:</label>
@@ -19,8 +22,5 @@
         <br />
       </div>
     </form:form>
-    <c:if test="${not empty errormsg}">
-      <div style="color: red">${errormsg}</div>
-    </c:if>
   </div>
-</div>
+</section>

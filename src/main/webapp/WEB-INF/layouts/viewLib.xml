@@ -13,25 +13,37 @@
         <put-attribute name="title"
             value="BlissfulReservation | Login" />
         <put-attribute name="body"
-            value="/WEB-INF/pages/user-login.jsp" />
+            value="/WEB-INF/pages/user/user-login.jsp" />
     </definition>
     <definition name="userRegister" extends="tiles1">
         <put-attribute name="title"
             value="BlissfulReservation | Register" />
         <put-attribute name="body"
-            value="/WEB-INF/pages/user-register.jsp" />
+            value="/WEB-INF/pages/user/user-register.jsp" />
     </definition>
     <definition name="userProfile" extends="tiles1">
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"
-            value="/WEB-INF/pages/user-profile.jsp" />
+            value="/WEB-INF/pages/user/user-profile.jsp" />
     </definition>
     <definition name="changePassword" extends="tiles1">
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"
-            value="/WEB-INF/pages/user-update-password.jsp" />
+            value="/WEB-INF/pages/user/user-update-password.jsp" />
+    </definition>
+    <definition name="hotelsforall" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/hotel/hotel-list-cus-view.jsp" />
+    </definition>
+    <definition name="roomsforall" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/room/room-list-cus-view.jsp" />
     </definition>
 
     <definition name="homeforuser" extends="tiles2">
@@ -39,6 +51,30 @@
             value="BlissfulReservation" />
         <put-attribute name="body"
             value="/WEB-INF/pages/home.jsp" />
+    </definition>
+    <definition name="hotelsforuser" extends="tiles2">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/hotel/hotel-list-cus-view.jsp" />
+    </definition>
+    <definition name="roomsforuser" extends="tiles2">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/room/room-list-cus-view.jsp" />
+    </definition>
+    <definition name="bookingRegister" extends="tiles2">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/booking/booking-register.jsp" />
+    </definition>
+    <definition name="bookingUserView" extends="tiles2">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/booking/booking-user-view.jsp" />
     </definition>
 
     <definition name="homeforadmin" extends="tiles3">
@@ -51,12 +87,18 @@
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"
-            value="/WEB-INF/pages/user-list.jsp" />
+            value="/WEB-INF/pages/user/user-list.jsp" />
     </definition>
     <definition name="updateUser" extends="tiles3">
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"
-            value="/WEB-INF/pages/admin-update-user.jsp" />
+            value="/WEB-INF/pages/user/admin-update-user.jsp" />
+    </definition>
+    <definition name="bookingAdminView" extends="tiles3">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/booking/booking-admin-view.jsp" />
     </definition>
 </tiles-definitions>       

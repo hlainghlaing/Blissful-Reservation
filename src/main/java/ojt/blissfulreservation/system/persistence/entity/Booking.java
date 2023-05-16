@@ -1,7 +1,7 @@
 package ojt.blissfulreservation.system.persistence.entity;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +18,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ojt.blissfulreservation.system.web.form.BookingForm;
 
+/**
+ * <h2> Booking Class</h2>
+ * <p>
+ * Process for Displaying Booking
+ * </p>
+ * 
+ * @author KhinYadanarHlaing
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -44,7 +54,7 @@ public class Booking {
      * </p>
      */
     @Column(name = "check_in", nullable = false)
-    private Date chekIn;
+    private Date checkIn;
 
     /**
      * <h2>checkOut</h2>
@@ -116,13 +126,52 @@ public class Booking {
      * </p>
      */
     @Column(name = "deleted_at")
-    private LocalDateTime deleteAt;
+    private LocalDateTime deletedAt;
+
+    /**
+     * <h2>roomId</h2>
+     * <p>
+     * roomId
+     * </p>
+     */
+    @Column(name = "room_id", columnDefinition = "INT(4) ZEROFILL", insertable = false, updatable = false)
+    private int roomId;
+
+    /**
+     * <h2>userId</h2>
+     * <p>
+     * userId
+     * </p>
+     */
+    @Column(name = "user_id", columnDefinition = "INT(4) ZEROFILL", insertable = false, updatable = false)
+    private int userId;
+
+    /**
+     * <h2> Constructor for Booking </h2>
+     * <p>
+     * Constructor for Booking
+     * </p>
+     * @param bookingForm
+     */
+    public Booking(BookingForm bookingForm) {
+        this.bookingId = bookingForm.getBookingId();
+        this.checkIn = bookingForm.getCheckIn();
+        this.checkOut = bookingForm.getCheckOut();
+        this.roomNum = bookingForm.getRoomNum();
+        this.totalPrice = bookingForm.getTotalPrice();
+        this.nrc = bookingForm.getNrc();
+        this.createdAt = bookingForm.getCreatedAt();
+        this.updatedAt = bookingForm.getUpdatedAt();
+        this.deletedAt = bookingForm.getDeletedAt();
+        this.roomId = bookingForm.getRoomId();
+        this.userId = bookingForm.getUserId();
+    }
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "room_id",nullable = false)
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }

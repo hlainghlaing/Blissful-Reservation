@@ -14,6 +14,8 @@
             access="hasRole('ADMIN')" />
         <intercept-url pattern="/userdashboard"
             access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/booking-register"
+            access="hasAnyRole('USER','ADMIN')" />
         <intercept-url pattern="/**" access="permitAll" />
         <form-login login-page="/Login"
             login-processing-url="/Login" username-parameter="email"

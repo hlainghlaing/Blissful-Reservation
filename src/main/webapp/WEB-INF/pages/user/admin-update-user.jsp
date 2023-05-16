@@ -6,7 +6,7 @@
   <div class="cmn-inner">
     <h2>Update User Information</h2>
     <form:form action="update-user" method="post" modelAttribute="user">
-      <div class="user-register-form">
+      <div class="user-update-form">
         <form:hidden path="userId" />
         <label for="userName">Name:</label>
         <form:input path="userName" required="required" />

@@ -79,4 +79,9 @@
 
     <bean id="bCryptPasswordEncoder"
         class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- Set the maximum allowed size of the uploaded file -->
+    <property name="maxUploadSize" value="5242880"/> <!-- 5MB -->
+    </bean>
 </beans>
