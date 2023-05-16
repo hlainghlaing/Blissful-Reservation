@@ -1,7 +1,5 @@
-<html>
-<body>
-<h2>Main Page</h2>
-<a href="form">add new hotels</a> 
-<a href="view">View Hotels</a>
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  pageEncoding="ISO-8859-1"%>
+<%
+response.sendRedirect("Home");
+%>

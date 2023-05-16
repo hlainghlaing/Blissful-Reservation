@@ -29,40 +29,59 @@
 		<property name="order" value="1" />
 	</bean>
 
-	<bean id="ds"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver"></property>
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/blissful_reservation_db?createDatabaseIfNotExist=true"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="shxxbi131"></property>
-	</bean>
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+        <property name="order" value="0" />
+    </bean>
+    <bean id="tilesConfigurer"
+        class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/layouts/tiles.xml</value>
+                <value>/WEB-INF/layouts/viewLib.xml</value>
+            </list>
+        </property>
+    </bean>
 
-	<!-- Local Session Factory -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-		<property name="dataSource" ref="ds"></property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
-				</prop>
-				<prop key="hibernate.show_sql">false</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-		<!-- annotated class -->
-		<property name="PackagesToScan">
-			<value>ojt.blissfulreservation.system.persistence.entity
-			</value>
-		</property>
-	</bean>
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <bean id="ds"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"
+            value="com.mysql.jdbc.Driver"></property>
+        <property name="url"
+            value="jdbc:mysql://localhost:3306/blissful_reservation_db?createDatabaseIfNotExist=true"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="#hh@root2023"></property>
+    </bean>
+
+    <!-- Local Session Factory -->
+    <bean id="sessionFactory"
+        class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="ds"></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
+                </prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!-- annotated class -->
+        <property name="PackagesToScan">
+            <value>ojt.blissfulreservation.system.persistence.entity
+            </value>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+        class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     <!-- Set the maximum allowed size of the uploaded file -->
     <property name="maxUploadSize" value="5242880"/> <!-- 5MB -->
-</bean>
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+    </bean>
+
+    <bean id="bCryptPasswordEncoder"
+        class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 </beans>
