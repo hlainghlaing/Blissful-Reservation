@@ -14,6 +14,7 @@ import ojt.blissfulreservation.system.persistence.entity.Hotel;
  *
  */
 public interface HotelDAO {
+
     /**
      * <h2>dbGetAllHotels</h2>
      * <p>
@@ -60,17 +61,6 @@ public interface HotelDAO {
     void dbUpdateHotel(Hotel hotel);
 
     /**
-     * <h2>deleteHotel</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param hotel
-     * @return void
-     */
-    void dbDeleteHotel(Hotel hotel);
-
-    /**
      * <h2>dbSaveHotel</h2>
      * <p>
      * 
@@ -81,4 +71,30 @@ public interface HotelDAO {
      */
     void dbSaveHotel(Hotel hotel);
 
+    /**
+     * <h2>dbFindUserByPhoneNo</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param phone
+     * @return
+     * @return Hotel
+     */
+    Hotel dbFindHotelByPhoneNo(String phone);
+
+    /**
+     * <h2>dbDeleteHotel</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param hotel
+     * @return void
+     */
+    void dbDeleteHotel(Hotel hotel);
+    
+    public List<String> dbGetCities();
+
+    public List<Hotel> dbGetHotels(String city);
 }

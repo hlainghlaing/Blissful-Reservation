@@ -118,7 +118,6 @@ public class BookingServiceImpl implements BookingService {
      */
     @Override
     public void doDeleteBooking(BookingForm bookingForm) {
-        bookingForm.setStatus(3);
         bookingForm.setDeletedAt(LocalDateTime.now());
         Booking booking = new Booking(bookingForm);
         bookingDao.dbDeleteBooking(booking);

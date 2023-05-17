@@ -10,19 +10,43 @@
 
     <http auto-config="true">
         <intercept-url pattern="/Home" access="permitAll" />
-        <intercept-url pattern="/admindashboard"
-            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/searchform"
+            access="permitAll" />
+        <intercept-url pattern="/hotelByCityName"
+            access="permitAll" />
+
         <intercept-url pattern="/userdashboard"
             access="hasAnyRole('USER','ADMIN')" />
         <intercept-url pattern="/booking-register"
             access="hasAnyRole('USER','ADMIN')" />
-        <intercept-url pattern="/**" access="permitAll" />
+
+        <intercept-url pattern="/admindashboard"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/form"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/register-hotel"
+            method="POST" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/add-room"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/hotel-view"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/saveroom" method="POST"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/edit-room"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/editsaveRoom"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/deleteroom"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/delete-hotel"
+            access="hasRole('ADMIN')" />
+
         <form-login login-page="/Login"
             login-processing-url="/Login" username-parameter="email"
             password-parameter="password"
             default-target-url="/dashboard" />
-        <logout logout-url="/logout"
-            logout-success-url="/Login" />
+        <logout logout-url="/logout" logout-success-url="/Login" />
+        <csrf disabled="true" />
     </http>
 
     <authentication-manager>

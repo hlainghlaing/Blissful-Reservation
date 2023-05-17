@@ -77,7 +77,7 @@ public class MainController {
      * @return String
      */
     @RequestMapping(value = "/userdashboard")
-    public String homePageforuser() {
+    public String homePageforuser(Authentication authentication) {
         return "homeforuser";
     }
 

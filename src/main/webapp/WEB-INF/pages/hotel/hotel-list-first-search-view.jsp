@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="resources/css/rating-star.css">
 <section class="hotels">
   <div class=cmn-inner>
     <div>
       <h2>Blissful Reservation</h2>
-      <form action="hotelByCityName" method="post">
+      <form action="all/hotelByCityName" method="post">
         <label for="city">Select City :</label>
          <select name="selectedCity">
           <c:forEach items="${cityList}" var="city">
@@ -36,7 +37,7 @@
         <p class="color">
           Rating:
           <c:forEach var="i" begin="1" end="${h.rating}">
-             <img alt="Rating Image" src="<%= request.getContextPath()%>/resources/img/img_rating_star.jpg" style="width:50px;height:60px;">
+            <img  alt="Room Image" src="<%= request.getContextPath()%>/resources/img/img_rating_star.jpg" style="width:50px;height:60px;">
           </c:forEach>
         </p>
         <p>

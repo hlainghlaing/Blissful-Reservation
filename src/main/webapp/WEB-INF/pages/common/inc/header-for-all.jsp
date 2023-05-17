@@ -9,7 +9,7 @@
     <nav class="g-nav clearfix">
       <ul class="all-nav-list clearfix">
         <li><a href="Home" class="active">Home</a></li>
-        <li><a href="Hotels">Hotels</a></li>
+        <li><a href="searchform">Hotels</a></li>
         <li><a href="#">AboutUs</a></li>
         <li><a href="#">ContactUs</a></li>
       </ul>

@@ -20,9 +20,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ojt.blissfulreservation.system.web.form.RoomForm;
 
 /**
- * <h2> Room Class</h2>
+ * <h2>Room Class</h2>
  * <p>
  * Process for Displaying Room
  * </p>
@@ -140,11 +141,33 @@ public class Room {
     private Hotel hotel;
 
     /**
-     * <h2> bookings</h2>
+     * <h2>bookings</h2>
      * <p>
      * bookings
      * </p>
      */
     @OneToMany(mappedBy = "room")
     private List<Booking> bookings = new ArrayList<>();
+
+    /**
+     * <h2>Constructor for Room</h2>
+     * <p>
+     * Constructor for Room
+     * </p>
+     * 
+     * @param roomForm
+     */
+    public Room(RoomForm roomForm) {
+        this.roomId = roomForm.getRoomId();
+        this.hotel = roomForm.getHotel();
+        this.roomType = roomForm.getRoomType();
+        this.price = roomForm.getPrice();
+        this.roomImg = roomForm.getRoomImg();
+        this.totalRoom = roomForm.getTotalRoom();
+        this.avaRoom = roomForm.getAvaRoom();
+        this.createdAt = roomForm.getCreatedAt();
+        this.deleteAt = roomForm.getDeleteAt();
+        this.updatedAt = roomForm.getUpdatedAt();
+        this.hotelId = roomForm.getHotelId();
+    }
 }

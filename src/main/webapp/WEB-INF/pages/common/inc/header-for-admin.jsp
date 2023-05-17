@@ -6,8 +6,8 @@
     <nav class="g-nav clearfix">
       <ul class="nav-list clearfix">
         <li><a href="admindashboard" class="active">Home</a></li>
-        <li><a href="#">Add Hotel</a></li>
-        <li><a href="#">Hotels</a></li>
+        <li><a href="form">Add Hotel</a></li>
+        <li><a href="hotel-view">Hotels</a></li>
         <li><a href="booking-lists">Booking Detail</a></li>
         <li><a href="UserList">User List</a></li>
         <li><a href="userdashboard">UserDashboard</a></li>

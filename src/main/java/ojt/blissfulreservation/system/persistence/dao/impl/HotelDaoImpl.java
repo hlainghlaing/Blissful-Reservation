@@ -24,7 +24,6 @@ import ojt.blissfulreservation.system.persistence.entity.Hotel;
 @SuppressWarnings("deprecation")
 @Repository
 public class HotelDaoImpl implements HotelDAO {
-
     /**
      * <h2>sessionFactory</h2>
      * <p>
@@ -34,6 +33,8 @@ public class HotelDaoImpl implements HotelDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
+    private static final String SELECT_CITY_HQL = "SELECT DISTINCT h.city FROM Hotel h";
+    private static final String SELECT_HOTEL_BY_CITY = "SELECT h FROM Hotel h WHERE h.city = :city";
     /**
      * <h2>SELECT_HOTEL_HQL</h2>
      * <p>
@@ -41,6 +42,14 @@ public class HotelDaoImpl implements HotelDAO {
      * </p>
      */
     private static final String SELECT_HOTEL_HQL = "FROM Hotel h";
+
+    /**
+     * <h2>SELECT_HOTEL_BY_PHONE_HQL</h2>
+     * <p>
+     * SELECT_HOTEL_BY_PHONE_HQL
+     * </p>
+     */
+    public static final String SELECT_HOTEL_BY_PHONE_HQL = "FROM Hotel h WHERE h.phone = :phone ";
 
     @Override
     public Hotel dbGetHotelById(int id) {
@@ -74,9 +83,6 @@ public class HotelDaoImpl implements HotelDAO {
      */
     @Override
     public void dbRegisterNewHotel(Hotel hotel) {
-        hotel.setCreatedAt(LocalDateTime.now());
-        hotel.setUpdatedAt(null);
-        hotel.setDeleteAt(null);
         Session session = sessionFactory.getCurrentSession();
         session.save(hotel);
     }
@@ -92,18 +98,43 @@ public class HotelDaoImpl implements HotelDAO {
     @Override
     public void dbUpdateHotel(Hotel hotel) {
         hotel.setUpdatedAt(LocalDateTime.now());
-        hotel.setDeleteAt(null);
         Session session = sessionFactory.getCurrentSession();
         session.update(hotel);
     }
 
+    /**
+     * <h2>dbSaveHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotel
+     */
     @Override
     public void dbSaveHotel(Hotel hotel) {
-        sessionFactory.getCurrentSession();
+        hotel.setCreatedAt(LocalDateTime.now());
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.save(hotel);
     }
 
     /**
-     * <h2>deleteHotel</h2>
+     * <h2>dbFindUserByPhoneNo</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param phone
+     * @return
+     */
+    @Override
+    public Hotel dbFindHotelByPhoneNo(String phone) {
+        Query<Hotel> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_BY_PHONE_HQL);
+        query.setParameter("phone", phone);
+        return query.uniqueResult();
+    }
+
+    /**
+     * <h2>dbDeleteHotel</h2>
      * <p>
      * 
      * </p>
@@ -112,7 +143,22 @@ public class HotelDaoImpl implements HotelDAO {
      */
     @Override
     public void dbDeleteHotel(Hotel hotel) {
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(hotel);
+        this.sessionFactory.getCurrentSession().update(hotel);
+    }
+    
+    @Override
+    public List<String> dbGetCities() {
+        Query<String> query = sessionFactory.getCurrentSession().createQuery(SELECT_CITY_HQL);
+        List<String> cities = query.getResultList();
+        return cities;
+
+    }
+    
+    @Override
+    public List<Hotel> dbGetHotels(String city) {
+        Query<Hotel> query = sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_BY_CITY);
+        query.setParameter("city", city);
+        List<Hotel> hotelList = query.getResultList();
+        return hotelList;
     }
 }

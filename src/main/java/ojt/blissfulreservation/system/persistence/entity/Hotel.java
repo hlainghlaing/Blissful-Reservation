@@ -151,5 +151,8 @@ public class Hotel {
         this.city = hotelform.getCity();
         this.phone = hotelform.getPhone();
         this.hotelImg = hotelform.getHotelImg();
+        this.createdAt = hotelform.getCreatedAt();
+        this.updatedAt = hotelform.getUpdatedAt();
+        this.deleteAt = hotelform.getDeletedAt();
     }
 }

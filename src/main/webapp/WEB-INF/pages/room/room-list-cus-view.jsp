@@ -7,7 +7,7 @@
     <c:forEach items="${roomList}" var="r" varStatus="status">
       <div class="room-list">
         <p>
-          <img alt="Single Room Image" src="${r.roomImg}" />
+          <img alt="Room Image" src="${pageContext.request.contextPath}/resources/img/hotel-images/${r.roomImg}" />
         </p>
         <p>
           <c:out value="${r.roomType}" />
@@ -21,6 +21,5 @@
         <a href="booking-register?id=${r.roomId}">Book Now</a>
       </div>
     </c:forEach>
-    <a href="booking-register">Book Now</a>
   </div>
 </section>

@@ -4,35 +4,27 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
-import org.apache.commons.io.FileUtils;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import ojt.blissfulreservation.system.bl.service.HotelService;
 import ojt.blissfulreservation.system.persistence.dao.HotelDAO;
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
+import ojt.blissfulreservation.system.persistence.entity.User;
+import ojt.blissfulreservation.system.web.form.HotelForm;
+import ojt.blissfulreservation.system.web.form.UserForm;
 
 /**
  * <h2>HotelServiceImpl Class</h2>
@@ -56,11 +48,8 @@ public class HotelServiceImpl implements HotelService {
     @Autowired
     private HotelDAO hotelDAO;
 
-    @Autowired
-    private ServletContext session;
-
     /**
-     * <h2>getHotelById</h2>
+     * <h2>doGetHotelById</h2>
      * <p>
      * 
      * </p>
@@ -69,12 +58,14 @@ public class HotelServiceImpl implements HotelService {
      * @return
      */
     @Override
-    public Hotel doGetHotelById(int id) {
-        return hotelDAO.dbGetHotelById(id);
+    public HotelForm doGetHotelById(int id) {
+        Hotel hotel = hotelDAO.dbGetHotelById(id);
+        HotelForm hotelForm = new HotelForm(hotel);
+        return hotelForm;
     }
 
     /**
-     * <h2>getAllHotels</h2>
+     * <h2>doGetAllHotels</h2>
      * <p>
      * 
      * </p>
@@ -82,8 +73,14 @@ public class HotelServiceImpl implements HotelService {
      * @return
      */
     @Override
-    public List<Hotel> doGetAllHotels() {
-        return hotelDAO.dbGetAllHotels();
+    public List<HotelForm> doGetAllHotels() {
+        List<Hotel> list = hotelDAO.dbGetAllHotels();
+        List<HotelForm> hotelList = new ArrayList<>();
+        for (Hotel hotel : list) {
+            HotelForm hotelForm = new HotelForm(hotel);
+            hotelList.add(hotelForm);
+        }
+        return hotelList;
     }
 
     /**
@@ -95,14 +92,16 @@ public class HotelServiceImpl implements HotelService {
      * @param hotel
      * @param image
      */
+
     @Override
-    public void doRegisterNewHotel(Hotel hotel, MultipartFile hotelImg) throws IOException {
+    public void doRegisterNewHotel(HotelForm hotelForm, MultipartFile hotelImg) throws IOException {
+        Hotel hotel = new Hotel(hotelForm);
         String fileName = StringUtils.cleanPath(hotelImg.getOriginalFilename());
         hotel.setHotelImg(fileName);
         hotelDAO.dbSaveHotel(hotel);
 
-        String uploadDir = "C:\\Users\\DELL\\Downloads\\Java Gp Project\\Blissful_Reservation\\"
-                + "src\\main\\webapp\\resources\\images\\hotel-images\\";
+        String uploadDir = "D:\\EclipseWorkspace_BIB_OJT07\\Blissful_Reservation\\"
+                + "src\\main\\webapp\\resources\\img\\hotel-images\\";
         Path uploadPath = Paths.get(uploadDir);
 
         if (!Files.exists(uploadPath)) {
@@ -114,36 +113,66 @@ public class HotelServiceImpl implements HotelService {
         stream.close();
     }
 
-//    @Override
-//    public void doUpdateHotel(Hotel hotel, MultipartFile image) throws IOException {
-////      // Check if a new image is provided
-////      if (image != null && !image.isEmpty()) {
-////          String filename = image.getOriginalFilename();
-////          String imagePath = "/resources/images/hotel-images/";
-////          HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-////          saveImageToDirectory(image, filename, imagePath, request); // Save the image to the directory
-////          existingHotel.setImage(filename); // Update the image filename in the hotel object
-////      }
-////
-////        hotelDAO.dbUpdateHotel(hotel); 
-////    }
-
     /**
-     * <h2>deleteHotel</h2>
+     * <h2>doUpdateHotel</h2>
      * <p>
      * 
      * </p>
      * 
-     * @param hotel
+     * @param hotelForm
+     * @param image
+     * @throws IOException
      */
     @Override
-    public void doDeleteHotel(Hotel hotel) {
-        hotelDAO.dbDeleteHotel(hotel);
+    public void doUpdateHotel(HotelForm hotelForm, MultipartFile image) throws IOException {
+        Hotel existingHotel = new Hotel(hotelForm);
+        hotelDAO.dbUpdateHotel(existingHotel);
+    }
+
+    /**
+     * <h2>doFindHotelByPhoneNo</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param phone
+     * @return
+     */
+    @Override
+    public HotelForm doFindHotelByPhoneNo(String phone) {
+        Hotel hotel = hotelDAO.dbFindHotelByPhoneNo(phone);
+        if (hotel != null) {
+            HotelForm hotelform = new HotelForm(hotel);
+            return hotelform;
+        }
+        return null;
+    }
+
+    /**
+     * <h2>doDeleteHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotelform
+     */
+    @Override
+    public void doDeleteHotel(HotelForm hotelform) {
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure to delete?");
+        if (option == JOptionPane.YES_OPTION) {
+            hotelform.setDeletedAt(LocalDateTime.now());
+            Hotel hotel = new Hotel(hotelform);
+            hotelDAO.dbDeleteHotel(hotel);
+        }
     }
 
     @Override
-    public void doUpdateHotel(Hotel hotel, MultipartFile image) throws IOException {
-        // TODO Auto-generated method stub
-        
+    public List<String> getCities() {
+        return hotelDAO.dbGetCities();
+    }
+
+    @Override
+    public List<Hotel> doGetHotels(String city) {
+        return hotelDAO.dbGetHotels(city);
     }
 }
