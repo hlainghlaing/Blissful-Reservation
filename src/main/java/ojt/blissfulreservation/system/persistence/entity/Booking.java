@@ -1,7 +1,7 @@
 package ojt.blissfulreservation.system.persistence.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,7 +54,7 @@ public class Booking {
      * </p>
      */
     @Column(name = "check_in", nullable = false)
-    private Date checkIn;
+    private LocalDate checkIn;
 
     /**
      * <h2>checkOut</h2>
@@ -63,7 +63,7 @@ public class Booking {
      * </p>
      */
     @Column(name = "check_out", nullable = false)
-    private Date checkOut;
+    private LocalDate checkOut;
 
     /**
      * <h2>roomNum</h2>
@@ -89,7 +89,7 @@ public class Booking {
      * nrc
      * </p>
      */
-    @Column(name = "nrc", nullable = false, unique = true, length = 45)
+    @Column(name = "nrc", nullable = false, length = 45)
     private String nrc;
 
     /**
@@ -98,7 +98,7 @@ public class Booking {
      * status
      * </p>
      */
-    @Column(name = "status", nullable = false, columnDefinition = "int default 1")
+    @Column(name = "status", nullable = false)
     private int status;
 
     /**
@@ -155,16 +155,19 @@ public class Booking {
      */
     public Booking(BookingForm bookingForm) {
         this.bookingId = bookingForm.getBookingId();
-        this.checkIn = bookingForm.getCheckIn();
-        this.checkOut = bookingForm.getCheckOut();
+        this.checkIn = LocalDate.parse(bookingForm.getCheckIn());
+        this.checkOut = LocalDate.parse(bookingForm.getCheckOut());
         this.roomNum = bookingForm.getRoomNum();
         this.totalPrice = bookingForm.getTotalPrice();
         this.nrc = bookingForm.getNrc();
+        this.status = bookingForm.getStatus();
         this.createdAt = bookingForm.getCreatedAt();
         this.updatedAt = bookingForm.getUpdatedAt();
         this.deletedAt = bookingForm.getDeletedAt();
         this.roomId = bookingForm.getRoomId();
         this.userId = bookingForm.getUserId();
+        this.room = bookingForm.getRoom();
+        this.user = bookingForm.getUser();
     }
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

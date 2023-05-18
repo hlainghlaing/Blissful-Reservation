@@ -29,6 +29,14 @@ public class BookingDAOImpl implements BookingDAO {
      */
     @Autowired
     SessionFactory sessionFactory;
+    
+    /**
+     * <h2> SELECT_Booking_BY_ID_HQL</h2>
+     * <p>
+     * SELECT_Booking_BY_ID_HQL
+     * </p>
+     */
+    public static final String SELECT_Booking_BY_ID_HQL = "FROM Booking b WHERE b.bookingId = :id ";
 
     /**
      * <h2>SELECT_Booking_HQL</h2>
@@ -36,7 +44,7 @@ public class BookingDAOImpl implements BookingDAO {
      * SELECT_Booking_HQL
      * </p>
      */
-    private static final String SELECT_Booking_HQL = "SELECT b FROM Booking b JOIN b.user u JOIN b.room r";
+    private static final String SELECT_All_Booking_HQL = "FROM Booking b";
 
     /**
      * <h2>SELECT_Booking_BY_User_HQL</h2>
@@ -44,7 +52,7 @@ public class BookingDAOImpl implements BookingDAO {
      * SELECT_Booking_BY_User_HQL
      * </p>
      */
-    private static final String SELECT_Booking_BY_User_HQL = "SELECT b FROM bookings b WHERE b.userId = :userId";
+    private static final String SELECT_Booking_BY_User_HQL = "SELECT b FROM Booking b WHERE b.userId = :userId";
 
     /**
      * <h2>dbCreateBooking</h2>
@@ -69,7 +77,7 @@ public class BookingDAOImpl implements BookingDAO {
      */
     @Override
     public List<Booking> dbGetBookingList() {
-        Query<Booking> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_Booking_HQL);
+        Query<Booking> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_All_Booking_HQL);
         List<Booking> bookingList = query.list();
         return bookingList;
     }
@@ -115,6 +123,14 @@ public class BookingDAOImpl implements BookingDAO {
     @Override
     public void dbDeleteBooking(Booking booking) {
         this.sessionFactory.getCurrentSession().update(booking);
+    }
+
+    @Override
+    public Booking dbGetBookingById(int id) {
+        Query<Booking> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_Booking_BY_ID_HQL);
+        query.setParameter("id", id);
+        Booking booking = query.uniqueResult();
+        return booking;
     }
 
 }

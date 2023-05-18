@@ -16,7 +16,7 @@ public interface RoomService {
 
     public RoomForm doGetById(int id);
 
-    public void doUpdate(RoomForm room);
+    public void doUpdate(RoomForm room, MultipartFile image) throws IOException;
 
     public List<RoomForm> doGetHotelAndRoomList();
 }

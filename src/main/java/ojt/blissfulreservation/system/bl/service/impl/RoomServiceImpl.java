@@ -71,6 +71,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void doSave(RoomForm roomForm, MultipartFile roomImg) throws IOException {
         roomForm.setCreatedAt(LocalDateTime.now());
+        roomForm.setAvaRoom(roomForm.getTotalRoom());
         Room room = new Room(roomForm);
         String fileName = StringUtils.cleanPath(roomImg.getOriginalFilename());
         room.setRoomImg(fileName);
@@ -90,7 +91,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void doUpdate(RoomForm roomForm) {
+    public void doUpdate(RoomForm roomForm, MultipartFile image) throws IOException {
+        roomForm.setAvaRoom(roomForm.getTotalRoom());
         roomForm.setUpdatedAt(LocalDateTime.now());
         Room room = new Room(roomForm);
         roomDao.dbUpdate(room);

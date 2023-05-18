@@ -14,10 +14,16 @@
             access="permitAll" />
         <intercept-url pattern="/hotelByCityName"
             access="permitAll" />
+        <intercept-url pattern="/viewRoomByHotelId"
+            access="permitAll" />
 
         <intercept-url pattern="/userdashboard"
             access="hasAnyRole('USER','ADMIN')" />
         <intercept-url pattern="/booking-register"
+            access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/booking-success"
+            access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/booking-list"
             access="hasAnyRole('USER','ADMIN')" />
 
         <intercept-url pattern="/admindashboard"
@@ -26,7 +32,13 @@
             access="hasRole('ADMIN')" />
         <intercept-url pattern="/register-hotel"
             method="POST" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/UserList" method="POST"
+            access="hasRole('ADMIN')" />
         <intercept-url pattern="/add-room"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/edit-user"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/update-user"
             access="hasRole('ADMIN')" />
         <intercept-url pattern="/hotel-view"
             access="hasRole('ADMIN')" />
@@ -39,6 +51,12 @@
         <intercept-url pattern="/deleteroom"
             access="hasRole('ADMIN')" />
         <intercept-url pattern="/delete-hotel"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/booking-lists"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/accept"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/reject"
             access="hasRole('ADMIN')" />
 
         <form-login login-page="/Login"

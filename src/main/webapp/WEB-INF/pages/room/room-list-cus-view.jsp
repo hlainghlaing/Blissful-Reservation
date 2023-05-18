@@ -18,7 +18,7 @@
         <p>
           <c:out value="${r.price}" />
         </p>
-        <a href="booking-register?id=${r.roomId}">Book Now</a>
+        <a href="booking-register?id=${r.roomId}&hotelid=${r.hotelId}">Book Now</a>
       </div>
     </c:forEach>
   </div>

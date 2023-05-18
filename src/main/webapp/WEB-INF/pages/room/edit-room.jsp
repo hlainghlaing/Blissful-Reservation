@@ -31,8 +31,7 @@
       <td><form:input path="totalRoom" /></td>
     </tr>
     <tr>
-      <td>Availabel room :</td>
-      <td><form:input path="avaRoom" /></td>
+      <td><form:hidden path="avaRoom" /></td>
     </tr>
     <tr>
       <td>Price :</td>
@@ -40,7 +39,7 @@
     </tr>
     <tr>
       <td>Room Image :</td>
-      <td><form:input path="roomImg" /></td>
+      <td><form:input path="roomImg" readonly="readonly"/></td>
     </tr>
     <tr>
       <td><img
@@ -49,7 +48,7 @@
     </tr>
 
     <tr>
-      <td><input type="submit" value="Save" /></td>
+      <td><input type="submit" value="Save" onclick="showPreviewImage()"/></td>
     </tr>
   </table>
 </form:form>

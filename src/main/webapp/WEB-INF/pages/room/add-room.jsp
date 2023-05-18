@@ -21,8 +21,6 @@
         <form:input type="number" path="price" />
         <br> <br> <span>Total Room:</span>
         <form:input type="number" path="totalRoom" />
-        <br> <br> <span>Available Room:</span>
-        <form:input type="number" path="avaRoom" />
         <br> <br> <span>Room Image:</span>
         <form:input type="file" id="image" path="file" accept="image/*" />
         <label for="image" class="file-label">Choose File<span

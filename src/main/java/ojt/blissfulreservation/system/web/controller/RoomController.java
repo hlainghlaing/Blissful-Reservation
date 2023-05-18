@@ -98,9 +98,10 @@ public class RoomController {
      */
     @RequestMapping(value = "/editsaveRoom", method = RequestMethod.POST)
     public String editsaveRoom(@ModelAttribute("room") RoomForm roomForm) throws IOException {
+        System.out.println(roomForm.getAvaRoom()+roomForm.getPrice());
         HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
         roomForm.setHotel(new Hotel(hotel));
-        roomService.doUpdate(roomForm);
+        roomService.doUpdate(roomForm,roomForm.getFile());
         return "redirect:/hotel-view";
     }
     
@@ -114,6 +115,5 @@ public class RoomController {
         }
         model.setViewName("roomListAllView");
         return model;
-
     }
 }

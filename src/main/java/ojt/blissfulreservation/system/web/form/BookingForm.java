@@ -1,15 +1,17 @@
 package ojt.blissfulreservation.system.web.form;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.NotEmpty;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,11 +38,9 @@ public class BookingForm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingId;
     @NotEmpty
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date checkIn;
+    private String checkIn;
     @NotEmpty
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date checkOut;
+    private String checkOut;
     @NotEmpty
     private int roomNum;
     @NotEmpty
@@ -56,6 +56,8 @@ public class BookingForm {
     private LocalDateTime deletedAt;
     private Room room;
     private User user;
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     /**
      * <h2>Constructor for BookingForm</h2>
@@ -67,16 +69,19 @@ public class BookingForm {
      */
     public BookingForm(Booking booking) {
         this.bookingId = booking.getBookingId();
-        this.checkIn = booking.getCheckIn();
-        this.checkOut = booking.getCheckOut();
+        this.checkIn = booking.getCheckIn().format(formatter);
+        this.checkOut = booking.getCheckOut().format(formatter);
         this.roomNum = booking.getRoomNum();
         this.totalPrice = booking.getTotalPrice();
         this.nrc = booking.getNrc();
+        this.status = booking.getStatus();
         this.createdAt = booking.getCreatedAt();
         this.updatedAt = booking.getUpdatedAt();
         this.deletedAt = booking.getDeletedAt();
         this.roomId = booking.getRoomId();
         this.userId = booking.getUserId();
+        this.room = booking.getRoom();
+        this.user = booking.getUser();
     }
     
     private static final Map<Integer, String> STATUS_MAP = new HashMap<Integer,String>() {
@@ -89,5 +94,21 @@ public class BookingForm {
     
     public String getStatusName() {
         return STATUS_MAP.get(status);
+    }
+    
+//    public String getCheckInFormat() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//        String formattedDate = checkIn.format(formatter);
+//        return formattedDate;
+//    }
+//    
+//    public String getCheckOutFormat() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//        String formattedDate = checkOut.format(formatter);
+//        return formattedDate;
+//    }
+    
+    public int dateDiff(LocalDate startDate,LocalDate endDate) {
+        return (int) ChronoUnit.DAYS.between(startDate, endDate);
     }
 }

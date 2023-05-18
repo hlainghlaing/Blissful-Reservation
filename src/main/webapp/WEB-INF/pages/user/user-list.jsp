@@ -11,7 +11,6 @@
         <th>No</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Password</th>
         <th>Phone No</th>
         <th>createdAt</th>
         <th>updatedAt</th>
@@ -25,7 +24,6 @@
               pattern="0000" /></td>
           <td>${user.userName}</td>
           <td>${user.email}</td>
-          <td>${user.password}</td>
           <td>${user.phoneNo}</td>
           <td>${user.createdAt}</td>
           <td>${user.updatedAt}</td>

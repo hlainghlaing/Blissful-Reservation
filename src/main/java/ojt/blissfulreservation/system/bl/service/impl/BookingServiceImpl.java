@@ -1,6 +1,9 @@
 package ojt.blissfulreservation.system.bl.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +72,7 @@ public class BookingServiceImpl implements BookingService {
             if (bForm.getStatus() == 1) {
                 bFormList.add(bForm);
             }
+            bFormList.add(bForm);
         }
         return bFormList;
     }
@@ -104,6 +108,12 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void doUpdateBooking(BookingForm bookingForm) {
         bookingForm.setUpdatedAt(LocalDateTime.now());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate sdate = LocalDate.parse(bookingForm.getCheckIn(), formatter);
+        LocalDate edate = LocalDate.parse(bookingForm.getCheckOut(), formatter);
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        bookingForm.setCheckIn(sdate.format(outputFormatter));
+        bookingForm.setCheckOut(edate.format(outputFormatter));
         Booking booking = new Booking(bookingForm);
         bookingDao.dbUpdateBooking(booking);
     }
@@ -121,5 +131,12 @@ public class BookingServiceImpl implements BookingService {
         bookingForm.setDeletedAt(LocalDateTime.now());
         Booking booking = new Booking(bookingForm);
         bookingDao.dbDeleteBooking(booking);
+    }
+
+    @Override
+    public BookingForm doGetBookingById(int id) {
+        Booking booking = bookingDao.dbGetBookingById(id);
+        BookingForm bookingForm = new BookingForm(booking);
+        return bookingForm;
     }
 }

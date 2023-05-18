@@ -146,7 +146,7 @@ public class Room {
      * bookings
      * </p>
      */
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
     /**

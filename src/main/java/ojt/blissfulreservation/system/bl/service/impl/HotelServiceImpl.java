@@ -175,4 +175,17 @@ public class HotelServiceImpl implements HotelService {
     public List<Hotel> doGetHotels(String city) {
         return hotelDAO.dbGetHotels(city);
     }
+
+    @Override
+    public List<HotelForm> doGetUpdatedHotels() {
+        List<Hotel> list = hotelDAO.dbGetAllHotels();
+        List<HotelForm> hotelList = new ArrayList<>();
+        for (Hotel hotel : list) {
+            HotelForm hotelForm = new HotelForm(hotel);
+            if (hotel.getDeleteAt() == null) {
+                hotelList.add(hotelForm);
+            }
+        }
+        return hotelList;
+    }
 }

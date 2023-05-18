@@ -16,6 +16,8 @@ import ojt.blissfulreservation.system.persistence.entity.Booking;
 public interface BookingDAO {
     public void dbCreateBooking(Booking booking);
     
+    public Booking dbGetBookingById(int id);
+    
     public List<Booking> dbGetBookingList();
     
     public List<Booking> dbGetBookingByuser(int userId); 

@@ -6,7 +6,7 @@
   <div class=cmn-inner>
     <div>
       <h2>Blissful Reservation</h2>
-      <form action="all/hotelByCityName" method="post">
+      <form action="hotelByCityName" method="post">
         <label for="city">Select City :</label>
          <select name="selectedCity">
           <c:forEach items="${cityList}" var="city">

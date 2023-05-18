@@ -2,6 +2,7 @@ package ojt.blissfulreservation.system.bl.service;
 
 import java.util.List;
 
+
 import ojt.blissfulreservation.system.web.form.BookingForm;
 
 /**
@@ -15,6 +16,8 @@ import ojt.blissfulreservation.system.web.form.BookingForm;
  */
 public interface BookingService {
     public void doCreateBooking(BookingForm bookingForm);
+    
+    public BookingForm doGetBookingById(int id);
 
     public List<BookingForm> doGetBookingList();
 

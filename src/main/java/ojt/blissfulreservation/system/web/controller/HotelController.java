@@ -52,7 +52,7 @@ public class HotelController {
     public ModelAndView hotelList(ModelAndView model, Authentication authentication) {
         List<String> cityList = hotelService.getCities();
         model.addObject("cityList", cityList);
-        List<HotelForm> hotelList = hotelService.doGetAllHotels();
+        List<HotelForm> hotelList = hotelService.doGetUpdatedHotels();
         model.addObject("hotelList", hotelList);
         if (authentication != null && authentication.isAuthenticated()) {
             model.setViewName("hotelUserView");
@@ -202,17 +202,17 @@ public class HotelController {
      * @return
      * @return String
      */
-    @RequestMapping(value = "/user-view")
-    public String userViewHotels(Model model) {
-        List<HotelForm> hotelList = hotelService.doGetAllHotels();
-        List<HotelForm> newHotelList = new ArrayList<>();
-        for (HotelForm hotel : hotelList) {
-            if (hotel.getDeletedAt() == null) {
-                newHotelList.add(hotel);
-            }
-        }
-        model.addAttribute("hotelList", newHotelList);
-        return "hotel-list-cus-view";
-
-    }
+//    @RequestMapping(value = "/user-view")
+//    public String userViewHotels(Model model) {
+//        List<HotelForm> hotelList = hotelService.doGetAllHotels();
+//        List<HotelForm> newHotelList = new ArrayList<>();
+//        for (HotelForm hotel : hotelList) {
+//            if (hotel.getDeletedAt() == null) {
+//                newHotelList.add(hotel);
+//            }
+//        }
+//        model.addAttribute("hotelList", newHotelList);
+//        return "hotel-list-cus-view";
+//
+//    }
 }

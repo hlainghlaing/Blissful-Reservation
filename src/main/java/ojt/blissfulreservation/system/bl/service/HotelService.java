@@ -111,5 +111,7 @@ public interface HotelService {
      * @return hotel list
      */
     public List<Hotel> doGetHotels(String city);
+    
+    public List<HotelForm> doGetUpdatedHotels();
 
 }
