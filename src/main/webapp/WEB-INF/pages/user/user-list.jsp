@@ -2,8 +2,8 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<section>
-  <div class=cmn-inner>
+<section class="ht-">
+  <div class="cmn-inner">
     <h3>User List Table</h3>
     <p>${successMessage}</p>
     <table border="1">
