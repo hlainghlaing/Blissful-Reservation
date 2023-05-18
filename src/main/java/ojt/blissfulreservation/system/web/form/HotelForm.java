@@ -12,6 +12,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
 
+/**
+ * <h2> HotelForm Class</h2>
+ * <p>
+ * Process for Displaying HotelForm
+ * </p>
+ * 
+ * @author HnaungThetHtarWai
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor

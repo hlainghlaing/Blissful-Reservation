@@ -143,10 +143,10 @@ public class UserContorller {
      * @return String
      */
     @RequestMapping(value = "/updateUserPassword")
-    public String updatePassword(@ModelAttribute("user") UserForm user,HttpServletRequest request) {
+    public String updatePassword(@ModelAttribute("user") UserForm user, HttpServletRequest request) {
         userService.doUpdate(user);
         HttpSession session = request.getSession();
-        session.setAttribute("successMessage","Your password is Updated!");
+        session.setAttribute("successMessage", "Your password is Updated!");
         return "redirect:/Login";
     }
 
@@ -162,7 +162,7 @@ public class UserContorller {
      * @return
      * @return String
      */
-    @RequestMapping(value = "/edit-user",method = RequestMethod.GET)
+    @RequestMapping(value = "/edit-user", method = RequestMethod.GET)
     public String editUser(HttpServletRequest request, Model model, @RequestParam("id") int id) {
         UserForm user = userService.doGetById(id);
         model.addAttribute("user", user);
@@ -179,8 +179,8 @@ public class UserContorller {
      * @return
      * @return String
      */
-    @RequestMapping(value = "/update-user",method = RequestMethod.POST)
-    public String updateUser(@ModelAttribute("user") UserForm user,HttpServletRequest request) {
+    @RequestMapping(value = "/update-user", method = RequestMethod.POST)
+    public String updateUser(@ModelAttribute("user") UserForm user, HttpServletRequest request) {
         userService.doUpdate(user);
         HttpSession session = request.getSession();
         session.setAttribute("successMessage", "User details updated successfully!");

@@ -29,9 +29,9 @@ public class BookingDAOImpl implements BookingDAO {
      */
     @Autowired
     SessionFactory sessionFactory;
-    
+
     /**
-     * <h2> SELECT_Booking_BY_ID_HQL</h2>
+     * <h2>SELECT_Booking_BY_ID_HQL</h2>
      * <p>
      * SELECT_Booking_BY_ID_HQL
      * </p>
@@ -100,7 +100,7 @@ public class BookingDAOImpl implements BookingDAO {
     }
 
     /**
-     * <h2> dbUpdateBooking </h2>
+     * <h2>dbUpdateBooking</h2>
      * <p>
      * 
      * </p>
@@ -113,7 +113,7 @@ public class BookingDAOImpl implements BookingDAO {
     }
 
     /**
-     * <h2> dbDeleteBooking </h2>
+     * <h2>dbDeleteBooking</h2>
      * <p>
      * 
      * </p>
@@ -132,5 +132,4 @@ public class BookingDAOImpl implements BookingDAO {
         Booking booking = query.uniqueResult();
         return booking;
     }
-
 }

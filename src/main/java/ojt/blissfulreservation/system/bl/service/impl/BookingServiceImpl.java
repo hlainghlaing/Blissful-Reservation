@@ -29,7 +29,6 @@ import ojt.blissfulreservation.system.web.form.BookingForm;
 @Service
 @Transactional
 public class BookingServiceImpl implements BookingService {
-
     /**
      * <h2>bookingDao</h2>
      * <p>

@@ -7,6 +7,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ojt.blissfulreservation.system.web.form.RoomForm;
 
+/**
+ * <h2> RoomService Class</h2>
+ * <p>
+ * Process for Displaying RoomService
+ * </p>
+ * 
+ * @author MiMiSoe
+ *
+ */
 public interface RoomService {
     public void doSave(RoomForm room, MultipartFile image) throws IOException;
 

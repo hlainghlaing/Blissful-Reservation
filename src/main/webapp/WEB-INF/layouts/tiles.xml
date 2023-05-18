@@ -25,7 +25,7 @@
             value="/WEB-INF/pages/common/inc/footer.jsp">
         </put-attribute>
     </definition>
-    
+
     <definition name="tiles3"
         template="/WEB-INF/pages/common/tiles.jsp">
         <put-attribute name="header"

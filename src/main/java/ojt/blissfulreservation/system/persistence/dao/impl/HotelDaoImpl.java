@@ -33,8 +33,22 @@ public class HotelDaoImpl implements HotelDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
+    /**
+     * <h2> SELECT_CITY_HQL</h2>
+     * <p>
+     * SELECT_CITY_HQL
+     * </p>
+     */
     private static final String SELECT_CITY_HQL = "SELECT DISTINCT h.city FROM Hotel h";
+    
+    /**
+     * <h2> SELECT_HOTEL_BY_CITY</h2>
+     * <p>
+     * SELECT_HOTEL_BY_CITY
+     * </p>
+     */
     private static final String SELECT_HOTEL_BY_CITY = "SELECT h FROM Hotel h WHERE h.city = :city";
+    
     /**
      * <h2>SELECT_HOTEL_HQL</h2>
      * <p>
@@ -146,6 +160,14 @@ public class HotelDaoImpl implements HotelDAO {
         this.sessionFactory.getCurrentSession().update(hotel);
     }
     
+    /**
+     * <h2> dbGetCities </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @return
+     */
     @Override
     public List<String> dbGetCities() {
         Query<String> query = sessionFactory.getCurrentSession().createQuery(SELECT_CITY_HQL);
@@ -154,6 +176,15 @@ public class HotelDaoImpl implements HotelDAO {
 
     }
     
+    /**
+     * <h2> dbGetHotels </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param city
+     * @return
+     */
     @Override
     public List<Hotel> dbGetHotels(String city) {
         Query<Hotel> query = sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_BY_CITY);

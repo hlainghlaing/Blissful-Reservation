@@ -10,8 +10,8 @@
       <ul class="all-nav-list clearfix">
         <li><a href="Home" class="active">Home</a></li>
         <li><a href="searchform">Hotels</a></li>
-        <li><a href="#">AboutUs</a></li>
-        <li><a href="#">ContactUs</a></li>
+        <li><a href="AboutUsPage">AboutUs</a></li>
+        <li><a href="ContactUsPage">ContactUs</a></li>
       </ul>
       <a href="Login" class="sign-in-btn">SingIn/SingUp</a>
     </nav>

@@ -24,12 +24,36 @@ import ojt.blissfulreservation.system.persistence.dao.RoomDAO;
 import ojt.blissfulreservation.system.persistence.entity.Room;
 import ojt.blissfulreservation.system.web.form.RoomForm;
 
+/**
+ * <h2> RoomServiceImpl Class</h2>
+ * <p>
+ * Process for Displaying RoomServiceImpl
+ * </p>
+ * 
+ * @author MiMiSoe
+ *
+ */
 @Service
 @Transactional
 public class RoomServiceImpl implements RoomService {
+    /**
+     * <h2> roomDao</h2>
+     * <p>
+     * roomDao
+     * </p>
+     */
     @Autowired
     private RoomDAO roomDao;
 
+    /**
+     * <h2> doGetRoomList </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param id
+     * @return List<RoomForm>
+     */
     @Override
     public List<RoomForm> doGetRoomList(int id) {
         List<Room> roomList = roomDao.dbGetRoomList(id);
@@ -41,6 +65,14 @@ public class RoomServiceImpl implements RoomService {
         return roomFormList;
     }
 
+    /**
+     * <h2> doDelete </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param roomForm
+     */
     @Override
     public void doDelete(RoomForm roomForm) {
         int option = JOptionPane.showConfirmDialog(null, "Are you sure to delete?");
@@ -51,12 +83,29 @@ public class RoomServiceImpl implements RoomService {
         }
     }
 
+    /**
+     * <h2> doGetById </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param id
+     * @return RoomForm
+     */
     @Override
     public RoomForm doGetById(int id) {
         RoomForm roomForm = new RoomForm(roomDao.dbGetById(id));
         return roomForm;
     }
 
+    /**
+     * <h2> doGetHotelAndRoomList </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @return List<RoomForm>
+     */
     @Override
     public List<RoomForm> doGetHotelAndRoomList() {
         List<Room> roomList = roomDao.dbGetHotelsAndRoomList();
@@ -68,6 +117,16 @@ public class RoomServiceImpl implements RoomService {
         return roomFormList;
     }
 
+    /**
+     * <h2> doSave </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param roomForm
+     * @param roomImg
+     * @throws IOException
+     */
     @Override
     public void doSave(RoomForm roomForm, MultipartFile roomImg) throws IOException {
         roomForm.setCreatedAt(LocalDateTime.now());
@@ -90,6 +149,16 @@ public class RoomServiceImpl implements RoomService {
         stream.close();
     }
 
+    /**
+     * <h2> doUpdate </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param roomForm
+     * @param image
+     * @throws IOException
+     */
     @Override
     public void doUpdate(RoomForm roomForm, MultipartFile image) throws IOException {
         roomForm.setAvaRoom(roomForm.getTotalRoom());

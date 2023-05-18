@@ -144,33 +144,31 @@ public class MainController {
         if (userForm != null) {
             model.addAttribute("errormsg", "Email address is already registered.");
             return "userRegister";
-        }else if (userForm2 != null){
+        } else if (userForm2 != null) {
             model.addAttribute("errormsg", "Phone Number is already registered.");
             return "userRegister";
-        }else {
+        } else {
             userService.doSave(user);
             model.addAttribute("successMessage", "Registration successful.");
-            return "userLogin";   
-        }  
+            return "userLogin";
+        }
     }
-//    @RequestMapping(value = "/save", method = RequestMethod.POST)
-//  public String createUser(@ModelAttribute("user") UserForm user, Model model) {
-//        String name = user.getUserName();
-//        String email = user.getEmail();
-//        String password = user.getPassword();
-//        String phoneNo = user.getPassword();
-//        UserForm userObj = new UserForm();
-//      int id = userService.doFindUserByPhoneNo(user.getPhoneNo());
-//      if (id != 0) {
-//          model.addAttribute("errormsg", "Email address is already registered");
-//          return "redirect:/Register";
-//      }else {
-//          userObj.setUserName(name);
-//          userObj.setEmail(email);
-//          userObj.setPassword(password);
-//          userObj.setPhoneNo(phoneNo);
-//          userService.doSave(userObj);
-//          return "redirect:/Login";
-//      } 
-//  }
+
+    @RequestMapping(value = "/AboutUsPage")
+    public String aboutUs(Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "aboutUsUser";
+        } else {
+            return "aboutUs";
+        }
+    }
+
+    @RequestMapping(value = "/ContactUsPage")
+    public String contactUs(Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "contactUsUser";
+        } else {
+            return "contactUs";
+        }
+    }
 }

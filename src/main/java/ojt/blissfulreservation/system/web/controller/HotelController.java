@@ -45,9 +45,26 @@ public class HotelController {
     @Autowired
     private HotelService hotelService;
     
+    /**
+     * <h2> roomService</h2>
+     * <p>
+     * roomService
+     * </p>
+     */
     @Autowired
     private RoomService roomService;
 
+    /**
+     * <h2> hotelList</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param model
+     * @param authentication
+     * @return
+     * @return ModelAndView
+     */
     @RequestMapping(value = "/searchform", method = RequestMethod.GET)
     public ModelAndView hotelList(ModelAndView model, Authentication authentication) {
         List<String> cityList = hotelService.getCities();
@@ -63,6 +80,18 @@ public class HotelController {
 
     }
 
+    /**
+     * <h2> hotelByCity</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param city
+     * @param model
+     * @param authentication
+     * @return
+     * @return ModelAndView
+     */
     @RequestMapping(value = "/hotelByCityName", method = RequestMethod.POST)
     public ModelAndView hotelByCity(@RequestParam("selectedCity") String city, ModelAndView model,
             Authentication authentication) {
@@ -107,13 +136,16 @@ public class HotelController {
      * @return ModelAndView
      */
     @RequestMapping(value = "/register-hotel", method = RequestMethod.POST)
-    public String registerNewHotel(@ModelAttribute("hotel") HotelForm hotel, Model model) throws IOException {
+    public String registerNewHotel(@ModelAttribute("hotel") HotelForm hotel,HttpServletRequest request) throws IOException {
         HotelForm hotelform = hotelService.doFindHotelByPhoneNo(hotel.getPhone());
         if (hotelform != null) {
-            model.addAttribute("errormsg", "Phone Number is already registered.");
+            HttpSession session = request.getSession();
+            session.setAttribute("errormsg", "Phone Number is already registered.");
             return "redirect:/form";
         } else {
             hotelService.doRegisterNewHotel(hotel, hotel.getFile());
+            HttpSession session = request.getSession();
+            session.setAttribute("successMessage", "Successfully register New Hotel!");
             return "redirect:/hotel-view";
         }
     }
@@ -167,8 +199,10 @@ public class HotelController {
      * @return String
      */
     @RequestMapping(value = "/update-hotel", method = RequestMethod.POST)
-    public String updateHotel(@ModelAttribute("hotel") HotelForm hotelForm) throws IOException {
+    public String updateHotel(@ModelAttribute("hotel") HotelForm hotelForm,HttpServletRequest request) throws IOException {
         hotelService.doUpdateHotel(hotelForm, hotelForm.getFile());
+        HttpSession session = request.getSession();
+        session.setAttribute("successMessage", "Hotel Updated Successfully!");
         return "redirect:/hotel-view";
     }
 
@@ -191,28 +225,4 @@ public class HotelController {
         session.setAttribute("successMessage", "Hotel Deleted Successfully!");
         return "redirect:/hotel-view";
     }
-
-    /**
-     * <h2>userViewHotels</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param model
-     * @return
-     * @return String
-     */
-//    @RequestMapping(value = "/user-view")
-//    public String userViewHotels(Model model) {
-//        List<HotelForm> hotelList = hotelService.doGetAllHotels();
-//        List<HotelForm> newHotelList = new ArrayList<>();
-//        for (HotelForm hotel : hotelList) {
-//            if (hotel.getDeletedAt() == null) {
-//                newHotelList.add(hotel);
-//            }
-//        }
-//        model.addAttribute("hotelList", newHotelList);
-//        return "hotel-list-cus-view";
-//
-//    }
 }

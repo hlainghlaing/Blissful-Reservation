@@ -9,6 +9,18 @@
         <put-attribute name="body"
             value="/WEB-INF/pages/home.jsp" />
     </definition>
+    <definition name="contactUs" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/contact-us.jsp" />
+    </definition>
+    <definition name="aboutUs" extends="tiles1">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/about-us.jsp" />
+    </definition>
     <definition name="userLogin" extends="tiles1">
         <put-attribute name="title"
             value="BlissfulReservation | Login" />
@@ -63,13 +75,24 @@
         <put-attribute name="body"
             value="/WEB-INF/pages/room/room-list-cus-view.jsp" />
     </definition>
-    
 
     <definition name="homeforuser" extends="tiles2">
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"
             value="/WEB-INF/pages/home.jsp" />
+    </definition>
+    <definition name="contactUsUser" extends="tiles2">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/contact-us.jsp" />
+    </definition>
+    <definition name="aboutUsUser" extends="tiles2">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/about-us.jsp" />
     </definition>
     <definition name="hotelsforuser" extends="tiles2">
         <put-attribute name="title"
@@ -95,7 +118,7 @@
         <put-attribute name="body"
             value="/WEB-INF/pages/booking/booking-user-view.jsp" />
     </definition>
-     <definition name="hotelUserView" extends="tiles2">
+    <definition name="hotelUserView" extends="tiles2">
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"
@@ -107,7 +130,7 @@
         <put-attribute name="body"
             value="/WEB-INF/pages/hotel/hotel-list-first-search-view.jsp" />
     </definition>
-     <definition name="roomListUserView" extends="tiles2">
+    <definition name="roomListUserView" extends="tiles2">
         <put-attribute name="title"
             value="BlissfulReservation" />
         <put-attribute name="body"

@@ -11,8 +11,8 @@
         <li><a href="userdashboard" class="active">Home</a></li>
         <li><a href="searchform">Hotels</a></li>
         <li><a href="booking-list">Booking Detail</a></li>
-        <li><a href="#">AboutUs</a></li>
-        <li><a href="#">ContactUs</a></li>
+        <li><a href="AboutUsPage">AboutUs</a></li>
+        <li><a href="ContactUsPage">ContactUs</a></li>
       </ul>
       <form action="<%=request.getContextPath()%>/logout" method="POST">
         <input type="submit" value="Logout" /> <input type="hidden"

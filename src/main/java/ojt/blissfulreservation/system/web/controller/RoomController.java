@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -30,17 +31,49 @@ import ojt.blissfulreservation.system.persistence.entity.Room;
 import ojt.blissfulreservation.system.web.form.HotelForm;
 import ojt.blissfulreservation.system.web.form.RoomForm;
 
+/**
+ * <h2>RoomController Class</h2>
+ * <p>
+ * Process for Displaying RoomController
+ * </p>
+ * 
+ * @author MiMiSoe
+ *
+ */
 @Controller
 public class RoomController {
-
+    /**
+     * <h2>hotelService</h2>
+     * <p>
+     * hotelService
+     * </p>
+     */
     @Autowired
     private HotelService hotelService;
-    
+
+    /**
+     * <h2>roomService</h2>
+     * <p>
+     * roomService
+     * </p>
+     */
     @Autowired
     private RoomService roomService;
-    
+
+    /**
+     * <h2>view</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param model
+     * @param room
+     * @param id
+     * @return
+     * @return String
+     */
     @RequestMapping(value = "/add-room")
-    public String view(Model model,RoomForm room,@RequestParam("id") int id) {
+    public String view(Model model, RoomForm room, @RequestParam("id") int id) {
         room.setHotelId(id);
         HotelForm hotel = hotelService.doGetHotelById(id);
         room.setHotel(new Hotel(hotel));
@@ -50,37 +83,59 @@ public class RoomController {
     }
 
     /**
+     * <h2>saveContact</h2>
+     * <p>
+     * 
+     * </p>
+     *
      * @param roomForm
-     * @return viewRoom.jsp
+     * @param request
+     * @return
      * @throws IOException
+     * @return ModelAndView
      */
     @RequestMapping(value = "/saveroom", method = RequestMethod.POST)
-    public ModelAndView saveContact(@ModelAttribute("room") RoomForm roomForm) throws IOException {
+    public ModelAndView saveContact(@ModelAttribute("room") RoomForm roomForm, HttpServletRequest request)
+            throws IOException {
         HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
         roomForm.setHotel(new Hotel(hotel));
         roomService.doSave(roomForm, roomForm.getFile());
+        HttpSession session = request.getSession();
+        session.setAttribute("successMessage", "New room is successfully registered!");
         return new ModelAndView("redirect:/hotel-view");
     }
 
-    
-    
     /**
-     * @param roomId
-     * @param ServletRequest
-     * @return Mappingname
+     * <h2>deleteRoom</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param request
+     * @param id
+     * @return
+     * @return String
      */
     @RequestMapping(value = "/deleteroom", method = RequestMethod.GET)
     public String deleteRoom(HttpServletRequest request, @RequestParam("id") int id) {
         RoomForm roomForm = roomService.doGetById(id);
         roomService.doDelete(roomForm);
+        HttpSession session = request.getSession();
+        session.setAttribute("successMessage", "Room deleted successfully!");
         return "redirect:/hotel-view";
     }
 
     /**
+     * <h2>editRoom</h2>
+     * <p>
+     * 
+     * </p>
+     *
      * @param request
      * @param m
-     * @param roomId
-     * @return editRoom.jsp
+     * @param id
+     * @return
+     * @return String
      */
     @RequestMapping(value = "/edit-room", method = RequestMethod.GET)
     public String editRoom(HttpServletRequest request, Model m, @RequestParam("id") int id) {
@@ -89,24 +144,46 @@ public class RoomController {
         return "editRoom";
     }
 
-
-
     /**
+     * <h2>editsaveRoom</h2>
+     * <p>
+     * 
+     * </p>
+     *
      * @param roomForm
-     * @return success.jsp
-     * @throws IOException 
+     * @param request
+     * @return
+     * @throws IOException
+     * @return String
      */
     @RequestMapping(value = "/editsaveRoom", method = RequestMethod.POST)
-    public String editsaveRoom(@ModelAttribute("room") RoomForm roomForm) throws IOException {
-        System.out.println(roomForm.getAvaRoom()+roomForm.getPrice());
+    public String editsaveRoom(@ModelAttribute("room") RoomForm roomForm, HttpServletRequest request)
+            throws IOException {
+        System.out.println(roomForm.getAvaRoom() + roomForm.getPrice());
         HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
         roomForm.setHotel(new Hotel(hotel));
-        roomService.doUpdate(roomForm,roomForm.getFile());
+        roomService.doUpdate(roomForm, roomForm.getFile());
+        HttpSession session = request.getSession();
+        session.setAttribute("successMessage", "Room updated successfully!");
         return "redirect:/hotel-view";
     }
-    
+
+    /**
+     * <h2>roomList</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param request
+     * @param model
+     * @param id
+     * @param authentication
+     * @return
+     * @return ModelAndView
+     */
     @RequestMapping(value = "/viewRoomByHotelId", method = RequestMethod.GET)
-    public ModelAndView roomList(HttpServletRequest request, ModelAndView model, @RequestParam("id") int id,Authentication authentication) {
+    public ModelAndView roomList(HttpServletRequest request, ModelAndView model, @RequestParam("id") int id,
+            Authentication authentication) {
         List<RoomForm> roomList = roomService.doGetRoomList(id);
         model.addObject("roomList", roomList);
         if (authentication != null && authentication.isAuthenticated()) {

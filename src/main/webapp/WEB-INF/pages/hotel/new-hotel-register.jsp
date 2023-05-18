@@ -5,6 +5,7 @@
 <section>
   <div class="cmn-inner">
     <h2>Registration New Hotel</h2>
+    <p>${errormsg}</p>
     <div class="form-container">
       <form:form action="register-hotel" modelAttribute="hotel"
         method="post" enctype="multipart/form-data">

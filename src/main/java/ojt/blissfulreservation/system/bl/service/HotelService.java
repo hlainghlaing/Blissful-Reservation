@@ -24,7 +24,7 @@ import ojt.blissfulreservation.system.web.form.UserForm;
  * Process for Displaying HotelService
  * </p>
  * 
- * @author DELL
+ * @author HnaungThetHtarWai
  *
  */
 public interface HotelService {
@@ -113,5 +113,4 @@ public interface HotelService {
     public List<Hotel> doGetHotels(String city);
     
     public List<HotelForm> doGetUpdatedHotels();
-
 }

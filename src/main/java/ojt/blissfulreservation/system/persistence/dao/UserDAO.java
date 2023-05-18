@@ -4,7 +4,6 @@ import java.util.List;
 
 import ojt.blissfulreservation.system.persistence.entity.User;
 
-
 /**
  * <h2> UserDAO Class</h2>
  * <p>

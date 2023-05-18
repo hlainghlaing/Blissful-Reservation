@@ -16,6 +16,10 @@
             access="permitAll" />
         <intercept-url pattern="/viewRoomByHotelId"
             access="permitAll" />
+        <intercept-url pattern="/ContactUsPage"
+            access="permitAll" />
+        <intercept-url pattern="/AboutUsPage"
+            access="permitAll" />
 
         <intercept-url pattern="/userdashboard"
             access="hasAnyRole('USER','ADMIN')" />

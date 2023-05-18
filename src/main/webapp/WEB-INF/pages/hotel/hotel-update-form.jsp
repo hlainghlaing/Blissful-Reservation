@@ -59,7 +59,7 @@
 
       <div>
         <label for="hotelImg">Hotel Image:</label>
-        <form:input path="hotelImg" />
+        <form:input path="hotelImg" readonly="readonly" />
       </div>
       <br>
       <br>

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <section class="booking-user-view">
   <div class="cmn-inner">
+    <p>${successMessage}</p>
     <c:forEach items="${bookingList}" var="b" varStatus="status">
       <div class="booking-list-lblk">
         <h2>${b.room.hotel.hotelName}</h2>

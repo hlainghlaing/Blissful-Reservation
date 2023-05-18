@@ -21,7 +21,7 @@ import lombok.Setter;
 import ojt.blissfulreservation.system.web.form.BookingForm;
 
 /**
- * <h2> Booking Class</h2>
+ * <h2>Booking Class</h2>
  * <p>
  * Process for Displaying Booking
  * </p>
@@ -147,10 +147,11 @@ public class Booking {
     private int userId;
 
     /**
-     * <h2> Constructor for Booking </h2>
+     * <h2>Constructor for Booking</h2>
      * <p>
      * Constructor for Booking
      * </p>
+     * 
      * @param bookingForm
      */
     public Booking(BookingForm bookingForm) {
