@@ -1,0 +1,228 @@
+package ojt.blissfulreservation.system.web.controller;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import ojt.blissfulreservation.system.bl.service.BookingService;
+import ojt.blissfulreservation.system.bl.service.HotelService;
+import ojt.blissfulreservation.system.bl.service.RoomService;
+import ojt.blissfulreservation.system.bl.service.UserService;
+import ojt.blissfulreservation.system.persistence.entity.Room;
+import ojt.blissfulreservation.system.persistence.entity.User;
+import ojt.blissfulreservation.system.web.form.BookingForm;
+import ojt.blissfulreservation.system.web.form.HotelForm;
+import ojt.blissfulreservation.system.web.form.RoomForm;
+import ojt.blissfulreservation.system.web.form.UserForm;
+
+/**
+ * <h2>BookingController Class</h2>
+ * <p>
+ * Process for Displaying BookingController
+ * </p>
+ * 
+ * @author KhinYadanarHlaing
+ *
+ */
+@Controller
+public class BookingController {
+    /**
+     * <h2> bService</h2>
+     * <p>
+     * bService
+     * </p>
+     */
+    @Autowired
+    BookingService bService;
+
+    /**
+     * <h2> hotelService</h2>
+     * <p>
+     * hotelService
+     * </p>
+     */
+    @Autowired
+    private HotelService hotelService;
+
+    /**
+     * <h2> roomService</h2>
+     * <p>
+     * roomService
+     * </p>
+     */
+    @Autowired
+    private RoomService roomService;
+
+    /**
+     * <h2> userService</h2>
+     * <p>
+     * userService
+     * </p>
+     */
+    @Autowired
+    private UserService userService;
+
+    /**
+     * <h2> bookingRegister</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param model
+     * @param booking
+     * @param roomId
+     * @param hotelId
+     * @param authentication
+     * @return
+     * @return String
+     */
+    @RequestMapping(value = "booking-register")
+    public String bookingRegister(Model model, BookingForm booking, @RequestParam("id") int roomId,
+            @RequestParam("hotelid") int hotelId, Authentication authentication) {
+        booking.setRoomId(roomId);
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String email = userDetails.getUsername();
+        UserForm user = userService.doFindByEmail(email);
+        booking.setUserId(user.getUserId());
+        RoomForm room = roomService.doGetById(roomId);
+        HotelForm hotel = hotelService.doGetHotelById(hotelId);
+        model.addAttribute("room", room);
+        model.addAttribute("hotel", hotel);
+        model.addAttribute("booking", booking);
+        return "bookingRegister";
+    }
+
+    /**
+     * <h2> successBooking</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param booking
+     * @param model
+     * @param authentication
+     * @param request
+     * @return
+     * @return String
+     */
+    @RequestMapping(value = "booking-success", method = RequestMethod.POST)
+    public String successBooking(@ModelAttribute("booking") BookingForm booking, Model model,
+            Authentication authentication,HttpServletRequest request) {
+        RoomForm roomForm = roomService.doGetById(booking.getRoomId());
+        booking.setRoom(new Room(roomForm));
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String email = userDetails.getUsername();
+        UserForm userForm = userService.doFindByEmail(email);
+        booking.setUser(new User(userForm));
+        double eachroomPrice = roomForm.getPrice();
+        int diff = booking.dateDiff(LocalDate.parse(booking.getCheckIn()), LocalDate.parse(booking.getCheckOut()));
+        int result = diff * booking.getRoomNum();
+        double totalPrice = result * eachroomPrice;
+        booking.setTotalPrice(totalPrice);
+        bService.doCreateBooking(booking);
+        HttpSession session = request.getSession();
+        session.setAttribute("successMessage","Thank you for booking with us! Your hotel reservation has been confirmed.");
+        return "redirect:/booking-list";
+    }
+
+    /**
+     * <h2> bookingListAdminView</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param model
+     * @return
+     * @return String
+     */
+    @RequestMapping(value = "booking-lists")
+    public String bookingListAdminView(Model model) {
+        List<BookingForm> bookingList = bService.doGetBookingList();
+        model.addAttribute("bookingList", bookingList);
+        return "bookingAdminView";
+    }
+
+    /**
+     * <h2> bookingListUserView</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param model
+     * @param authentication
+     * @return
+     * @return String
+     */
+    @RequestMapping(value = "booking-list")
+    public String bookingListUserView(Model model, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String email = userDetails.getUsername();
+        UserForm user = userService.doFindByEmail(email);
+        List<BookingForm> bookingList = bService.doGetBookingByuser(user.getUserId());
+        model.addAttribute("bookingList", bookingList);
+        return "bookingUserView";
+    }
+
+    /**
+     * <h2> acceptBooking</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param id
+     * @param request
+     * @return
+     * @return String
+     */
+    @RequestMapping(value = "/accept")
+    public String acceptBooking(@RequestParam("id") int id,HttpServletRequest request) {
+        BookingForm bookingForm = bService.doGetBookingById(id);
+        bookingForm.setStatus(2);
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure to accept this Booking?");
+        if(option == JOptionPane.YES_OPTION) {
+            bService.doUpdateBooking(bookingForm);
+            HttpSession session = request.getSession();
+            session.setAttribute("successMessage","Booking Accepted!");
+        }
+        return "redirect:/booking-lists";
+    }
+
+    /**
+     * <h2> rejectBooking</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param id
+     * @param request
+     * @return
+     * @return String
+     */
+    @RequestMapping(value = "/reject")
+    public String rejectBooking(@RequestParam("id") int id,HttpServletRequest request) {
+        BookingForm bookingForm = bService.doGetBookingById(id);
+        bookingForm.setStatus(3);
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure to Reject?");
+        if(option == JOptionPane.YES_OPTION) {
+            bService.doUpdateBooking(bookingForm);
+            HttpSession session = request.getSession();
+            session.setAttribute("successMessage","Booking Rejected!");
+        }
+        return "redirect:/booking-lists";
+    }
+}

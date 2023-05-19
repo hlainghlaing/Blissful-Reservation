@@ -24,106 +24,172 @@ import ojt.blissfulreservation.system.persistence.entity.Hotel;
 @SuppressWarnings("deprecation")
 @Repository
 public class HotelDaoImpl implements HotelDAO {
+    /**
+     * <h2>sessionFactory</h2>
+     * <p>
+     * sessionFactory
+     * </p>
+     */
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	/**
-	 * <h2>sessionFactory</h2>
-	 * <p>
-	 * sessionFactory
-	 * </p>
-	 */
-	@Autowired
-	private SessionFactory sessionFactory;
+    /**
+     * <h2> SELECT_CITY_HQL</h2>
+     * <p>
+     * SELECT_CITY_HQL
+     * </p>
+     */
+    private static final String SELECT_CITY_HQL = "SELECT DISTINCT h.city FROM Hotel h";
+    
+    /**
+     * <h2> SELECT_HOTEL_BY_CITY</h2>
+     * <p>
+     * SELECT_HOTEL_BY_CITY
+     * </p>
+     */
+    private static final String SELECT_HOTEL_BY_CITY = "SELECT h FROM Hotel h WHERE h.city = :city";
+    
+    /**
+     * <h2>SELECT_HOTEL_HQL</h2>
+     * <p>
+     * SELECT_HOTEL_HQL
+     * </p>
+     */
+    private static final String SELECT_HOTEL_HQL = "FROM Hotel h";
 
-	/**
-	 * <h2>SELECT_HOTEL_HQL</h2>
-	 * <p>
-	 * SELECT_HOTEL_HQL
-	 * </p>
-	 */
-	private static final String SELECT_HOTEL_HQL = "FROM Hotel h";
+    /**
+     * <h2>SELECT_HOTEL_BY_PHONE_HQL</h2>
+     * <p>
+     * SELECT_HOTEL_BY_PHONE_HQL
+     * </p>
+     */
+    public static final String SELECT_HOTEL_BY_PHONE_HQL = "FROM Hotel h WHERE h.phone = :phone ";
 
-	@Override
-	public Hotel dbGetHotelById(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		return session.get(Hotel.class, id);
-	}
+    @Override
+    public Hotel dbGetHotelById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Hotel.class, id);
+    }
 
-	/**
-	 * <h2>getAllHotels</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Hotel> dbGetAllHotels() {
-		Session session = sessionFactory.getCurrentSession();
-		Query<Hotel> query = session.createQuery(SELECT_HOTEL_HQL, Hotel.class);
-		return query.getResultList();
-	}
+    /**
+     * <h2>getAllHotels</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Hotel> dbGetAllHotels() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Hotel> query = session.createQuery(SELECT_HOTEL_HQL, Hotel.class);
+        return query.getResultList();
+    }
 
-	/**
-	 * <h2>registerNewHotel</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param hotel
-	 */
-	@Override
-	public void dbRegisterNewHotel(Hotel hotel) {
-		Session session = sessionFactory.getCurrentSession();
-		session.save(hotel);
-	}
+    /**
+     * <h2>registerNewHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotel
+     */
+    @Override
+    public void dbRegisterNewHotel(Hotel hotel) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(hotel);
+    }
 
-	/**
-	 * <h2>updateHotel</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param hotel
-	 */
-	@Override
-	public void dbUpdateHotel(Hotel hotel) {
-		hotel.setUpdatedAt(LocalDateTime.now());
-		hotel.setDeleteAt(null);
-		Session session = sessionFactory.getCurrentSession();
-		session.update(hotel);
-	}
+    /**
+     * <h2>updateHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotel
+     */
+    @Override
+    public void dbUpdateHotel(Hotel hotel) {
+        hotel.setUpdatedAt(LocalDateTime.now());
+        Session session = sessionFactory.getCurrentSession();
+        session.update(hotel);
+    }
 
-	/**
-	 * <h2>dbSaveHotel</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param hotel
-	 */
-	@Override
-	public void dbSaveHotel(Hotel hotel) {
-		hotel.setCreatedAt(LocalDateTime.now());
-		hotel.setUpdatedAt(null);
-		hotel.setDeleteAt(null);
-		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.save(hotel);
-	}
+    /**
+     * <h2>dbSaveHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotel
+     */
+    @Override
+    public void dbSaveHotel(Hotel hotel) {
+        hotel.setCreatedAt(LocalDateTime.now());
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.save(hotel);
+    }
 
-	/**
-	 * <h2>dbDeleteHotelById</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param hotelId
-	 */
-	@Override
-	public void dbDeleteHotelById(int hotelId) {
-		Session session = sessionFactory.getCurrentSession();
-		Hotel hotel = session.get(Hotel.class, hotelId);
-		session.delete(hotel);
-	}
+    /**
+     * <h2>dbFindUserByPhoneNo</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param phone
+     * @return
+     */
+    @Override
+    public Hotel dbFindHotelByPhoneNo(String phone) {
+        Query<Hotel> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_BY_PHONE_HQL);
+        query.setParameter("phone", phone);
+        return query.uniqueResult();
+    }
 
+    /**
+     * <h2>dbDeleteHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotel
+     */
+    @Override
+    public void dbDeleteHotel(Hotel hotel) {
+        this.sessionFactory.getCurrentSession().update(hotel);
+    }
+    
+    /**
+     * <h2> dbGetCities </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @return
+     */
+    @Override
+    public List<String> dbGetCities() {
+        Query<String> query = sessionFactory.getCurrentSession().createQuery(SELECT_CITY_HQL);
+        List<String> cities = query.getResultList();
+        return cities;
+
+    }
+    
+    /**
+     * <h2> dbGetHotels </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param city
+     * @return
+     */
+    @Override
+    public List<Hotel> dbGetHotels(String city) {
+        Query<Hotel> query = sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_BY_CITY);
+        query.setParameter("city", city);
+        List<Hotel> hotelList = query.getResultList();
+        return hotelList;
+    }
 }
