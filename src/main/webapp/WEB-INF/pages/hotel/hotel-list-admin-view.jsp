@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <section>
   <div class="cmn-inner">
-    <p>${successMessage}</p>
+    <c:if test="${not empty successMessage}">
+      <p class="cmn-success-msg">${successMessage}</p>
+    </c:if>
     <h1>Hotel List</h1>
     <table border=1>
       <thead>
@@ -36,10 +38,10 @@
             <td>${hotel.createdAt}</td>
             <td>${hotel.updatedAt}</td>
             <td>${hotel.deletedAt}</td>
-            <td><a href="edit-hotel?id=${hotel.hotelId}"
-              class="edit-btn">Edit</a> <a
-              href="delete-hotel?id=${hotel.hotelId}" class="delete-btn">Delete</a>
-              <a href="add-room?id=${hotel.hotelId}" class="delete-btn">Add
+            <td><a class="cmn-btn"
+              href="edit-hotel?id=${hotel.hotelId}">Edit</a> <a
+              href="delete-hotel?id=${hotel.hotelId}" class="cmn-btn">Delete</a>
+              <a href="add-room?id=${hotel.hotelId}" class="cmn-btn">Add
                 New Room</a></td>
           </tr>
         </c:forEach>
@@ -79,8 +81,8 @@
           <td>${r.hotel.address }</td>
           <td>${r.hotel.city }</td>
           <td>${r.hotel.phone }</td>
-          <td><a href="edit-room?id=${r.roomId}">Edit</a> <a
-            href="deleteroom?id=${r.roomId}">Delete</a></td>
+          <td><a class="cmn-btn" href="edit-room?id=${r.roomId}">Edit</a>
+            <a class="cmn-btn" href="deleteroom?id=${r.roomId}">Delete</a></td>
         </tr>
       </c:forEach>
     </table>

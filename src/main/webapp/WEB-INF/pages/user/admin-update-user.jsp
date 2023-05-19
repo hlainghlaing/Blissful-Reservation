@@ -2,7 +2,7 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="first-div">
+<section>
   <div class="cmn-inner">
     <h2>Update User Information</h2>
     <form:form action="update-user" method="post" modelAttribute="user">
@@ -22,8 +22,8 @@
         <form:hidden path="createdAt" />
         <form:hidden path="updatedAt" />
         <form:hidden path="deletedAt" />
-        <input type="submit" value="Update User"><br /> <br />
+        <input class="cmn-btn" type="submit" value="Update User"><br /> <br />
       </div>
     </form:form>
   </div>
-</div>
+</section>

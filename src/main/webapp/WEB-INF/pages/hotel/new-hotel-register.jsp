@@ -5,7 +5,9 @@
 <section>
   <div class="cmn-inner">
     <h2>Registration New Hotel</h2>
-    <p>${errormsg}</p>
+    <c:if test="${not empty errormsg}">
+      <p class="cmn-error-msg">${errormsg}</p>
+    </c:if>
     <div class="form-container">
       <form:form action="register-hotel" modelAttribute="hotel"
         method="post" enctype="multipart/form-data">
@@ -40,7 +42,7 @@
         <br>
         <br>
 
-        <input type="submit" value="Register">
+        <input class="cmn-btn" type="submit" value="Register">
       </form:form>
     </div>
   </div>

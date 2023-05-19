@@ -2,7 +2,7 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="first-div">
+<section>
   <div class="cmn-inner">
     <h2>Add New Room</h2>
     <h3>Hotel Information:</h3>
@@ -26,9 +26,9 @@
         <label for="image" class="file-label">Choose File<span
           class="file-name"></span></label> <br> <br>
         <div>
-          <input type="submit" value="Save">
+          <input class="cmn-btn" type="submit" value="Save">
         </div>
       </div>
     </form:form>
   </div>
-</div>
+</section>

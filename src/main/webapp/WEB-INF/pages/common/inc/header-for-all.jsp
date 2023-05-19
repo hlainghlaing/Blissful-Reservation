@@ -13,7 +13,7 @@
         <li><a href="AboutUsPage">AboutUs</a></li>
         <li><a href="ContactUsPage">ContactUs</a></li>
       </ul>
-      <a href="Login" class="sign-in-btn">SingIn/SingUp</a>
+      <a class="cmn-btn header-btn" href="Login" class="sign-in-btn">SingIn</a>
     </nav>
   </div>
 </header>

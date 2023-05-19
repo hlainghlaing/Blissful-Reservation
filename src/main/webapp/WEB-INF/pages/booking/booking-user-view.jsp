@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<section class="booking-user-view">
+<section class="">
   <div class="cmn-inner">
-    <p>${successMessage}</p>
+    <c:if test="${not empty successMessage}">
+      <p class="cmn-success-msg">${successMessage}</p>
+    </c:if>
     <c:forEach items="${bookingList}" var="b" varStatus="status">
       <div class="booking-list-lblk">
         <h2>${b.room.hotel.hotelName}</h2>

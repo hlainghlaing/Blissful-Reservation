@@ -12,7 +12,7 @@
           <c:forEach items="${cityList}" var="city">
             <option value="${city}" >${city}</option>
           </c:forEach>
-        </select> <input type="submit" value="Search">
+        </select> <input class="cmn-btn" type="submit" value="Search">
       </form>
     </div>
 

@@ -40,7 +40,7 @@
         <form:input path="nrc" required="required"
           pattern="\d{1,2}/[a-zA-Z]+\([a-zA-Z]\)\d{6}"
           title="Please enter a valid Myanmar NRC number! like 12/ThaKaNa(N)345678'" />
-        <br /> <br /> <input type="submit" value="Register"><br />
+        <br /> <br /> <input class="cmn-btn" type="submit" value="Register"><br />
         <br />
       </div>
     </form:form>

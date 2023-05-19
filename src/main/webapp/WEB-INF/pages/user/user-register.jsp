@@ -5,7 +5,7 @@
 <section>
   <div class="cmn-inner">
     <c:if test="${not empty errormsg}">
-      <div style="color: red">${errormsg}</div>
+      <div class="cmn-error-msg">${errormsg}</div>
     </c:if>
     <form:form action="save" method="post" modelAttribute="user">
       <div class="user-register-form">
@@ -18,7 +18,7 @@
           title="Password must be at least 6 characters long." />
         <br /> <br /> <label for="phoneNo">Phone No:</label>
         <form:input path="phoneNo" required="required" />
-        <br /> <br /> <input type="submit" value="Register"><br />
+        <br /> <br /> <input class="cmn-btn" type="submit" value="Register"><br />
         <br />
       </div>
     </form:form>

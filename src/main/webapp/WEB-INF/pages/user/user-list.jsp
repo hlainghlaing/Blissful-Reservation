@@ -4,8 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <section class="ht-">
   <div class="cmn-inner">
+    <c:if test="${not empty successMessage}">
+      <p class="cmn-success-msg">${successMessage}</p>
+    </c:if>
+    <a class="cmn-btn" href="userdashboard">UserDashboard</a>
     <h3>User List Table</h3>
-    <p>${successMessage}</p>
     <table border="1">
       <tr>
         <th>No</th>
@@ -29,14 +32,14 @@
           <td>${user.updatedAt}</td>
           <td>${user.deletedAt}</td>
           <td>${user.getRoleType2()}</td>
-          <td><a href="edit-user?id=${user.userId}">Edit</a>
-            &nbsp;&nbsp; <a href="delete-user?id=${user.userId}">
-              Delete</a></td>
+          <td><a class="cmn-btn" href="edit-user?id=${user.userId}">Edit</a>
+            &nbsp;&nbsp; <a class="cmn-btn"
+            href="delete-user?id=${user.userId}"> Delete</a></td>
         </tr>
       </c:forEach>
     </table>
     <p>
-      <a href="Register">Register User</a>
+      <a class="cmn-btn" href="Register">Register User</a>
     </p>
   </div>
 </section>

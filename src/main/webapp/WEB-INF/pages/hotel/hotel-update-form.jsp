@@ -66,7 +66,7 @@
 
 
       <div>
-        <input type="submit" value="Update" onclick="showPreviewImage()" />
+        <input class="cmn-btn" type="submit" value="Update" onclick="showPreviewImage()" />
       </div>
     </form:form>
   </div>
