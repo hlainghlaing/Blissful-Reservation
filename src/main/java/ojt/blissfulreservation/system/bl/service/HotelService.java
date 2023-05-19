@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import ojt.blissfulreservation.system.persistence.entity.Hotel;
 import ojt.blissfulreservation.system.web.form.HotelForm;
+import ojt.blissfulreservation.system.web.form.UserForm;
 
 /**
  * <h2>HotelService Class</h2>
@@ -14,6 +16,15 @@ import ojt.blissfulreservation.system.web.form.HotelForm;
  * </p>
  * 
  * @author Hnaung Thet Htar Wai
+ *
+ */
+/**
+ * <h2>HotelService Class</h2>
+ * <p>
+ * Process for Displaying HotelService
+ * </p>
+ * 
+ * @author HnaungThetHtarWai
  *
  */
 public interface HotelService {
@@ -68,13 +79,38 @@ public interface HotelService {
 	void doUpdateHotel(HotelForm hotel, MultipartFile image) throws IOException;
 
 	/**
+	 * <h2>doFindHotelByPhoneNo</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param phone
+	 * @return
+	 * @return HotelForm
+	 */
+	public HotelForm doFindHotelByPhoneNo(String phone);
+
+	/**
 	 * <h2>doDeleteHotel</h2>
 	 * <p>
 	 * 
 	 * </p>
 	 *
-	 * @param id
+	 * @param hotel
 	 * @return void
 	 */
-	void doDeleteHotel(int id);
+	public void doDeleteHotel(HotelForm hotel);
+	
+    /**
+     * @return city list
+     */
+    public List<String> getCities();
+
+    /**
+     * @param city
+     * @return hotel list
+     */
+    public List<Hotel> doGetHotels(String city);
+    
+    public List<HotelForm> doGetUpdatedHotels();
 }

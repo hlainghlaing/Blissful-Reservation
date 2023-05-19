@@ -2,10 +2,12 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div>
+<section>
   <div class="cmn-inner">
-    <form:form action="save" method="post" modelAttribute="user">
-      <div class="user-register-form">
+    <h2>Update User Information</h2>
+    <form:form action="update-user" method="post" modelAttribute="user">
+      <div class="user-update-form">
+        <form:hidden path="userId" />
         <label for="userName">Name:</label>
         <form:input path="userName" required="required" />
         <br /> <br /> <label for="email">Email:</label>
@@ -15,12 +17,13 @@
           title="Password must be at least 6 characters long." />
         <br /> <br /> <label for="phoneNo">Phone No:</label>
         <form:input path="phoneNo" required="required" />
-        <br /> <br /> <input type="submit" value="Register"><br />
-        <br />
+        <br /> <br />
+        <form:hidden path="roleType" />
+        <form:hidden path="createdAt" />
+        <form:hidden path="updatedAt" />
+        <form:hidden path="deletedAt" />
+        <input class="cmn-btn" type="submit" value="Update User"><br /> <br />
       </div>
     </form:form>
-    <c:if test="${not empty errormsg}">
-      <div style="color: red">${errormsg}</div>
-    </c:if>
   </div>
-</div>
+</section>
