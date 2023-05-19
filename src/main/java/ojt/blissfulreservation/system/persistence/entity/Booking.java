@@ -1,6 +1,6 @@
 package ojt.blissfulreservation.system.persistence.entity;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
@@ -18,17 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ojt.blissfulreservation.system.web.form.BookingForm;
 
-/**
- * <h2>Booking Class</h2>
- * <p>
- * Process for Displaying Booking
- * </p>
- * 
- * @author KhinYadanarHlaing
- *
- */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -54,7 +44,7 @@ public class Booking {
      * </p>
      */
     @Column(name = "check_in", nullable = false)
-    private LocalDate checkIn;
+    private Date chekIn;
 
     /**
      * <h2>checkOut</h2>
@@ -63,7 +53,7 @@ public class Booking {
      * </p>
      */
     @Column(name = "check_out", nullable = false)
-    private LocalDate checkOut;
+    private Date checkOut;
 
     /**
      * <h2>roomNum</h2>
@@ -89,7 +79,7 @@ public class Booking {
      * nrc
      * </p>
      */
-    @Column(name = "nrc", nullable = false, length = 45)
+    @Column(name = "nrc", nullable = false, unique = true, length = 45)
     private String nrc;
 
     /**
@@ -98,7 +88,7 @@ public class Booking {
      * status
      * </p>
      */
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, columnDefinition = "int default 1")
     private int status;
 
     /**
@@ -126,56 +116,13 @@ public class Booking {
      * </p>
      */
     @Column(name = "deleted_at")
-    private LocalDateTime deletedAt;
-
-    /**
-     * <h2>roomId</h2>
-     * <p>
-     * roomId
-     * </p>
-     */
-    @Column(name = "room_id", columnDefinition = "INT(4) ZEROFILL", insertable = false, updatable = false)
-    private int roomId;
-
-    /**
-     * <h2>userId</h2>
-     * <p>
-     * userId
-     * </p>
-     */
-    @Column(name = "user_id", columnDefinition = "INT(4) ZEROFILL", insertable = false, updatable = false)
-    private int userId;
-
-    /**
-     * <h2>Constructor for Booking</h2>
-     * <p>
-     * Constructor for Booking
-     * </p>
-     * 
-     * @param bookingForm
-     */
-    public Booking(BookingForm bookingForm) {
-        this.bookingId = bookingForm.getBookingId();
-        this.checkIn = LocalDate.parse(bookingForm.getCheckIn());
-        this.checkOut = LocalDate.parse(bookingForm.getCheckOut());
-        this.roomNum = bookingForm.getRoomNum();
-        this.totalPrice = bookingForm.getTotalPrice();
-        this.nrc = bookingForm.getNrc();
-        this.status = bookingForm.getStatus();
-        this.createdAt = bookingForm.getCreatedAt();
-        this.updatedAt = bookingForm.getUpdatedAt();
-        this.deletedAt = bookingForm.getDeletedAt();
-        this.roomId = bookingForm.getRoomId();
-        this.userId = bookingForm.getUserId();
-        this.room = bookingForm.getRoom();
-        this.user = bookingForm.getUser();
-    }
+    private LocalDateTime deleteAt;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "room_id", nullable = false)
+    @JoinColumn(name = "room_id",nullable = false)
     private Room room;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id",nullable = false)
     private User user;
 }

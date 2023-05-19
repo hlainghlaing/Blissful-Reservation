@@ -73,21 +73,8 @@ public interface HotelService {
 	 * 
 	 * </p>
 	 *
-	 * @param hotel
+	 * @param id
 	 * @return void
 	 */
-	public void doDeleteHotel(HotelForm hotel);
-	
-    /**
-     * @return city list
-     */
-    public List<String> getCities();
-
-    /**
-     * @param city
-     * @return hotel list
-     */
-    public List<Hotel> doGetHotels(String city);
-    
-    public List<HotelForm> doGetUpdatedHotels();
+	void doDeleteHotel(int id);
 }

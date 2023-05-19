@@ -126,33 +126,29 @@ public class Hotel {
 	@Column(name = "deleted_at")
 	private LocalDateTime deleteAt;
 
-    /**
-     * <h2>rooms</h2>
-     * <p>
-     * rooms
-     * </p>
-     */
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Room> rooms = new ArrayList<>();
+	/**
+	 * <h2>setImage</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param image
+	 * @return void
+	 */
+	public void setImage(String image) {
+		this.hotelImg = image;
+	}
 
-    /**
-     * <h2>Constructor for Hotel</h2>
-     * <p>
-     * Constructor for Hotel
-     * </p>
-     * 
-     * @param hotelform
-     */
-    public Hotel(HotelForm hotelform) {
-        this.hotelId = hotelform.getHotelId();
-        this.hotelName = hotelform.getHotelName();
-        this.rating = hotelform.getRating();
-        this.address = hotelform.getAddress();
-        this.city = hotelform.getCity();
-        this.phone = hotelform.getPhone();
-        this.hotelImg = hotelform.getHotelImg();
-        this.createdAt = hotelform.getCreatedAt();
-        this.updatedAt = hotelform.getUpdatedAt();
-        this.deleteAt = hotelform.getDeletedAt();
-    }
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Room> rooms = new ArrayList<>();
+
+	public Hotel(HotelForm hotelform) {
+		this.hotelId = hotelform.getHotelId();
+		this.hotelName = hotelform.getHotelName();
+		this.rating = hotelform.getRating();
+		this.address = hotelform.getAddress();
+		this.city = hotelform.getCity();
+		this.phone = hotelform.getPhone();
+		this.hotelImg = hotelform.getHotelImg();
+	}
 }

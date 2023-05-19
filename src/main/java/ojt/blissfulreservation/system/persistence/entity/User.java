@@ -118,14 +118,6 @@ public class User {
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
-    /**
-     * <h2>Constructor for User</h2>
-     * <p>
-     * Constructor for User
-     * </p>
-     * 
-     * @param userForm
-     */
     public User(UserForm userForm) {
         this.userId = userForm.getUserId();
         this.userName = userForm.getUserName();
