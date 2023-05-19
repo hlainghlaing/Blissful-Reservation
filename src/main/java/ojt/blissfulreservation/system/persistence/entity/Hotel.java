@@ -25,7 +25,7 @@ import ojt.blissfulreservation.system.web.form.HotelForm;
  * Process for Displaying Hotel
  * </p>
  * 
- * @author KhinYadanarHlaing
+ * @author DELL
  *
  */
 @Getter
@@ -35,96 +35,96 @@ import ojt.blissfulreservation.system.web.form.HotelForm;
 @Entity
 @Table(name = "hotel")
 public class Hotel {
-    /**
-     * <h2>hotelId</h2>
-     * <p>
-     * hotelId
-     * </p>
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hotel_id", columnDefinition = "INT(4) ZEROFILL")
-    private int hotelId;
+	/**
+	 * <h2>hotelId</h2>
+	 * <p>
+	 * hotelId
+	 * </p>
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "hotel_id", columnDefinition = "INT(4) ZEROFILL")
+	private int hotelId;
 
-    /**
-     * <h2>hotelName</h2>
-     * <p>
-     * hotelName
-     * </p>
-     */
-    @Column(name = "hotel_name", nullable = false, length = 45)
-    private String hotelName;
+	/**
+	 * <h2>hotelName</h2>
+	 * <p>
+	 * hotelName
+	 * </p>
+	 */
+	@Column(name = "hotel_name", nullable = false, length = 45)
+	private String hotelName;
 
-    /**
-     * <h2>rating</h2>
-     * <p>
-     * rating
-     * </p>
-     */
-    @Column(name = "rating", nullable = false)
-    private int rating;
+	/**
+	 * <h2>rating</h2>
+	 * <p>
+	 * rating
+	 * </p>
+	 */
+	@Column(name = "rating", nullable = false)
+	private int rating;
 
-    /**
-     * <h2>address</h2>
-     * <p>
-     * address
-     * </p>
-     */
-    @Column(name = "address", nullable = false, length = 100)
-    private String address;
+	/**
+	 * <h2>address</h2>
+	 * <p>
+	 * address
+	 * </p>
+	 */
+	@Column(name = "address", nullable = false, length = 100)
+	private String address;
 
-    /**
-     * <h2>city</h2>
-     * <p>
-     * city
-     * </p>
-     */
-    @Column(name = "city", nullable = false, length = 45)
-    private String city;
+	/**
+	 * <h2>city</h2>
+	 * <p>
+	 * city
+	 * </p>
+	 */
+	@Column(name = "city", nullable = false, length = 45)
+	private String city;
 
-    /**
-     * <h2>phone</h2>
-     * <p>
-     * phone
-     * </p>
-     */
-    @Column(name = "phone", nullable = false, length = 20, unique = true)
-    private String phone;
+	/**
+	 * <h2>phone</h2>
+	 * <p>
+	 * phone
+	 * </p>
+	 */
+	@Column(name = "phone", nullable = false, length = 20, unique = true)
+	private String phone;
 
-    /**
-     * <h2>hotelImg</h2>
-     * <p>
-     * hotelImg
-     * </p>
-     */
-    @Column(name = "hotel_img", nullable = false)
-    private String hotelImg;
-    /**
-     * <h2>createdAt</h2>
-     * <p>
-     * createdAt
-     * </p>
-     */
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+	/**
+	 * <h2>hotelImg</h2>
+	 * <p>
+	 * hotelImg
+	 * </p>
+	 */
+	@Column(name = "hotel_img", nullable = false)
+	private String hotelImg;
+	/**
+	 * <h2>createdAt</h2>
+	 * <p>
+	 * createdAt
+	 * </p>
+	 */
+	@Column(name = "created_at")
+	private LocalDateTime createdAt;
 
-    /**
-     * <h2>updatedAt</h2>
-     * <p>
-     * updatedAt
-     * </p>
-     */
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+	/**
+	 * <h2>updatedAt</h2>
+	 * <p>
+	 * updatedAt
+	 * </p>
+	 */
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
 
-    /**
-     * <h2>deleteAt</h2>
-     * <p>
-     * deleteAt
-     * </p>
-     */
-    @Column(name = "deleted_at")
-    private LocalDateTime deleteAt;
+	/**
+	 * <h2>deleteAt</h2>
+	 * <p>
+	 * deleteAt
+	 * </p>
+	 */
+	@Column(name = "deleted_at")
+	private LocalDateTime deleteAt;
 
     /**
      * <h2>rooms</h2>
