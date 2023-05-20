@@ -26,7 +26,7 @@
       alt="Home Slider Images"></li>
   </ul>
   <div class="main-txt-blk">
-    <h2>Enjoy Your Dreams Vacation</h2>
+    <h2>Enjoy Your Dream Vacation</h2>
   </div>
 </section>
 <section class="hh-home-hotel">

@@ -4,7 +4,7 @@
 <section class="hh-city-cus">
   <div class="cmn-inner">
     <div class="hh-search">
-      <h2>Enjoy Your Dreams Vacation</h2>
+      <h2>Enjoy Your Dream Vacation</h2>
       <form action="hotelByCityName" method="post">
         <label for="city">Select City :</label> <select
           name="selectedCity">

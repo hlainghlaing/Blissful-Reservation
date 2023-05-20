@@ -82,6 +82,99 @@
   padding: 8px 25px;
 }
 
+/* Room View Section */
+
+.hh-cus-room{
+  padding: 30px 0px 50px;
+}
+
+.hh-cus-room h2{
+  font-size: 20px;
+  font-weight: 400;
+  color: #919191;
+  padding-bottom: 50px;
+}
+
+.hh-cus-room .hh-room-list{
+  float: left;
+  width: 47.5%;
+  margin-right: 5%;
+  margin-bottom: 50px;
+  background-color: #f7f7f7;
+}
+
+.hh-cus-room .hh-room-list:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+.hh-cus-room .hh-room-list img{
+  width: 100%;
+  height: 350px;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk{
+  padding: 20px 0px 30px 20px; 
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk h3{
+  padding-bottom: 20px;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk p{
+  padding-bottom: 25px;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk span{
+  position: relative;
+  font-size: 13px; 
+  padding-left: 6%;
+  padding-right: 14.5%;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .f-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_bed_icon.png") center center/cover no-repeat;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .s-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_ac_icon.png") center center/cover no-repeat;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .t-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+  top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_wifi_icon.png") center center/cover no-repeat;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .fo-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_tv_icon.png") center center/cover no-repeat;
+}
+
 /* Ipad  */
 @media screen and (min-width: 768px) and (max-width: 1180px) {
 .hh-city-cus .cmn-inner {
@@ -152,6 +245,47 @@
 .hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
   padding: 1.042vw 3.255vw;
 }
+
+/* Room View Section */
+.hh-cus-room{
+  padding: 3.906vw 0vw 2.604vw;
+}
+
+.hh-cus-room h2{
+  font-size: 20px;
+  padding-bottom: 6.51vw;
+}
+
+.hh-cus-room .hh-room-list{
+  width: 47.5%;
+  margin-right: 5%;
+  margin-bottom: 6.51vw;
+  background-color: #f7f7f7;
+}
+
+.hh-cus-room .hh-room-list img{
+  height: 32.552vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk{
+  font-size : 16px;
+  padding: 2.604vw 0vw 3.906vw 2.604vw; 
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk h3{
+  padding-bottom: 2.604vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk p{
+  padding-bottom: 3.255vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk span{
+  font-size: 13px; 
+  padding-left: 7%;
+  padding-right: 10.5%;
+}
+
 }
 
 /*  SP  */
@@ -225,4 +359,66 @@
 .hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
   padding: 1.25vw 3.906vw;
 }
+
+/* Room View Section */
+
+.hh-cus-room{
+  padding: 3.125vw 0vw 3.125vw;
+}
+
+.hh-cus-room h2{
+  font-size: 2.813vw;
+  padding-bottom: 7.813vw;
+}
+
+.hh-cus-room .hh-room-list{
+  float: none;
+  width: 100%;
+  margin-right: 0%;
+  margin-bottom: 7.813vw;
+}
+
+.hh-cus-room .hh-room-list img{
+  width: 100%;
+  height: 54.688vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk{
+  padding: 3.125vw 0vw 4.688vw 3.125vw; 
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk h3{
+  padding-bottom: 3.125vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk p{
+  padding-bottom: 3.906vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk span{
+  font-size: 2.031vw; 
+  padding-left: 7%;
+  padding-right: 13%;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .f-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .s-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .t-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .fo-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
 }
