@@ -1,1 +1,228 @@
 @charset "UTF-8";
+
+.hh-city-cus .cmn-inner {
+  background: url("../img/common-img/img_slide_img6.jpg") center center/cover
+    no-repeat;
+  padding: 150px 0px 280px;
+}
+
+.hh-city-cus .cmn-inner .hh-search {
+  width: 100%;
+  text-align: center;
+}
+
+.hh-city-cus .cmn-inner .hh-search h2 {
+  font-size: 26px; 
+  font-family: cursive; 
+  font-weight : 400;
+  padding-bottom: 50px;
+}
+
+.hh-city-cus .cmn-inner .hh-search form label {
+  font-size: 20px;
+}
+
+.hh-city-cus .cmn-inner .hh-search form select {
+  font-size: 20px;
+  outline: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 0px 10px;
+}
+
+.hh-city-cus .cmn-inner .hh-search form{
+  font-size: 16px;
+}
+.hh-hotels-cus {
+  padding: 50px 0px 50px;
+}
+
+.hh-hotels-cus .hotel-blk {
+  margin-bottom: 50px;
+  background-color: #f7f7f7;
+}
+
+.hh-hotels-cus .hotel-blk img {
+  float: left;
+  width: 50%;
+  margin-right: 5%;
+  height: 320px;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk {
+  float: right;
+  width: 45%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk {
+  padding: 10px 0px 20px;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk h3 {
+  font-size: 28px;
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p {
+  display: inline-block;
+  width: 25%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p img {
+  width: 17px;
+  height: 17px;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .txt {
+  padding-bottom: 15px;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
+  padding: 8px 25px;
+}
+
+/* Ipad  */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+.hh-city-cus .cmn-inner {
+  padding: 19.531vw 0vw 32.552vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search h2 {
+  font-size: 3.385vw;
+  padding-bottom: 6.51vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form label {
+  font-size: 2.604vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form select {
+  font-size: 2.604vw;
+  padding: 0.651vw 1.953vw;
+  border-radius: 0.651vw;
+  margin: 0vw 1.302vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form input{
+  font-size: 2.083vw;
+}
+
+.hh-hotels-cus {
+  padding: 6.51vw 0vw 6.51vw;
+}
+
+.hh-hotels-cus .hotel-blk {
+  margin-bottom: 6.51vw;
+}
+
+.hh-hotels-cus .hotel-blk img {
+  width: 45%;
+  margin-right: 5%;
+  height: 35.156vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk {
+  width: 50%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk {
+  padding: 1.302vw 0vw 2.604vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk h3 {
+  font-size: 2.604vw;
+  padding-right: 2.604vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p {
+  width: 40%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p img {
+  width: 2.214vw;
+  height: 2.214vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .txt {
+  font-size: 1.953vw;
+  padding-bottom: 1.953vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
+  padding: 1.042vw 3.255vw;
+}
+}
+
+/*  SP  */
+@media screen and (max-width:767.9px) {
+ .hh-city-cus .cmn-inner {
+  padding: 18.75vw 0vw 31.25vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search h2 {
+  font-size: 4.063vw;
+  padding-bottom: 7.813vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form label {
+  font-size: 3.125vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form select {
+  font-size: 2.813vw;
+  padding: 0.781vw 2.344vw;
+  border-radius: 0.781vw;
+  margin: 0vw 1.563vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form input{
+  font-size: 2.5vw;
+}
+
+.hh-hotels-cus {
+  padding: 7.813vw 0vw 7.813vw;
+}
+
+.hh-hotels-cus .hotel-blk {
+  margin-bottom: 7.813vw;
+}
+
+.hh-hotels-cus .hotel-blk img {
+  width: 50%;
+  margin-right: 5%;
+  height: 39.063vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk {
+  width: 45%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk {
+  padding: 1.563vw 0vw 3.125vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk h3 {
+  font-size: 3.125vw;
+  padding-right: 3.125vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p {
+  display: block;
+  padding: 0.781vw 0vw 1.563vw;
+  width: 100%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p img {
+  width: 2.656vw;
+  height: 2.656vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .txt {
+  padding-bottom: 2.344vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
+  padding: 1.25vw 3.906vw;
+}
+}
