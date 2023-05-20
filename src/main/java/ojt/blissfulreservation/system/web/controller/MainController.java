@@ -1,5 +1,7 @@
 package ojt.blissfulreservation.system.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ojt.blissfulreservation.system.bl.service.HotelService;
 import ojt.blissfulreservation.system.bl.service.UserService;
+import ojt.blissfulreservation.system.web.form.HotelForm;
 import ojt.blissfulreservation.system.web.form.UserForm;
 
 /**
@@ -33,6 +37,15 @@ public class MainController {
     private UserService userService;
 
     /**
+     * <h2>hotelService</h2>
+     * <p>
+     * hotelService
+     * </p>
+     */
+    @Autowired
+    private HotelService hotelService;
+
+    /**
      * <h2>homePage</h2>
      * <p>
      * Method For Home Page
@@ -41,7 +54,9 @@ public class MainController {
      * @return String
      */
     @RequestMapping(value = "/Home")
-    public String homePage() {
+    public String homePage(Model model) {
+        List<HotelForm> hotelList = hotelService.doGetUpdatedHotels();
+        model.addAttribute("hotelList", hotelList);
         return "homeforall";
     }
 
@@ -77,7 +92,9 @@ public class MainController {
      * @return String
      */
     @RequestMapping(value = "/userdashboard")
-    public String homePageforuser(Authentication authentication) {
+    public String homePageforuser(Authentication authentication, Model model) {
+        List<HotelForm> hotelList = hotelService.doGetUpdatedHotels();
+        model.addAttribute("hotelList", hotelList);
         return "homeforuser";
     }
 
@@ -91,7 +108,9 @@ public class MainController {
      * @return String
      */
     @RequestMapping(value = "/admindashboard")
-    public String homePageforadmin() {
+    public String homePageforadmin(Model model) {
+        List<HotelForm> hotelList = hotelService.doGetUpdatedHotels();
+        model.addAttribute("hotelList", hotelList);
         return "homeforadmin";
     }
 

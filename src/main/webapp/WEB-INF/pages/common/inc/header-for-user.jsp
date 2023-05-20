@@ -3,12 +3,9 @@
     <h1>
       <a href="userdashboard">Blissful Reservation</a>
     </h1>
-    <div class="menu-toggle">
-      <span></span> <span></span> <span></span>
-    </div>
     <nav class="g-nav clearfix">
       <ul class="user-nav-list clearfix">
-        <li><a href="userdashboard" class="active">Home</a></li>
+        <li><a href="userdashboard">Home</a></li>
         <li><a href="searchform">Hotels</a></li>
         <li><a href="booking-list">Booking Detail</a></li>
         <li><a href="AboutUsPage">AboutUs</a></li>
@@ -19,6 +16,9 @@
           name="${_csrf.parameterName}" value="${_csrf.token}" />
       </form>
     </nav>
+       <div class="menu-toggle">
+      <span></span> <span></span> <span></span>
+    </div>
   </div>
 </header>
 <!--/.cmn-header-->

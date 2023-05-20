@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<section class="hotels">
-  <div class=cmn-inner>
-    <div>
-      <h2>Blissful Reservation</h2>
-      <form action="hotelByCityName" method="post">
-        <label for="city">Select City :</label> <select
-          name="selectedCity">
-          <c:forEach items="${cityList}" var="city">
-            <option value="${city}">${city}</option>
-          </c:forEach>
-        </select> <input class="cmn-btn" type="submit" value="Search">
-      </form>
-    </div>
+<section class="hh-city-cus">
+  <div>
+    <h2>Blissful Reservation</h2>
+    <form action="hotelByCityName" method="post">
+      <label for="city">Select City :</label> <select
+        name="selectedCity">
+        <c:forEach items="${cityList}" var="city">
+          <option value="${city}">${city}</option>
+        </c:forEach>
+      </select> <input class="cmn-btn" type="submit" value="Search">
+    </form>
+  </div>
+</section>
 
+<section class="hh-hotels-cus">
+  <div class=>
     <c:forEach items="${hotelList}" var="h" varStatus="status">
       <div class="hotel-blk">
         <h3>${h.hotelName}</h3>
