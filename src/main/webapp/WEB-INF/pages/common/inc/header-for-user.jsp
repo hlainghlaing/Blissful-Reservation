@@ -8,7 +8,7 @@
     </div>
     <nav class="g-nav clearfix">
       <ul class="user-nav-list clearfix">
-        <li><a href="userdashboard" class="active">Home</a></li>
+        <li><a href="userdashboard">Home</a></li>
         <li><a href="searchform">Hotels</a></li>
         <li><a href="booking-list">Booking Detail</a></li>
         <li><a href="AboutUsPage">AboutUs</a></li>
