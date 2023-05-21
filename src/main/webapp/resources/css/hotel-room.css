@@ -254,6 +254,80 @@
   height: 380px;
 }
 
+/* Booking Detail Admin View */
+.hh-b-admin-view{
+  padding: 30px 20px;
+}
+
+.hh-b-admin-view .cmn-inner{
+  padding: 0 10%;
+}
+
+.hh-b-admin-view .b-admin-list{
+  padding: 20px 0px 30px 10px;
+  margin-bottom: 50px;
+  background-color: #f7f7f7; 
+  border-radius: 20px;
+}
+
+.hh-b-admin-view .b-admin-list h2{
+  padding-bottom: 15px;
+  font-size: 20px;
+}
+
+.hh-b-admin-view .b-admin-list p{
+  padding-bottom: 15px;
+}
+
+.hh-b-admin-view .b-admin-list .b-date{
+  padding: 5px 0px 25px 10px;
+}
+
+.hh-b-admin-view .b-admin-list .b-date span{
+  position: relative;
+  padding:0 8% 0 6%;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-in:before{
+ position: absolute;
+  display : block;
+  content: "";
+  left: 10px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_calendar_icon.png") center center/cover no-repeat;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-out:before{
+ position: absolute;
+  display : block;
+  content: "";
+  left: 10px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_calendar_icon.png") center center/cover no-repeat;
+}
+
+.hh-b-admin-view .b-admin-list .b-status{
+  padding: 10px 50px;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-lblk{
+  float: left;
+  width:20%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk{
+  float: right;
+  width: 80%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk a{
+  margin-right: 30px;
+}
+
 /* Ipad  */
 @media screen and (min-width: 768px) and (max-width: 1180px) {
 .hh-city-cus .cmn-inner {
@@ -421,6 +495,66 @@ padding-left:1.302vw;
   height: 42.969vw;
 }
 
+/* Booking Detail Admin View */
+.hh-b-admin-view{
+  padding: 3.906vw 2.604vw;
+  font-size: 15px;
+}
+
+.hh-b-admin-view .cmn-inner{
+  padding: 0 5.208vw;
+}
+
+.hh-b-admin-view .b-admin-list{
+  padding: 2.604vw 0vw 3.906vw 1.302vw;
+  margin-bottom: 6.51vw;
+  border-radius: 2.604vw;
+}
+
+.hh-b-admin-view .b-admin-list h2{
+  padding-bottom: 1.953vw;
+  font-size: 20px;
+}
+
+.hh-b-admin-view .b-admin-list p{
+  padding-bottom: 1.953vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date{
+  padding: 0.651vw 0vw 3.255vw 1.302vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date span{
+  padding:0 8% 0 6%;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-in:before{
+  left: 1.302vw;
+  width: 2.214vw;
+  height:2.214vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-out:before{
+  left: 1.302vw;
+  width: 2.214vw;
+  height:2.214vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status{
+  padding: 1.302vw 6.51vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-lblk{
+  width:30%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk{
+  width: 70%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk a{
+  margin-right: 3.906vw;
+}
 }
 
 /*  SP  */
@@ -617,5 +751,71 @@ padding-left:1.302vw;
 .hh-user-bd .booking-list-rblk img{
   width: 100%;
   height: inherit ;
+}
+
+/* Booking Detail Admin View */
+.hh-b-admin-view{
+  padding: 4.688vw 3.125vw;
+}
+
+.hh-b-admin-view .cmn-inner{
+  padding: 0 6.25vw;
+}
+
+.hh-b-admin-view .b-admin-list{
+  padding: 3.125vw 0vw 4.688vw 1.563vw;
+  margin-bottom: 7.813vw;
+  border-radius: 3.125vw;
+}
+
+.hh-b-admin-view .b-admin-list h2{
+  padding-bottom: 2.344vw;
+  font-size: 3.125vw;
+}
+
+.hh-b-admin-view .b-admin-list p{
+  padding-bottom: 2.344vw;
+}
+
+.hh-b-admin-view .b-admin-list p span{
+  display: block;
+  padding: 1.25vw 0vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date{
+  padding: 0.781vw 0vw 3.906vw 1.563vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date span{
+  padding:0 8% 0 8%;
+  display: inline-block;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-in:before{
+  left: 1.563vw;
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-out:before{
+  left: 1.563vw;
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status{
+  padding: 1.563vw 7.813vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-lblk{
+  width:35%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk{
+  width: 65%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk a{
+  margin-right: 3.125vw;
 }
 }
