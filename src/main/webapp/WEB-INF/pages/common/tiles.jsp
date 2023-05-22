@@ -12,6 +12,8 @@
   href="<%=request.getContextPath()%>/resources/css/reset.css" />
 <link rel="stylesheet"
   href="<%=request.getContextPath()%>/resources/css/common.css" />
+<link rel="stylesheet"
+  href="<%=request.getContextPath()%>/resources/css/register.css" />
 </head>
 <body>
   <div class="wrapper">
