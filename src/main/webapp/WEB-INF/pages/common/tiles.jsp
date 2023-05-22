@@ -12,6 +12,12 @@
   href="<%=request.getContextPath()%>/resources/css/reset.css" />
 <link rel="stylesheet"
   href="<%=request.getContextPath()%>/resources/css/common.css" />
+<link rel="stylesheet" type="text/css"
+  href="<%=request.getContextPath()%>/resources/css/hotel-list-admin-view.css" />
+<link rel="stylesheet" type="text/css"
+  href="<%=request.getContextPath()%>/resources/css/aboutus.css" />
+  <link rel="stylesheet" type="text/css"
+  href="<%=request.getContextPath()%>/resources/css/contactus.css" />
 </head>
 <body>
   <div class="wrapper">
@@ -23,5 +29,11 @@
       <tiles:insertAttribute name="footer" />
     </footer>
   </div>
+  <script
+    src="<%=request.getContextPath()%>/resources/js/library/jquery-3.6.3.min.js"></script>
+  <script
+    src="<%=request.getContextPath()%>/resources/js/accoridan.js"></script>
+     <script
+    src="<%=request.getContextPath()%>/resources/js/list.js"></script>
 </body>
 </html>

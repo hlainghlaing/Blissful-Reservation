@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+.ht-cmn-p {
+		line-height: 2.5em;
+		color: #fefefe;
+		font-size: 16px;
+		text-align: center;
+}
+
+.ht-main-sec {
+		/*opacity:0.5;*/
+		margin-top: 2ch;
+		padding: 150px 0;
+		background: url("../img/img_about_us_header.jpg") center center/cover
+				no-repeat;
+}
+
+.ht-main-sec h1 {
+		margin-top: 100px;
+		margin-bottom: 20px;
+		padding: 10px 0;
+		color: #fff;
+		font-size: 40px;
+		text-align: center;
+		text-transform: uppercase;
+}
+
+.ht-main-sec p {
+		line-height: 2em;
+		padding: 0 70px;
+		color: #fefefe;
+		font-size: 20px;
+		text-align: center;
+}
+
+.ht-cmn-sec {
+		padding: 40px 0;
+		background-color: #fff;
+		border-bottom: 1px solid #000;
+}
+
+.ht-cmn-sec .fl-left {
+		float: left;
+		width: 50%;
+}
+
+.ht-cmn-sec .fl-right {
+		float: right;
+		width: 45%;
+		padding-right: 20px;
+}
+
+.ht-cmn-sec h2 {
+		margin-bottom: 20px;
+		color: #000;
+		font-size: 40px;
+}
+
+.ht-cmn-sec .ht-cmn-p {
+		padding-bottom: 5px;
+		padding-left: 0px;
+		color: #777877;
+		text-align: left;
+}
+
+.ht-developer-sec {
+		padding: 40px;
+}
+
+.ht-developer-sec h2 {
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+		color: #000;
+		font-size: 40px;
+}
+
+.ht-developer-sec p {
+		font-size: 16px;
+		text-align: center;
+}
+
+.ht-developer-sec img {
+		padding-bottom: 20px;
+		border-radius: 50%;
+}
+
+.ht-developer-sec .develop-card {
+		float: left;
+		width: 31%;
+		margin-right: 1.5%;
+		padding: 15px;
+		background-color: #fff;
+		border-radius: 20px;
+		margin-right: 1.5%;
+}
+
+.ht-developer-sec .develop-card:last-child {
+		margin-right: 0px;
+}
+
+.ht-developer-sec .develop-card p {
+		font-size: 20px;
+		text-transform: uppercase;
+}
+
+.ht-developer-sec .ht-cmn-p {
+		margin: 20px 0;
+		color: #000;
+		text-align: left;
+}
+
+/* Ipad */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+		.ht-main-sec h1 {
+				font-size: 4.557vw;
+		}
+		.ht-main-sec p {
+				line-height: 1.5em;
+				font-size: 2.344vw;
+		}
+		.ht-cmn-sec .fl-left {
+				float: none;
+				width: 100%;
+				padding-bottom: 2.604vw;
+		}
+		.ht-cmn-sec .fl-right {
+				float: none;
+				width: 100%;
+				padding-bottom: 2.604vw;
+		}
+		.ht-cmn-sec .ht-cmn-p {
+				line-height: 2em;
+				margin-bottom: 1.302vw;
+		}
+		.ht-developer-sec .develop-card {
+				width: 32%;
+				margin-right: 2%;
+		}
+		.ht-developer-sec .develop-card p {
+				font-size: 2.083vw;
+		}
+}
+
+/*  SP  */
+@media screen and (max-width:767.9px) {
+		.ht-main-sec p {
+				line-height: 1.5em;
+				font-size: 2.5vw;
+		}
+		.ht-cmn-sec .fl-left {
+				float: none;
+				width: 100%;
+				padding-bottom: 4.688vw;
+		}
+		.ht-cmn-sec .fl-right {
+				float: none;
+				width: 100%;
+				padding-bottom: 4.688vw;
+		}
+		.ht-developer-sec .develop-card {
+				width: 32%;
+				margin-right: 2%;
+		}
+		.ht-developer-sec .develop-card p {
+				font-size: 1.875vw;
+		}
+}

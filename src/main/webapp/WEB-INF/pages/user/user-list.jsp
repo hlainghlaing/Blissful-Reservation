@@ -8,6 +8,7 @@
       <p class="cmn-success-msg">${successMessage}</p>
     </c:if>
     <a class="cmn-btn" href="userdashboard">UserDashboard</a>
+    <a class="cmn-btn" href="downloaduserexcel">Download</a>
     <h3>User List Table</h3>
     <table border="1">
       <tr>

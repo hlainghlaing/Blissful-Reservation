@@ -1,6 +1,8 @@
 package ojt.blissfulreservation.system.persistence.dao.impl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import ojt.blissfulreservation.system.persistence.dao.HotelDAO;
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
+import ojt.blissfulreservation.system.persistence.entity.Room;
 
 /**
  * <h2>HotelDaoImpl Class</h2>
@@ -18,7 +21,7 @@ import ojt.blissfulreservation.system.persistence.entity.Hotel;
  * Process for Displaying HotelDaoImpl
  * </p>
  * 
- * @author Hnaung Thet Htar Wai
+ * @author HnaungThetHtarWai
  *
  */
 @SuppressWarnings("deprecation")
@@ -191,5 +194,24 @@ public class HotelDaoImpl implements HotelDAO {
         query.setParameter("city", city);
         List<Hotel> hotelList = query.getResultList();
         return hotelList;
+    }
+    
+    /**
+     * <h2> dbGetRoomsForHotel </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotelId
+     * @return
+     */
+    @Override
+    public List<Room> dbGetRoomsForHotel(int hotelId) {
+        Session session = sessionFactory.getCurrentSession();
+        Hotel hotel = session.get(Hotel.class, hotelId);
+        if (hotel != null) {
+            return new ArrayList<>(hotel.getRooms());
+        }
+        return Collections.emptyList();
     }
 }

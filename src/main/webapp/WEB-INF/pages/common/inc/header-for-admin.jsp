@@ -5,7 +5,7 @@
     </h1>
     <nav class="g-nav clearfix">
       <ul class="nav-admin-list clearfix">
-        <li><a href="admindashboard" class="active">Home</a></li>
+        <li><a href="admindashboard">Home</a></li>
         <li><a href="form">Add Hotel</a></li>
         <li><a href="hotel-view">Hotels</a></li>
         <li><a href="UserList">User List</a></li>

@@ -8,7 +8,7 @@
     </div>
     <nav class="g-nav clearfix">
       <ul class="all-nav-list clearfix">
-        <li><a href="Home" class="active">Home</a></li>
+        <li><a href="Home">Home</a></li>
         <li><a href="searchform">Hotels</a></li>
         <li><a href="AboutUsPage">AboutUs</a></li>
         <li><a href="ContactUsPage">ContactUs</a></li>

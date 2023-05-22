@@ -1,0 +1,55 @@
+.list-tb h1{
+		margin-bottom: 20px;
+		color: #000;
+		font-size: 30px;
+		text-align: center;
+}
+
+.list-tb h2 {
+		margin-bottom: 20px;
+		color: #000;
+		font-size: 30px;
+		text-align: center;
+}
+
+table {
+		width: 100%;
+		margin-bottom: 20px;
+		border-collapse: collapse;
+}
+
+th, td {
+		padding: 15px 10px;
+		text-align: left;
+}
+
+th {
+		background-color: #c1fc9f;
+		color: #fff;
+}
+
+tr:nth-child(even) {
+		background-color: #f2f2f2;
+}
+
+tr:hover {
+		background-color: #ddd;
+}
+
+.cmn-btn {
+		margin-bottom: 20px;
+}
+
+/* Ipad */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+		div {
+				overflow-x: auto;
+		}
+}
+
+/*  SP  */
+@media screen and (max-width:767.9px) {
+		div {
+				overflow-x: auto;
+		}
+}
