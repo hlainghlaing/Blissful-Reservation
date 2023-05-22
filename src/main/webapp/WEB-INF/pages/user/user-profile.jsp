@@ -9,11 +9,15 @@
     </c:if>
     <form:form action="editpassword" method="post"
       modelAttribute="email">
-      <table><tr><td>
-      <label for="email">Enter Your Email:</label></td><td>
-      <input type="email" id="email" name="email" required="required" /></td></tr>
-      <tr><td>
-      <input class="cmn-btn" type="submit" value="Submit"></td></tr>
+      <table>
+        <tr>
+          <td><label for="email">Enter Your Email:</label></td>
+          <td><input type="email" id="email" name="email"
+            required="required" /></td>
+        </tr>
+        <tr>
+          <td><input class="cmn-btn" type="submit" value="Submit"></td>
+        </tr>
       </table>
     </form:form>
   </div>
