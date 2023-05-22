@@ -18,6 +18,8 @@
   href="<%=request.getContextPath()%>/resources/css/home.css" />
 <link rel="stylesheet" type="text/css"
   href="<%=request.getContextPath()%>/resources/css/hotel-room.css" />
+<link rel="stylesheet"
+  href="<%=request.getContextPath()%>/resources/css/register.css" />
 </head>
 <body>
   <div class="wrapper">
