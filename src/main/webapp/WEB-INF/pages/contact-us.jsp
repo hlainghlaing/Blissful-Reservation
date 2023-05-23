@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<h1>Contact Us</h1>
+
 
 <section class="cmn-inner ht-form-first">
+<h1>Contact Us</h1>
   <h2>Frequently Asked Questions</h2>
   <div class="faq-sec">
     <div class="faq-question">

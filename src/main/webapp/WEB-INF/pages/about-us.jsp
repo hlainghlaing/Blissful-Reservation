@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <body>
-  <section class="header">
-    <h2>Header</h2>
-  </section>
   <section class="ht-main-sec">
     <h1>Blissful Reservation</h1>
     <p>We would like to express our sincere gratitude to each and
@@ -18,7 +15,9 @@
   <section class="ht-cmn-sec clearfix">
     <div class="cmn-inner">
       <div class="fl-left">
-        <img src="${pageContext.request.contextPath}/resources/img/img_aboutus_left.jpg" alt="For you">
+        <img
+          src="${pageContext.request.contextPath}/resources/img/img_aboutus_left.jpg"
+          alt="For you">
       </div>
       <div class="fl-right">
         <div class="txt-blk">
@@ -36,7 +35,7 @@
           </button>
         </div>
       </div>
-  </div>
+    </div>
   </section>
   <section class="ht-cmn-sec clearfix">
     <div class="cmn-inner">
@@ -57,7 +56,9 @@
         </div>
       </div>
       <div class="fl-right">
-        <img src="${pageContext.request.contextPath}/resources/img/img_aboutus_right.jpg"  alt="We vlaue your feedback"/>
+        <img
+          src="${pageContext.request.contextPath}/resources/img/img_aboutus_right.jpg"
+          alt="We vlaue your feedback" />
       </div>
     </div>
   </section>
@@ -70,15 +71,21 @@
         platform. Let us introduce you to the talented individuals
         behind the scenes who bring our website to life.</p>
       <div class="develop-card">
-        <img src="${pageContext.request.contextPath}/resources/img/img_hlaing.jpg" alt="Khin Yadanar Hlaing">
+        <img
+          src="${pageContext.request.contextPath}/resources/img/img_hlaing.jpg"
+          alt="Khin Yadanar Hlaing">
         <p>Khin Yadanar Hlaing</p>
       </div>
       <div class="develop-card">
-        <img src="${pageContext.request.contextPath}/resources/img/img_mi.jpg" alt="Mi Mi Soe">
+        <img
+          src="${pageContext.request.contextPath}/resources/img/img_mi.jpg"
+          alt="Mi Mi Soe">
         <p>Mi Mi Soe</p>
       </div>
       <div class="develop-card">
-        <img src="${pageContext.request.contextPath}/resources/img/img_hnaung.jpg" alt="Hnaung Thet Htar Wai">
+        <img
+          src="${pageContext.request.contextPath}/resources/img/img_hnaung.jpg"
+          alt="Hnaung Thet Htar Wai">
         <p>Hnaung Thet Htar Wai</p>
       </div>
     </div>

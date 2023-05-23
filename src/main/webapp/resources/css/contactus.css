@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-h1 {
+.ht-form-first h1 {
 		margin-top: 20px;
 		color: #2e5156;
 		font-size: 40px;
@@ -88,35 +88,10 @@ h1 {
 
 /* Ipad */
 @media screen and (min-width: 768px) and (max-width: 1180px) {
-		h1 {
-				font-size: 35px;
-		}
-		h2 {
-				font-size: 25px;
-		}
-		.ht-form-first .faq-sec .faq-question h3 {
-				font-size: 15px;
-		}
-		.ht-form-first .faq-sec .faq-answer {
-				line-height: 1.5em;
-				font-size: 15px;
-		}
-		.ht-form-sec .card-image {
-				float: none;
-				width: 100%;
-		}
-		.ht-form-sec .card-form {
-				float: none;
-				width: 100%;
-		}
-}
-
-/* Ipad */
-@media screen and (min-width: 768px) and (max-width: 1180px) {
-		h1 {
+		.ht-form-first h1 {
 				font-size: 4.557vw;
 		}
-		h2 {
+		.ht-form-first h2 {
 				font-size: 3.255vw;
 		}
 		.ht-form-first .faq-sec .faq-question h3 {
@@ -138,18 +113,19 @@ h1 {
 
 /*  SP  */
 @media screen and (max-width:767.9px) {
-		h1 {
-				font-size: 3.906vw;
+		.ht-form-first  h1 {
+				font-size: 5.906vw;
 		}
-		h2 {
-				font-size: 2.813vw;
+		.ht-form-first  h2 {
+				font-size: 3.813vw;
+				margin:0;
 		}
 		.ht-form-first .faq-sec .faq-question h3 {
-				font-size: 1.875vw;
+				font-size: 2.975vw;
 		}
 		.ht-form-first .faq-sec .faq-answer {
 				line-height: 1.5em;
-				font-size: 1.875vw;
+				font-size: 2.975vw;
 		}
 		.ht-form-sec .card-image {
 				float: none;
