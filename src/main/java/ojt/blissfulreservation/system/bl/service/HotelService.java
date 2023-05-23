@@ -7,19 +7,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
 import ojt.blissfulreservation.system.web.form.HotelForm;
-import ojt.blissfulreservation.system.web.form.UserForm;
+import ojt.blissfulreservation.system.web.form.RoomForm;
 
+ 
 /**
- * <h2>HotelService Class</h2>
- * <p>
- * Process for Displaying HotelService
- * </p>
- * 
- * @author Hnaung Thet Htar Wai
- *
- */
-/**
- * <h2>HotelService Class</h2>
+ * <h2> HotelService Class</h2>
  * <p>
  * Process for Displaying HotelService
  * </p>
@@ -112,5 +104,16 @@ public interface HotelService {
      */
     public List<Hotel> doGetHotels(String city);
     
+    /**
+     * <h2> doGetUpdatedHotels</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @return
+     * @return List<HotelForm>
+     */
     public List<HotelForm> doGetUpdatedHotels();
+    
+    public List<RoomForm> dbGetAllRoomsForHotel(int hotelId);
 }

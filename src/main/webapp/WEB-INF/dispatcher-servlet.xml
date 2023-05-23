@@ -50,7 +50,7 @@
         <property name="url"
             value="jdbc:mysql://localhost:3306/blissful_reservation_db?createDatabaseIfNotExist=true"></property>
         <property name="username" value="root"></property>
-        <property name="password" value="Mysql_Connector"></property>
+        <property name="password" value="shxxbi131"></property>
     </bean>
 
     <!-- Local Session Factory -->

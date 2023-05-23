@@ -2,13 +2,15 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<section class="ht-">
+<section class="list-tb">
   <div class="cmn-inner">
     <c:if test="${not empty successMessage}">
       <p class="cmn-success-msg">${successMessage}</p>
     </c:if>
     <a class="cmn-btn" href="userdashboard">UserDashboard</a>
-    <h3>User List Table</h3>
+    <a class="cmn-btn" href="downloaduserexcel">Download</a>
+    <h2>User List Table</h2>
+    <div class="ht-table">
     <table border="1">
       <tr>
         <th>No</th>
@@ -38,6 +40,7 @@
         </tr>
       </c:forEach>
     </table>
+    </div>
     <p>
       <a class="cmn-btn" href="Register">Register User</a>
     </p>

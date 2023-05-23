@@ -1,0 +1,60 @@
+.list-tb h2 {
+		margin-bottom: 20px;
+		color: #000;
+		font-size: 30px;
+		text-align: center;
+}
+
+.list-tb table {
+		width: 100%;
+		margin-bottom: 20px;
+		border-collapse: collapse;
+}
+
+.list-tb th, td {
+		padding: 15px 10px;
+		text-align: left;
+}
+
+.list-tb th {
+		background-color: #c1fc9f;
+		color: #fff;
+}
+
+.list-tb tr:nth-child(even) {
+		background-color: #f2f2f2;
+}
+
+.list-tb tr:hover {
+		background-color: #ddd;
+}
+
+.list-tb .cmn-btn {
+		margin-bottom: 20px;
+}
+
+/* Ipad */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+		.list-tb .ht-table {
+				overflow-x: auto;
+		}
+		.list-tb button {
+				font-size: 2.083vw
+		}
+		.list-tb h2 {
+				font-size: 2.604vw;
+		}
+}
+
+/*  SP  */
+@media screen and (max-width:767.9px) {
+		.list-tb .ht-table {
+				overflow-x: auto;
+		}
+		.list-tb button {
+				font-size: 2.5vw;
+		}
+		.list-tb h2 {
+				font-size: 2.813vw;
+		}
+}

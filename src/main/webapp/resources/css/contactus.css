@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+.ht-form-first h1 {
+		margin-top: 20px;
+		color: #2e5156;
+		font-size: 40px;
+		text-align: center;
+}
+
+.ht-form-first h2 {
+		margin: 20px 0;
+		padding: 20px 0;
+		font-size: 30px;
+}
+
+.ht-form-first .faq-sec {
+		margin-bottom: 20px;
+}
+
+.ht-form-first .faq-sec .faq-question {
+		margin-bottom: 15px;
+		cursor: pointer;
+}
+
+.ht-form-first .faq-sec .faq-question h3 {
+		margin: 0;
+		padding: 15px;
+		background-color: #9bbfc5;
+		color: #fff;
+		font-size: 22px;
+}
+
+.ht-form-first .faq-sec .faq-answer {
+		display: none;
+		line-height: 2em;
+		padding: 10px;
+		background-color: #f5f5f5;
+		font-size: 20px;
+}
+
+.ht-form-sec {
+		margin-bottom: 40px;
+		padding: 20px 0;
+}
+
+.ht-form-sec .card {
+		overflow: hidden;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		background-color: #fff;
+		border-radius: 10px;
+}
+
+.ht-form-sec .card-image {
+		float: left;
+		width: 40%;
+		padding: 30px;
+}
+
+.ht-form-sec .card-form {
+		float: right;
+		width: 60%;
+		padding: 20px;
+}
+
+.ht-form-sec .card-form h2 {
+		margin-top: 0px;
+		margin-bottom: 19px;
+		font-size: 35px;
+}
+
+.ht-form-sec .form-group {
+		margin-bottom: 20px;
+}
+
+.ht-form-sec label {
+		display: block;
+		margin-bottom: 5px;
+		font-weight: bold;
+}
+
+.ht-form-sec input, textarea {
+		width: 95%;
+		padding: 18px;
+		border: 1px solid #ccc;
+		font-size: 16px;
+		border-radius: 0px;
+}
+
+/* Ipad */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+		.ht-form-first h1 {
+				font-size: 4.557vw;
+		}
+		.ht-form-first h2 {
+				font-size: 3.255vw;
+		}
+		.ht-form-first .faq-sec .faq-question h3 {
+				font-size: 1.953vw;
+		}
+		.ht-form-first .faq-sec .faq-answer {
+				line-height: 1.5em;
+				font-size: 1.953vw;
+		}
+		.ht-form-sec .card-image {
+				float: none;
+				width: 100%;
+		}
+		.ht-form-sec .card-form {
+				float: none;
+				width: 100%;
+		}
+}
+
+/*  SP  */
+@media screen and (max-width:767.9px) {
+		.ht-form-first  h1 {
+				font-size: 5.906vw;
+		}
+		.ht-form-first  h2 {
+				font-size: 3.813vw;
+				margin:0;
+		}
+		.ht-form-first .faq-sec .faq-question h3 {
+				font-size: 2.975vw;
+		}
+		.ht-form-first .faq-sec .faq-answer {
+				line-height: 1.5em;
+				font-size: 2.975vw;
+		}
+		.ht-form-sec .card-image {
+				float: none;
+				width: 100%;
+		}
+		.ht-form-sec .card-form {
+				float: none;
+				width: 100%;
+		}
+		.ht-form-sec .card-form h2 {
+				font-size: 3.906vw;
+		}
+}

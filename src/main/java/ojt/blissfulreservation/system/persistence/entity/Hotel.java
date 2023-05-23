@@ -25,7 +25,7 @@ import ojt.blissfulreservation.system.web.form.HotelForm;
  * Process for Displaying Hotel
  * </p>
  * 
- * @author DELL
+ * @author HnaungThetHtarWai
  *
  */
 @Getter

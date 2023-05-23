@@ -1,11 +1,20 @@
 package ojt.blissfulreservation.system.web.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ojt.blissfulreservation.system.bl.service.UserService;
+import ojt.blissfulreservation.system.persistence.entity.User;
 import ojt.blissfulreservation.system.web.form.UserForm;
 
 /**
@@ -185,5 +195,49 @@ public class UserContorller {
         HttpSession session = request.getSession();
         session.setAttribute("successMessage", "User details updated successfully!");
         return "redirect:/UserList";
+    }
+    
+    
+    @RequestMapping(value = "/downloaduserexcel", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> downloadUsersExcel() {
+        try (Workbook workbook = new XSSFWorkbook()) {
+            Sheet sheet = workbook.createSheet("User List");
+
+            List<UserForm> users = userService.doGetList();
+
+            Row headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("Name");
+            headerRow.createCell(1).setCellValue("Email");
+            headerRow.createCell(2).setCellValue("Phone Number");
+            headerRow.createCell(3).setCellValue("Created At");
+            headerRow.createCell(4).setCellValue("Deleted At");
+
+            int rowNum = 1;
+            for (UserForm user : users) {
+                Row userDataRow = sheet.createRow(rowNum++);
+                userDataRow.createCell(0).setCellValue(user.getUserName());
+                userDataRow.createCell(1).setCellValue(user.getEmail());
+                userDataRow.createCell(2).setCellValue(user.getPhoneNo());
+                userDataRow.createCell(3).setCellValue(user.getCreatedAt());
+                userDataRow.createCell(4).setCellValue(user.getDeletedAt());
+                
+            }
+            
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            workbook.write(outputStream);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData("attachment", "users.xlsx");
+
+            return ResponseEntity
+                    .ok()
+                    .headers(headers)
+                    .body(outputStream.toByteArray());
+        } catch (IOException e) {
+            return ResponseEntity
+                    .badRequest()
+                    .build();
+        }
     }
 }
