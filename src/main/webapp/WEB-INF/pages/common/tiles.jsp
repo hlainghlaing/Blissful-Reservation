@@ -10,8 +10,14 @@
 <title><tiles:getAsString name="title" /></title>
 <link rel="stylesheet" type="text/css"
   href="<%=request.getContextPath()%>/resources/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+  href="<%=request.getContextPath()%>/resources/css/slick.css" />
 <link rel="stylesheet"
   href="<%=request.getContextPath()%>/resources/css/common.css" />
+<link rel="stylesheet" type="text/css"
+  href="<%=request.getContextPath()%>/resources/css/home.css" />
+<link rel="stylesheet" type="text/css"
+  href="<%=request.getContextPath()%>/resources/css/hotel-room.css" />
 <link rel="stylesheet"
   href="<%=request.getContextPath()%>/resources/css/register.css" />
 </head>
@@ -21,9 +27,17 @@
     <div class="main-container">
       <tiles:insertAttribute name="body" />
     </div>
-    <footer id="footer">
+    <footer id="footer" class="footer">
       <tiles:insertAttribute name="footer" />
     </footer>
   </div>
+  <script
+    src="<%=request.getContextPath()%>/resources/js/library/jquery-3.6.3.min.js"></script>
+  <script
+    src="<%=request.getContextPath()%>/resources/js/library/slick.min.js"></script>
+  <script
+    src="<%=request.getContextPath()%>/resources/js/common.js"></script>
+  <script
+    src="<%=request.getContextPath()%>/resources/js/home-slider.js"></script>
 </body>
 </html>

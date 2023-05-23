@@ -1,0 +1,352 @@
+@charset "UTF-8";
+
+.hh-home .home-slider .home-img-list img {
+  width: 100%;
+  height: 850px;
+}
+
+.hh-home .home-slider .slick-prev, .hh-home .home-slider .slick-next {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  line-height: 0;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+  font-size: 0px;
+  outline: none;
+  cursor: pointer;
+  transform: translate(0px, -50%);
+}
+
+.hh-home .home-slider .slick-prev {
+  left: 110px;
+  z-index: 10;
+}
+
+.hh-home .home-slider .slick-next {
+  right: 110px;
+  z-index: 10;
+}
+
+.hh-home .home-slider .slick-prev::before, .hh-home .home-slider .slick-next::before
+  {
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  content: "";
+}
+
+.hh-home .home-slider .slick-prev::before {
+  background: url("../img/common-img/img_larrow.png") center center/cover
+    no-repeat;
+}
+
+.hh-home .home-slider .slick-next::before {
+  background: url("../img/common-img/img_rarrow.png") center center/cover
+    no-repeat;
+}
+
+.hh-home .home-slider {
+  position: relative;
+}
+
+.hh-home .home-slider .slick-dots {
+  display: block;
+  position: absolute;
+  bottom: 23px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.hh-home .home-slider .slick-dots li {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+}
+
+.hh-home .home-slider .slick-dots li button {
+  display: block;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border: 0px;
+  background-color: transparent;
+  color: transparent;
+  font-size: 0px;
+  cursor: pointer;
+}
+
+.hh-home .home-slider .slick-dots li button::before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #5edfcf;
+  background-color: transparent;
+  content: " ";
+  border-radius: 50%;
+}
+
+.hh-home .home-slider .slick-dots li.slick-active button::before {
+  background-color: #5edfcf;
+}
+
+.hh-home .main-txt-blk {
+  position: absolute;
+  top: 200px;
+  font-size: 31px;
+  width: 100%;
+  text-align: center;
+}
+
+.hh-home .main-txt-blk h2 {
+  font-style: italic;
+  font-family: cursive;
+  color: #dedb5f;
+  font-weight: 400;
+  animation-name: example;
+  animation-duration: 30s;
+}
+
+@keyframes example { 
+  0% { color: #ff7575;}
+25%{ color:#008000; }
+50% {color:#ffff09; }
+100% {color:#65dcca; }
+}
+.hh-home-hotel {
+  padding: 50px 0px;
+}
+
+.hh-home-hotel .home-txt {
+  padding-bottom: 30px;
+}
+
+.hh-home-hotel .home-txt h2 {
+  float: left;
+  font-weight: 400;
+}
+
+.hh-home-hotel .home-txt a {
+  float: right;
+  border-bottom: 1px solid #7e7e7e;
+}
+
+.hh-home-hotel ul li {
+  float: left;
+  width: 27%;
+  margin-right: 9.5%;
+  margin-bottom: 40px;
+}
+
+.hh-home-hotel ul li:nth-child(3n) {
+  margin-right: 0%;
+}
+
+.hh-home-hotel ul li img {
+  width: 100%;
+  height: 220px;
+}
+
+.hh-home-hotel ul li .hh-b-txt {
+  padding: 15px 0px 15px 10px;;
+  background-color: #f7f7f7;
+}
+
+.hh-home-hotel ul li .hh-b-txt h3 {
+  font-size: 20px;
+  padding-bottom: 8px;
+}
+
+.hh-home-hotel ul li .hh-b-txt .hh-h-address {
+  font-size: 13px;
+  padding-bottom: 8px;
+}
+
+.hh-home-hotel ul li .hh-b-txt .hh-h-city {
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.hh-home-hotel ul li .hh-b-txt .cmn-btn {
+  padding: 8px 20px;
+}
+
+/* Ipad  */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+  .hh-home .home-slider .home-img-list img {
+    width: 100%;
+    height: 58.594vw;
+  }
+  .hh-home .home-slider .slick-prev, .hh-home .home-slider .slick-next {
+    width: 8.333vw;
+    height: 8.333vw;
+  }
+  .hh-home .home-slider .slick-prev {
+    left: 5.208vw;
+  }
+  .hh-home .home-slider .slick-next {
+    right: 5.208vw;
+  }
+  .hh-home .home-slider .slick-dots {
+    bottom: 2.995vw;
+    width: 100%;
+  }
+  .hh-home .home-slider .slick-dots li {
+    width: 3.255vw;
+    height: 3.255vw;
+    padding: 0.651vw;
+  }
+  .hh-home .home-slider .slick-dots li button {
+    width: 1.953vw;
+    height: 1.953vw;
+  }
+  .hh-home .home-slider .slick-dots li button::before {
+    width: 1.693vw;
+    height: 1.693vw;
+  }
+  .hh-home .main-txt-blk {
+    top: 29.948vw;
+    font-size: 4.036vw;
+  }
+  .hh-home-hotel {
+    padding: 6.51vw 0vw;
+  }
+  .hh-home-hotel .home-txt {
+    padding-bottom: 3.906vw;
+  }
+  .hh-home-hotel .home-txt a {
+    border-bottom: 0.13vw solid #7e7e7e;
+  }
+  .hh-home-hotel ul li {
+    width: 40%;
+    margin-right: 20%;
+    margin-bottom: 5.208vw;
+  }
+  .hh-home-hotel ul li:nth-child(2n) {
+    margin-right: 0%;
+  }
+  .hh-home-hotel ul li:nth-child(odd) {
+    margin-right: 20%;
+  }
+  .hh-home-hotel ul li img {
+    width: 100%;
+    height: 26.042vw;
+  }
+  .hh-home-hotel ul li .hh-b-txt {
+    padding: 1.953vw 0vw 1.953vw 1.302vw;;
+  }
+  .hh-home-hotel ul li .hh-b-txt h3 {
+    font-size: 2.604vw;
+    padding-bottom: 1.042vw;
+  }
+  .hh-home-hotel ul li .hh-b-txt .hh-h-address {
+    font-size: 1.693vw;
+    padding-bottom: 1.042vw;
+  }
+  .hh-home-hotel ul li .hh-b-txt .hh-h-city {
+    font-size: 2.083vw;
+    padding-bottom: 1.302vw;
+  }
+  .hh-home-hotel ul li .hh-b-txt .cmn-btn {
+    padding: 0.911vw 2.083vw;
+  }
+}
+
+/*  SP  */
+@media screen and (max-width:767.9px) {  
+  .hh-home .home-slider .home-img-list img {
+  width: 100%;
+  height: 60.938vw;
+}
+
+.hh-home .home-slider .slick-prev, .hh-home .home-slider .slick-next {
+  width: 10vw;
+  height: 10vw;
+}
+
+.hh-home .home-slider .slick-prev {
+  left: 3.125vw;
+}
+
+.hh-home .home-slider .slick-next {
+  right: 3.125vw;
+}
+
+.hh-home .home-slider .slick-dots {
+  bottom: 5.469vw;
+}
+
+.hh-home .home-slider .slick-dots li {
+  width: 3.906vw;
+  height: 3.906vw;
+  padding: 0.781vw;
+}
+
+.hh-home .home-slider .slick-dots li button {
+  width: 2.344vw;
+  height: 2.344vw;
+}
+
+.hh-home .home-slider .slick-dots li button::before {
+  width: 2.031vw;
+  height: 2.031vw;
+}
+
+.hh-home .main-txt-blk {
+    top: 28.125vw;
+    font-size: 4.844vw;
+}
+
+.hh-home-hotel{
+  padding: 7.813vw 0vw;
+}
+
+.hh-home-hotel .home-txt{
+  padding-bottom: 4.688vw;
+}
+
+.hh-home-hotel ul{
+  padding: 0vw 9.375vw;
+}
+
+.hh-home-hotel ul li{
+  float:none;
+  width: 100%;
+  margin-right: 0%;
+  margin-bottom: 6.25vw;
+}
+
+.hh-home-hotel ul li img{
+  height: 46.875vw;
+}
+
+.hh-home-hotel ul li .hh-b-txt{
+  padding: 2.344vw 0vw 2.344vw 1.563vw;;
+}
+
+.hh-home-hotel ul li .hh-b-txt h3{
+  font-size: 3.125vw;
+  padding-bottom: 1.25vw;
+}
+
+.hh-home-hotel ul li .hh-b-txt .hh-h-address{
+  font-size: 2.031vw;
+  padding-bottom: 1.563vw;
+}
+
+.hh-home-hotel ul li .hh-b-txt .hh-h-city{
+  font-size: 2.5vw;
+  padding-bottom: 1.563vw;
+}
+
+.hh-home-hotel ul li .hh-b-txt .cmn-btn {
+    padding: 1.094vw 2.5vw;
+}
+}
