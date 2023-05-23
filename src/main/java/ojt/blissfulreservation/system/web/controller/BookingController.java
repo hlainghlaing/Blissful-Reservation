@@ -3,7 +3,16 @@ package ojt.blissfulreservation.system.web.controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
@@ -42,7 +51,7 @@ import ojt.blissfulreservation.system.web.form.UserForm;
 @Controller
 public class BookingController {
     /**
-     * <h2> bService</h2>
+     * <h2>bService</h2>
      * <p>
      * bService
      * </p>
@@ -51,7 +60,7 @@ public class BookingController {
     BookingService bService;
 
     /**
-     * <h2> hotelService</h2>
+     * <h2>hotelService</h2>
      * <p>
      * hotelService
      * </p>
@@ -60,7 +69,7 @@ public class BookingController {
     private HotelService hotelService;
 
     /**
-     * <h2> roomService</h2>
+     * <h2>roomService</h2>
      * <p>
      * roomService
      * </p>
@@ -69,7 +78,7 @@ public class BookingController {
     private RoomService roomService;
 
     /**
-     * <h2> userService</h2>
+     * <h2>userService</h2>
      * <p>
      * userService
      * </p>
@@ -78,7 +87,7 @@ public class BookingController {
     private UserService userService;
 
     /**
-     * <h2> bookingRegister</h2>
+     * <h2>bookingRegister</h2>
      * <p>
      * 
      * </p>
@@ -108,7 +117,7 @@ public class BookingController {
     }
 
     /**
-     * <h2> successBooking</h2>
+     * <h2>successBooking</h2>
      * <p>
      * 
      * </p>
@@ -122,7 +131,7 @@ public class BookingController {
      */
     @RequestMapping(value = "booking-success", method = RequestMethod.POST)
     public String successBooking(@ModelAttribute("booking") BookingForm booking, Model model,
-            Authentication authentication,HttpServletRequest request) {
+            Authentication authentication, HttpServletRequest request) {
         RoomForm roomForm = roomService.doGetById(booking.getRoomId());
         booking.setRoom(new Room(roomForm));
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -136,12 +145,13 @@ public class BookingController {
         booking.setTotalPrice(totalPrice);
         bService.doCreateBooking(booking);
         HttpSession session = request.getSession();
-        session.setAttribute("successMessage","Thank you for booking with us! Your hotel reservation has been confirmed.");
+        session.setAttribute("successMessage",
+                "Thank you for booking with us! Your hotel reservation has been confirmed.");
         return "redirect:/booking-list";
     }
 
     /**
-     * <h2> bookingListAdminView</h2>
+     * <h2>bookingListAdminView</h2>
      * <p>
      * 
      * </p>
@@ -158,7 +168,7 @@ public class BookingController {
     }
 
     /**
-     * <h2> bookingListUserView</h2>
+     * <h2>bookingListUserView</h2>
      * <p>
      * 
      * </p>
@@ -179,31 +189,27 @@ public class BookingController {
     }
 
     /**
-     * <h2> acceptBooking</h2>
+     * <h2>acceptBooking</h2>
      * <p>
      * 
      * </p>
      *
      * @param id
-     * @param request
+     * @param email
      * @return
      * @return String
      */
     @RequestMapping(value = "/accept")
-    public String acceptBooking(@RequestParam("id") int id,HttpServletRequest request) {
+    public String acceptBooking(@RequestParam("id") int id, @RequestParam("email") String email, Model model) {
         BookingForm bookingForm = bService.doGetBookingById(id);
         bookingForm.setStatus(2);
-        int option = JOptionPane.showConfirmDialog(null, "Are you sure to accept this Booking?");
-        if(option == JOptionPane.YES_OPTION) {
-            bService.doUpdateBooking(bookingForm);
-            HttpSession session = request.getSession();
-            session.setAttribute("successMessage","Booking Accepted!");
-        }
-        return "redirect:/booking-lists";
+        model.addAttribute("email", email);
+        bService.doUpdateBooking(bookingForm);
+        return "emailForm";
     }
 
     /**
-     * <h2> rejectBooking</h2>
+     * <h2>rejectBooking</h2>
      * <p>
      * 
      * </p>
@@ -214,15 +220,66 @@ public class BookingController {
      * @return String
      */
     @RequestMapping(value = "/reject")
-    public String rejectBooking(@RequestParam("id") int id,HttpServletRequest request) {
+    public String rejectBooking(@RequestParam("id") int id, HttpServletRequest request) {
         BookingForm bookingForm = bService.doGetBookingById(id);
         bookingForm.setStatus(3);
         int option = JOptionPane.showConfirmDialog(null, "Are you sure to Reject?");
-        if(option == JOptionPane.YES_OPTION) {
+        if (option == JOptionPane.YES_OPTION) {
             bService.doUpdateBooking(bookingForm);
             HttpSession session = request.getSession();
-            session.setAttribute("successMessage","Booking Rejected!");
+            session.setAttribute("successMessage", "Booking Rejected!");
         }
         return "redirect:/booking-lists";
+    }
+
+    /**
+     * 
+     * <h2>Send Email</h2>
+     * 
+     * 
+     * @param email
+     * @param request
+     * @return String
+     */
+    @RequestMapping(value = "/mail", method = RequestMethod.POST)
+    public String sendEmail(@RequestParam("email") String email, HttpServletRequest request) {
+        final String senderEmail = "mimisoe968@gmail.com";
+        final String senderPassword = "fsfdnjwmcljwuvoy";
+        // Set up SMTP server properties
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com"); // Replace with your email provider's SMTP server
+        properties.put("mail.smtp.port", "587"); // Replace with the appropriate port number
+
+        // Create a session with authentication
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+
+        try {
+            // Create a new email message
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(senderEmail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+            message.setSubject("Blissful Reservation");
+            message.setText("Your booking is successfully registered. Thanks for joining Blissful Reservation");
+
+            // Send the email
+            Transport.send(message);
+            System.out.println("Email sent successfully!");
+            HttpSession ses = request.getSession();
+            ses.setAttribute("successMessage", "Email Successfully Sent");
+            return "redirect:/booking-lists";
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            HttpSession ses = request.getSession();
+            ses.setAttribute("errormsg", "Message can not be sent");
+            return "redirect:/booking-lists";
+        }
     }
 }

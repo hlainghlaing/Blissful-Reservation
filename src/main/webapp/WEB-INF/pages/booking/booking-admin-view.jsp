@@ -31,7 +31,7 @@
           <div class="b-status clearfix">
             <p class="status-lblk">Status : ${b.getStatusName()}</p>
             <p class="status-rblk">
-              <a class="cmn-btn" href="accept?id=${b.bookingId}">Accept</a><a
+              <a class="cmn-btn" href="accept?id=${b.bookingId}&email=${b.user.email}">Accept</a><a
                 class="cmn-btn" href="reject?id=${b.bookingId}">Reject</a>
             </p>
           </div>
