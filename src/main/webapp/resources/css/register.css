@@ -1,0 +1,129 @@
+.mi-section {
+  padding: 30px 0;
+}
+
+.mi-section .cmn-inner {
+  padding: 30px 0;
+  width: 700px;
+  margin: 0 auto;
+  background-color: rgb(239, 114, 31);
+  border: 1px solid;
+  box-shadow: 5px 10px 18px #888888;
+  border-radius: 5px;
+}
+
+.mi-section input {
+  outline: none;
+}
+
+.reg-btn {
+  margin-left: 180px;
+}
+
+.mi-section .cmn-inner h2 {
+  text-align: center;
+}
+
+.mi-section .cmn-inner table {
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.mi-section .cmn-inner table td {
+  padding-bottom: 15px;
+}
+
+.mi-section .cmn-inner .cmn-btn {
+  margin: 0 auto;
+}
+
+.mi-section .cmn-inner .left {
+  float: left;
+  width: 40%;
+  padding-left: 40px;
+  margin-top: 25px;
+}
+
+.mi-section .cmn-inner .left p {
+  padding-top: 10px;
+}
+
+.mi-section .cmn-inner .right {
+  float: right;
+  margin-right: 3%;
+  width: 57%;
+}
+
+/* Ipad */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+  .mi-section {
+    font-size: 16px;
+    padding: 3.906vw 0;
+  }
+  .mi-section .cmn-inner {
+    padding: 3.906vw 0;
+    width: 91.146vw;
+    border: 0.13vw solid;
+    box-shadow: 0.651vw 1.302vw 2.344vw #888888;
+    border-radius: 0.651vw;
+  }
+  .reg-btn {
+    margin-left: 23.438vw;
+  }
+  .mi-section .cmn-inner table {
+    margin-top: 3.255vw;
+  }
+  .mi-section .cmn-inner table td {
+    padding-bottom: 1.953vw;
+  }
+  .mi-section .cmn-inner .left {
+    width: 40%;
+    padding-left: 5.208vw;
+    margin-top: 3.255vw;
+  }
+  .mi-section .cmn-inner .left p {
+    padding-top: 1.302vw;
+  }
+  .mi-section .cmn-inner .right {
+    margin-right: 5%;
+    width: 55%;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width:767.9px) {
+  .mi-section {
+    padding: 4.688vw 0;
+  }
+  .mi-section .cmn-inner {
+    padding: 4.688vw 0;
+    width: 90%;
+    border: 0.156vw solid;
+    box-shadow: 0.781vw 1.563vw 2.813vw #888888;
+    border-radius: 0.781vw;
+  }
+  .mi-section input {
+    font-size: 2.5vw;
+  }
+  .reg-btn {
+    margin-left: 28.125vw;
+  }
+  .mi-section .cmn-inner table {
+    margin-top: 3.906vw;
+  }
+  .mi-section .cmn-inner table td {
+    padding-bottom: 2.344vw;
+  }
+  .mi-section .cmn-inner .left {
+    width: 40%;
+    padding-left: 6.25vw;
+    margin-top: 3.906vw;
+  }
+  .mi-section .cmn-inner .left p {
+    padding-top: 1.563vw;
+  }
+  .mi-section .cmn-inner .right {
+    margin-right: 5%;
+    width: 55%;
+  }
+}

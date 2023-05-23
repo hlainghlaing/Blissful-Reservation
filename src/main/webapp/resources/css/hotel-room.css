@@ -1,0 +1,821 @@
+@charset "UTF-8";
+
+.hh-city-cus .cmn-inner {
+  background: url("../img/common-img/img_slide_img6.jpg") center center/cover
+    no-repeat;
+  padding: 150px 0px 280px;
+}
+
+.hh-city-cus .cmn-inner .hh-search {
+  width: 100%;
+  text-align: center;
+}
+
+.hh-city-cus .cmn-inner .hh-search h2 {
+  font-size: 26px; 
+  font-family: cursive; 
+  font-weight : 400;
+  padding-bottom: 50px;
+}
+
+.hh-city-cus .cmn-inner .hh-search form label {
+  font-size: 20px;
+}
+
+.hh-city-cus .cmn-inner .hh-search form select {
+  font-size: 20px;
+  outline: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 0px 10px;
+}
+
+.hh-city-cus .cmn-inner .hh-search form{
+  font-size: 16px;
+}
+.hh-hotels-cus {
+  padding: 50px 0px 50px;
+}
+
+.hh-hotels-cus .hotel-blk {
+  margin-bottom: 50px;
+  background-color: #f7f7f7;
+}
+
+.hh-hotels-cus .hotel-blk img {
+  float: left;
+  width: 50%;
+  margin-right: 5%;
+  height: 320px;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk {
+  float: right;
+  width: 45%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk {
+  padding: 10px 0px 20px;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk h3 {
+  font-size: 28px;
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p {
+  display: inline-block;
+  width: 25%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p img {
+  width: 17px;
+  height: 17px;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .txt {
+  padding-bottom: 15px;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
+  padding: 8px 25px;
+}
+
+/* Room View Section */
+
+.hh-cus-room{
+  padding: 30px 0px 50px;
+}
+
+.hh-cus-room h2{
+  font-size: 20px;
+  font-weight: 400;
+  color: #919191;
+  padding-bottom: 50px;
+}
+
+.hh-cus-room .hh-room-list{
+  float: left;
+  width: 47.5%;
+  margin-right: 5%;
+  margin-bottom: 50px;
+  background-color: #f7f7f7;
+}
+
+.hh-cus-room .hh-room-list:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+.hh-cus-room .hh-room-list img{
+  width: 100%;
+  height: 350px;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk{
+  padding: 20px 0px 30px 20px; 
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk h3{
+  padding-bottom: 20px;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk p{
+  padding-bottom: 25px;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk span{
+  position: relative;
+  font-size: 13px; 
+  padding-left: 6%;
+  padding-right: 14.5%;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .f-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_bed_icon.png") center center/cover no-repeat;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .s-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_ac_icon.png") center center/cover no-repeat;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .t-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+  top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_wifi_icon.png") center center/cover no-repeat;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .fo-icon:before {
+  position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_tv_icon.png") center center/cover no-repeat;
+}
+
+/* User Booking Detail Section */
+
+.hh-user-bd{
+  padding: 20px 0px;
+}
+
+.hh-user-bd .hh-b-list{
+  margin-bottom: 40px;
+  padding-left:30px;
+  background-color: #f7f7f7;
+}
+
+.hh-user-bd .booking-list-lblk{
+  padding-top: 10px;
+  float: left;
+  width: 45%;
+  margin-right: 5%;
+}
+
+.hh-user-bd .booking-list-lblk h2{
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+.hh-user-bd .booking-list-lblk p{
+  padding-bottom: 20px;
+}
+
+.hh-user-bd .booking-list-lblk .pc-blk span{
+  padding-right: 30px;
+}
+
+.hh-user-bd .booking-list-lblk .b-date{
+  padding: 5px 0px 25px 10px;
+}
+
+.hh-user-bd .booking-list-lblk .b-date span{
+  position: relative;
+  padding:0 8% 0 6%;
+}
+
+.hh-user-bd .booking-list-lblk .b-date .check-in:before{
+ position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_calendar_icon.png") center center/cover no-repeat;
+}
+
+.hh-user-bd .booking-list-lblk .b-date .check-out:before{
+ position: absolute;
+  display : block;
+  content: "";
+  left: 0px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_calendar_icon.png") center center/cover no-repeat;
+}
+
+.hh-user-bd .booking-list-lblk .b-price{
+  padding-top: 10px;
+  display: inline-block;
+  border-bottom: 1px solid #aeaeae;
+}
+
+.hh-user-bd .booking-list-rblk{
+  float: right;
+  width: 50%;
+}
+
+.hh-user-bd .booking-list-rblk img{
+  width: 100%;
+  height: 380px;
+}
+
+/* Booking Detail Admin View */
+.hh-b-admin-view{
+  padding: 30px 20px;
+}
+
+.hh-b-admin-view .cmn-inner{
+  padding: 0 10%;
+}
+
+.hh-b-admin-view .b-admin-list{
+  padding: 20px 0px 30px 10px;
+  margin-bottom: 50px;
+  background-color: #f7f7f7; 
+  border-radius: 20px;
+}
+
+.hh-b-admin-view .b-admin-list h2{
+  padding-bottom: 15px;
+  font-size: 20px;
+}
+
+.hh-b-admin-view .b-admin-list p{
+  padding-bottom: 15px;
+}
+
+.hh-b-admin-view .b-admin-list .b-date{
+  padding: 5px 0px 25px 10px;
+}
+
+.hh-b-admin-view .b-admin-list .b-date span{
+  position: relative;
+  padding:0 8% 0 6%;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-in:before{
+ position: absolute;
+  display : block;
+  content: "";
+  left: 10px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_calendar_icon.png") center center/cover no-repeat;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-out:before{
+ position: absolute;
+  display : block;
+  content: "";
+  left: 10px;
+   top: 0px;
+  width: 17px;
+  height:17px;
+  background: url("../img/common-img/img_calendar_icon.png") center center/cover no-repeat;
+}
+
+.hh-b-admin-view .b-admin-list .b-status{
+  padding: 10px 50px;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-lblk{
+  float: left;
+  width:20%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk{
+  float: right;
+  width: 80%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk a{
+  margin-right: 30px;
+}
+
+/* Ipad  */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+.hh-city-cus .cmn-inner {
+  padding: 19.531vw 0vw 32.552vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search h2 {
+  font-size: 3.385vw;
+  padding-bottom: 6.51vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form label {
+  font-size: 2.604vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form select {
+  font-size: 2.604vw;
+  padding: 0.651vw 1.953vw;
+  border-radius: 0.651vw;
+  margin: 0vw 1.302vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form input{
+  font-size: 2.083vw;
+}
+
+.hh-hotels-cus {
+  padding: 6.51vw 0vw 6.51vw;
+}
+
+.hh-hotels-cus .hotel-blk {
+  margin-bottom: 6.51vw;
+}
+
+.hh-hotels-cus .hotel-blk img {
+  width: 45%;
+  margin-right: 5%;
+  height: 35.156vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk {
+  width: 50%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk {
+  padding: 1.302vw 0vw 2.604vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk h3 {
+  font-size: 2.604vw;
+  padding-right: 2.604vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p {
+  width: 40%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p img {
+  width: 2.214vw;
+  height: 2.214vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .txt {
+  font-size: 1.953vw;
+  padding-bottom: 1.953vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
+  padding: 1.042vw 3.255vw;
+}
+
+/* Room View Section */
+.hh-cus-room{
+  padding: 3.906vw 0vw 2.604vw;
+}
+
+.hh-cus-room h2{
+  font-size: 20px;
+  padding-bottom: 6.51vw;
+}
+
+.hh-cus-room .hh-room-list{
+  width: 47.5%;
+  margin-right: 5%;
+  margin-bottom: 6.51vw;
+  background-color: #f7f7f7;
+}
+
+.hh-cus-room .hh-room-list img{
+  height: 32.552vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk{
+  font-size : 16px;
+  padding: 2.604vw 0vw 3.906vw 2.604vw; 
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk h3{
+  padding-bottom: 2.604vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk p{
+  padding-bottom: 3.255vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk span{
+  font-size: 13px; 
+  padding-left: 7%;
+  padding-right: 10.5%;
+}
+
+/* User Booking Detail Section */
+
+.hh-user-bd{
+  padding: 2.604vw 0vw;
+  font-size: 16px;
+}
+
+.hh-user-bd .hh-b-list{
+  margin-bottom: 5.208vw;
+padding-left:1.302vw;
+}
+
+.hh-user-bd .booking-list-lblk{
+  padding-top: 1.302vw;
+  padding-bottom: 2.604vw;
+  width: 49%;
+  margin-right: 1%;
+}
+
+.hh-user-bd .booking-list-lblk h2{
+  font-size: 20px;
+  padding-bottom: 1.953vw;
+}
+
+.hh-user-bd .booking-list-lblk .pc-blk span{
+  padding-right: 2.604vw;
+}
+
+.hh-user-bd .booking-list-lblk p{
+  padding-bottom: 2.604vw;
+}
+
+.hh-user-bd .booking-list-lblk .b-date{
+  padding: 0.651vw 0vw 3.255vw 1.302vw;
+}
+
+.hh-user-bd .booking-list-lblk .b-date span{
+  padding:0 8% 0 6%;
+}
+
+.hh-user-bd .booking-list-lblk .b-price{
+  padding-bottom : 0.651vw;
+  padding-top: 0vw;
+  border-bottom: 0.13vw solid #aeaeae;
+}
+
+.hh-user-bd .booking-list-rblk{
+  float: right;
+  width: 50%;
+}
+
+.hh-user-bd .booking-list-rblk img{
+  width: 100%;
+  height: 42.969vw;
+}
+
+/* Booking Detail Admin View */
+.hh-b-admin-view{
+  padding: 3.906vw 2.604vw;
+  font-size: 15px;
+}
+
+.hh-b-admin-view .cmn-inner{
+  padding: 0 5.208vw;
+}
+
+.hh-b-admin-view .b-admin-list{
+  padding: 2.604vw 0vw 3.906vw 1.302vw;
+  margin-bottom: 6.51vw;
+  border-radius: 2.604vw;
+}
+
+.hh-b-admin-view .b-admin-list h2{
+  padding-bottom: 1.953vw;
+  font-size: 20px;
+}
+
+.hh-b-admin-view .b-admin-list p{
+  padding-bottom: 1.953vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date{
+  padding: 0.651vw 0vw 3.255vw 1.302vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date span{
+  padding:0 8% 0 6%;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-in:before{
+  left: 1.302vw;
+  width: 2.214vw;
+  height:2.214vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-out:before{
+  left: 1.302vw;
+  width: 2.214vw;
+  height:2.214vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status{
+  padding: 1.302vw 6.51vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-lblk{
+  width:30%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk{
+  width: 70%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk a{
+  margin-right: 3.906vw;
+}
+}
+
+/*  SP  */
+@media screen and (max-width:767.9px) {
+ .hh-city-cus .cmn-inner {
+  padding: 18.75vw 0vw 31.25vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search h2 {
+  font-size: 4.063vw;
+  padding-bottom: 7.813vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form label {
+  font-size: 3.125vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form select {
+  font-size: 2.813vw;
+  padding: 0.781vw 2.344vw;
+  border-radius: 0.781vw;
+  margin: 0vw 1.563vw;
+}
+
+.hh-city-cus .cmn-inner .hh-search form input{
+  font-size: 2.5vw;
+}
+
+.hh-hotels-cus {
+  padding: 7.813vw 0vw 7.813vw;
+}
+
+.hh-hotels-cus .hotel-blk {
+  margin-bottom: 7.813vw;
+}
+
+.hh-hotels-cus .hotel-blk img {
+  width: 50%;
+  margin-right: 5%;
+  height: 39.063vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk {
+  width: 45%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk {
+  padding: 1.563vw 0vw 3.125vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk h3 {
+  font-size: 3.125vw;
+  padding-right: 3.125vw;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p {
+  display: block;
+  padding: 0.781vw 0vw 1.563vw;
+  width: 100%;
+}
+
+.hh-hotels-cus .hotel-txt-rblk .hotel-ttl-blk p img {
+  width: 2.656vw;
+  height: 2.656vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .txt {
+  padding-bottom: 2.344vw;
+}
+
+.hh-hotels-cus .hotel-blk .hotel-txt-rblk .cmn-btn {
+  padding: 1.25vw 3.906vw;
+}
+
+/* Room View Section */
+
+.hh-cus-room{
+  padding: 3.125vw 0vw 3.125vw;
+}
+
+.hh-cus-room h2{
+  font-size: 2.813vw;
+  padding-bottom: 7.813vw;
+}
+
+.hh-cus-room .hh-room-list{
+  float: none;
+  width: 100%;
+  margin-right: 0%;
+  margin-bottom: 7.813vw;
+}
+
+.hh-cus-room .hh-room-list img{
+  width: 100%;
+  height: 54.688vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk{
+  padding: 3.125vw 0vw 4.688vw 3.125vw; 
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk h3{
+  padding-bottom: 3.125vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk p{
+  padding-bottom: 3.906vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk span{
+  font-size: 2.031vw; 
+  padding-left: 7%;
+  padding-right: 13%;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .f-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .s-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .t-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-cus-room .hh-room-list .hh-r-txt-blk .icon-blk .fo-icon:before {
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+/* Booking Detail User View */
+
+.hh-user-bd{
+  padding: 3.125vw 0vw;
+}
+
+.hh-user-bd .hh-b-list{
+  margin-bottom: 6.25vw;
+  padding-left:4.688vw;
+}
+
+.hh-user-bd .booking-list-lblk{
+  padding: 1.563vw 0vw 3.125vw;
+  width: 65%;
+  margin-right: 5%;
+}
+
+.hh-user-bd .booking-list-lblk h2{
+  font-size: 3.125vw;
+  padding-bottom: 2.344vw;
+}
+
+.hh-user-bd .booking-list-lblk p{
+  padding-bottom: 3.125vw;
+}
+
+.hh-user-bd .booking-list-lblk .pc-blk span{
+  padding-right: 4.688vw;
+}
+
+.hh-user-bd .booking-list-lblk .b-date{
+  padding: 0.781vw 0vw 3.906vw 1.563vw;
+}
+
+.hh-user-bd .booking-list-lblk .b-date span{
+  padding:0 7% 0 7%;
+}
+
+.hh-user-bd .booking-list-lblk .b-date .check-in:before{
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-user-bd .booking-list-lblk .b-date .check-out:before{
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-user-bd .booking-list-lblk .b-price{
+  padding-top: 0.781vw;
+  padding-bottom: 0.781vw;
+  border-bottom: 0.156vw solid #aeaeae;
+}
+
+.hh-user-bd .booking-list-rblk{
+  width: 30%;
+}
+
+.hh-user-bd .booking-list-rblk img{
+  width: 100%;
+  height: inherit ;
+}
+
+/* Booking Detail Admin View */
+.hh-b-admin-view{
+  padding: 4.688vw 3.125vw;
+}
+
+.hh-b-admin-view .cmn-inner{
+  padding: 0 6.25vw;
+}
+
+.hh-b-admin-view .b-admin-list{
+  padding: 3.125vw 0vw 4.688vw 1.563vw;
+  margin-bottom: 7.813vw;
+  border-radius: 3.125vw;
+}
+
+.hh-b-admin-view .b-admin-list h2{
+  padding-bottom: 2.344vw;
+  font-size: 3.125vw;
+}
+
+.hh-b-admin-view .b-admin-list p{
+  padding-bottom: 2.344vw;
+}
+
+.hh-b-admin-view .b-admin-list p span{
+  display: block;
+  padding: 1.25vw 0vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date{
+  padding: 0.781vw 0vw 3.906vw 1.563vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date span{
+  padding:0 8% 0 8%;
+  display: inline-block;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-in:before{
+  left: 1.563vw;
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-date .check-out:before{
+  left: 1.563vw;
+  width: 2.656vw;
+  height:2.656vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status{
+  padding: 1.563vw 7.813vw;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-lblk{
+  width:35%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk{
+  width: 65%;
+}
+
+.hh-b-admin-view .b-admin-list .b-status .status-rblk a{
+  margin-right: 3.125vw;
+}
+}
