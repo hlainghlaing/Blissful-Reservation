@@ -10,7 +10,7 @@
         <li><a href="AboutUsPage">AboutUs</a></li>
         <li><a href="ContactUsPage">ContactUs</a></li>
       </ul>
-      <a class="cmn-btn header-btn" href="Login" class="sign-in-btn">SingIn</a>
+      <a class="cmn-btn header-btn" href="Login" class="sign-in-btn">SignIn</a>
     </nav>
     <div class="menu-toggle">
       <span></span> <span></span> <span></span>
