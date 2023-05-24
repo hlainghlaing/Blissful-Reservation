@@ -197,4 +197,10 @@
         <put-attribute name="body"
             value="/WEB-INF/pages/room/edit-room.jsp" />
     </definition>
+    <definition name="emailForm" extends="tiles3">
+        <put-attribute name="title"
+            value="BlissfulReservation" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/booking/email-form.jsp" />
+    </definition>
 </tiles-definitions>       
