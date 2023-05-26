@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import ojt.blissfulreservation.system.persistence.entity.Hotel;
 import ojt.blissfulreservation.system.web.form.HotelForm;
 import ojt.blissfulreservation.system.web.form.RoomForm;
 
@@ -102,7 +101,7 @@ public interface HotelService {
      * @param city
      * @return hotel list
      */
-    public List<Hotel> doGetHotels(String city);
+    public List<HotelForm> doGetHotels(String city);
     
     /**
      * <h2> doGetUpdatedHotels</h2>
@@ -115,5 +114,15 @@ public interface HotelService {
      */
     public List<HotelForm> doGetUpdatedHotels();
     
+    /**
+     * <h2> dbGetAllRoomsForHotel</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param hotelId
+     * @return
+     * @return List<RoomForm>
+     */
     public List<RoomForm> dbGetAllRoomsForHotel(int hotelId);
 }

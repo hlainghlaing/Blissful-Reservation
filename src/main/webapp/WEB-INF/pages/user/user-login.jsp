@@ -4,8 +4,9 @@
 <section class="mi-section">
   <div class="cmn-inner">
     <h2>Login Page</h2>
-    <c:if test="${not empty successMessage}">
-      <p class="cmn-success-msg">${successMessage}</p>
+    <c:if test="${not empty sessionScope.successMessage}">
+      <p class="cmn-success-msg">${sessionScope.successMessage}</p>
+      <% session.removeAttribute("successMessage"); %>
     </c:if>
     <font color="red"> ${SPRING_SECURITY_LAST_EXCEPTION.message}
     </font>

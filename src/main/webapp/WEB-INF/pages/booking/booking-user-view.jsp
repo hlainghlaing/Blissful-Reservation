@@ -3,8 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <section class="hh-user-bd">
   <div class="cmn-inner">
-    <c:if test="${not empty successMessage}">
-      <p class="cmn-success-msg">${successMessage}</p>
+   <c:if test="${not empty sessionScope.successMessage}">
+      <p class="cmn-success-msg">${sessionScope.successMessage}</p>
+      <% session.removeAttribute("successMessage"); %>
     </c:if>
     <c:forEach items="${bookingList}" var="b" varStatus="status">
       <div class="hh-b-list clearfix">

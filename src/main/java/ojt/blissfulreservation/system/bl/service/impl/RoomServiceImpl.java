@@ -25,7 +25,7 @@ import ojt.blissfulreservation.system.persistence.entity.Room;
 import ojt.blissfulreservation.system.web.form.RoomForm;
 
 /**
- * <h2> RoomServiceImpl Class</h2>
+ * <h2>RoomServiceImpl Class</h2>
  * <p>
  * Process for Displaying RoomServiceImpl
  * </p>
@@ -37,7 +37,7 @@ import ojt.blissfulreservation.system.web.form.RoomForm;
 @Transactional
 public class RoomServiceImpl implements RoomService {
     /**
-     * <h2> roomDao</h2>
+     * <h2>roomDao</h2>
      * <p>
      * roomDao
      * </p>
@@ -46,7 +46,7 @@ public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDao;
 
     /**
-     * <h2> doGetRoomList </h2>
+     * <h2>doGetRoomList</h2>
      * <p>
      * 
      * </p>
@@ -66,7 +66,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * <h2> doDelete </h2>
+     * <h2>doDelete</h2>
      * <p>
      * 
      * </p>
@@ -84,7 +84,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * <h2> doGetById </h2>
+     * <h2>doGetById</h2>
      * <p>
      * 
      * </p>
@@ -99,7 +99,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * <h2> doGetHotelAndRoomList </h2>
+     * <h2>doGetHotelAndRoomList</h2>
      * <p>
      * 
      * </p>
@@ -118,7 +118,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * <h2> doSave </h2>
+     * <h2>doSave</h2>
      * <p>
      * 
      * </p>
@@ -150,7 +150,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * <h2> doUpdate </h2>
+     * <h2>doUpdate</h2>
      * <p>
      * 
      * </p>

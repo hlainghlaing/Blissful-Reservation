@@ -1,33 +1,27 @@
 package ojt.blissfulreservation.system.web.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.nio.file.Files;
-import java.io.File;
-import java.io.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ojt.blissfulreservation.system.bl.service.HotelService;
 import ojt.blissfulreservation.system.bl.service.RoomService;
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
-import ojt.blissfulreservation.system.persistence.entity.Room;
 import ojt.blissfulreservation.system.web.form.HotelForm;
 import ojt.blissfulreservation.system.web.form.RoomForm;
 
@@ -95,8 +89,11 @@ public class RoomController {
      * @return ModelAndView
      */
     @RequestMapping(value = "/saveroom", method = RequestMethod.POST)
-    public ModelAndView saveContact(@ModelAttribute("room") RoomForm roomForm, HttpServletRequest request)
+    public ModelAndView saveContact(@Valid @ModelAttribute("room") RoomForm roomForm, HttpServletRequest request,BindingResult bindingResult)
             throws IOException {
+        if(bindingResult.hasErrors()) {
+            return new ModelAndView("addRoom");
+        }
         HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
         roomForm.setHotel(new Hotel(hotel));
         roomService.doSave(roomForm, roomForm.getFile());

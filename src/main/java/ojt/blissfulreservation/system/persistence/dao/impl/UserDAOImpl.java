@@ -87,6 +87,7 @@ public class UserDAOImpl implements UserDAO {
      * @param id
      * @return User
      */
+    @SuppressWarnings("unchecked")
     @Override
     public User dbGetById(int id) {
         Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_ID_HQL);
@@ -104,6 +105,7 @@ public class UserDAOImpl implements UserDAO {
      * @param email
      * @return User
      */
+    @SuppressWarnings("unchecked")
     @Override
     public User dbFindByEmail(String email) {
         Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_EMAIL_HQL);
@@ -120,6 +122,7 @@ public class UserDAOImpl implements UserDAO {
      * @param phoneNo
      * @return User
      */
+    @SuppressWarnings("unchecked")
     @Override
     public User dbFindUserByPhoneNo(String phoneNo) {
         Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_BY_PHONE_HQL);
@@ -135,6 +138,7 @@ public class UserDAOImpl implements UserDAO {
      * 
      * @return List<User>
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<User> dbGetList() {
         Query<User> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_User_HQL);

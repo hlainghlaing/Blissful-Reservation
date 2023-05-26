@@ -5,8 +5,9 @@
 
 <section class="list-tb">
   <div class="cmn-inner">
-    <c:if test="${not empty successMessage}">
-      <p class="cmn-success-msg">${successMessage}</p>
+    <c:if test="${not empty sessionScope.successMessage}">
+      <p class="cmn-success-msg">${sessionScope.successMessage}</p>
+      <% session.removeAttribute("successMessage"); %>
     </c:if>
     <a class="cmn-btn"
       href="${pageContext.request.contextPath}/downloadexcel">Download</a>

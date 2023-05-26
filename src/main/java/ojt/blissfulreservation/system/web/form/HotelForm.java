@@ -2,8 +2,7 @@ package ojt.blissfulreservation.system.web.form;
 
 import java.time.LocalDateTime;
 
-import javax.validation.constraints.NotEmpty;
-
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;

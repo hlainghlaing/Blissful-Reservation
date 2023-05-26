@@ -195,22 +195,27 @@ public class UserContorller {
         session.setAttribute("successMessage", "User details updated successfully!");
         return "redirect:/UserList";
     }
-    
-    
+
+    /**
+     * <h2>downloadUsersExcel</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @return
+     * @return ResponseEntity<byte[]>
+     */
     @RequestMapping(value = "/downloaduserexcel", method = RequestMethod.GET)
     public ResponseEntity<byte[]> downloadUsersExcel() {
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("User List");
-
             List<UserForm> users = userService.doGetList();
-
             Row headerRow = sheet.createRow(0);
             headerRow.createCell(0).setCellValue("Name");
             headerRow.createCell(1).setCellValue("Email");
             headerRow.createCell(2).setCellValue("Phone Number");
             headerRow.createCell(3).setCellValue("Created At");
             headerRow.createCell(4).setCellValue("Deleted At");
-
             int rowNum = 1;
             for (UserForm user : users) {
                 Row userDataRow = sheet.createRow(rowNum++);
@@ -219,24 +224,15 @@ public class UserContorller {
                 userDataRow.createCell(2).setCellValue(user.getPhoneNo());
                 userDataRow.createCell(3).setCellValue(user.getCreatedAt());
                 userDataRow.createCell(4).setCellValue(user.getDeletedAt());
-                
             }
-            
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             workbook.write(outputStream);
-
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             headers.setContentDispositionFormData("attachment", "users.xlsx");
-
-            return ResponseEntity
-                    .ok()
-                    .headers(headers)
-                    .body(outputStream.toByteArray());
+            return ResponseEntity.ok().headers(headers).body(outputStream.toByteArray());
         } catch (IOException e) {
-            return ResponseEntity
-                    .badRequest()
-                    .build();
+            return ResponseEntity.badRequest().build();
         }
     }
 }

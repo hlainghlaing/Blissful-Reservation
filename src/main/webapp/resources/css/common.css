@@ -150,6 +150,7 @@ img {
   float: left;
   width: 17%;
   margin-right: 3.75%;
+  text-align: center;
 }
 
 .g-nav .user-nav-list li:last-child {
@@ -302,6 +303,7 @@ body {
 .g-nav .user-nav-list li {
   width: 17%;
   margin-right: 3.75%;
+  text-align: left;
 }
 
 .footer {

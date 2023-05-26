@@ -3,7 +3,6 @@ package ojt.blissfulreservation.system.bl.service.impl;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,6 +131,15 @@ public class BookingServiceImpl implements BookingService {
         bookingDao.dbDeleteBooking(booking);
     }
 
+    /**
+     * <h2>doGetBookingById</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param id
+     * @return BookingForm
+     */
     @Override
     public BookingForm doGetBookingById(int id) {
         Booking booking = bookingDao.dbGetBookingById(id);

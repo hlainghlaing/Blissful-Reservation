@@ -68,6 +68,15 @@ public class HotelDaoImpl implements HotelDAO {
      */
     public static final String SELECT_HOTEL_BY_PHONE_HQL = "FROM Hotel h WHERE h.phone = :phone ";
 
+    /**
+     * <h2> dbGetHotelById </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param id
+     * @return Hotel
+     */
     @Override
     public Hotel dbGetHotelById(int id) {
         Session session = sessionFactory.getCurrentSession();
@@ -82,7 +91,6 @@ public class HotelDaoImpl implements HotelDAO {
      * 
      * @return
      */
-    @SuppressWarnings("unchecked")
     @Override
     public List<Hotel> dbGetAllHotels() {
         Session session = sessionFactory.getCurrentSession();
@@ -143,6 +151,7 @@ public class HotelDaoImpl implements HotelDAO {
      * @param phone
      * @return
      */
+    @SuppressWarnings("unchecked")
     @Override
     public Hotel dbFindHotelByPhoneNo(String phone) {
         Query<Hotel> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_BY_PHONE_HQL);
@@ -171,6 +180,7 @@ public class HotelDaoImpl implements HotelDAO {
      * 
      * @return
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<String> dbGetCities() {
         Query<String> query = sessionFactory.getCurrentSession().createQuery(SELECT_CITY_HQL);
@@ -188,6 +198,7 @@ public class HotelDaoImpl implements HotelDAO {
      * @param city
      * @return
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Hotel> dbGetHotels(String city) {
         Query<Hotel> query = sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_BY_CITY);
