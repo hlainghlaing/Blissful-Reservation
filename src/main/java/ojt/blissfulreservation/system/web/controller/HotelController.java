@@ -2,17 +2,17 @@ package ojt.blissfulreservation.system.web.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -23,16 +23,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import ojt.blissfulreservation.system.bl.service.HotelService;
 import ojt.blissfulreservation.system.bl.service.RoomService;
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
-import ojt.blissfulreservation.system.persistence.entity.Room;
 import ojt.blissfulreservation.system.web.form.HotelForm;
 import ojt.blissfulreservation.system.web.form.RoomForm;
 
@@ -42,7 +38,7 @@ import ojt.blissfulreservation.system.web.form.RoomForm;
  * Process for Displaying HotelController
  * </p>
  * 
- * @author Hnaung Thet Htar Wai
+ * @author HnaungThetHtarWai
  *
  */
 @Controller
@@ -207,13 +203,23 @@ public class HotelController {
 	 * </p>
 	 *
 	 * @param hotelForm
+	 * @param image
+	 * @param request
 	 * @return
 	 * @throws IOException
 	 * @return String
 	 */
 	@RequestMapping(value = "/update-hotel", method = RequestMethod.POST)
-	public String updateHotel(@ModelAttribute("hotel") HotelForm hotelForm, HttpServletRequest request)
+	public String updateHotel(@ModelAttribute("hotel") HotelForm hotelForm,
+			@RequestParam(value = "image", required = false) MultipartFile image, HttpServletRequest request)
 			throws IOException {
+		String originalImage = hotelForm.getHotelImg();
+		if (image != null && !image.isEmpty()) {
+			hotelForm.setFile(image);
+		} else {
+			hotelForm.setFile(null);
+		}
+
 		hotelService.doUpdateHotel(hotelForm, hotelForm.getFile());
 		HttpSession session = request.getSession();
 		session.setAttribute("successMessage", "Hotel Updated Successfully!");

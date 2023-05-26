@@ -1,32 +1,32 @@
 package ojt.blissfulreservation.system.bl.service.impl;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import ojt.blissfulreservation.system.bl.service.HotelService;
 import ojt.blissfulreservation.system.persistence.dao.HotelDAO;
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
 import ojt.blissfulreservation.system.persistence.entity.Room;
-import ojt.blissfulreservation.system.persistence.entity.User;
 import ojt.blissfulreservation.system.web.form.HotelForm;
 import ojt.blissfulreservation.system.web.form.RoomForm;
-import ojt.blissfulreservation.system.web.form.UserForm;
 
 /**
  * <h2>HotelServiceImpl Class</h2>
@@ -49,6 +49,15 @@ public class HotelServiceImpl implements HotelService {
 	 */
 	@Autowired
 	private HotelDAO hotelDAO;
+
+	/**
+	 * <h2>session</h2>
+	 * <p>
+	 * session
+	 * </p>
+	 */
+	@Autowired
+	private ServletRequest session;
 
 	/**
 	 * <h2>doGetHotelById</h2>
@@ -86,33 +95,36 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	/**
-	 * <h2>registerNewHotel</h2>
+	 * <h2>doRegisterNewHotel</h2>
 	 * <p>
-	 * Process of accepting new hotel
+	 * 
 	 * </p>
 	 * 
-	 * @param hotel
-	 * @param image
+	 * @param hotelForm
+	 * @param hotelImg
+	 * @throws IOException
 	 */
-
 	@Override
 	public void doRegisterNewHotel(HotelForm hotelForm, MultipartFile hotelImg) throws IOException {
-		Hotel hotel = new Hotel(hotelForm);
-		String fileName = StringUtils.cleanPath(hotelImg.getOriginalFilename());
-		hotel.setHotelImg(fileName);
-		hotelDAO.dbSaveHotel(hotel);
-
-		String uploadDir = "D:\\EclipseWorkspace_BIB_OJT07\\Blissful_Reservation\\"
-				+ "src\\main\\webapp\\resources\\img\\hotel-images\\";
+		String webAppRoot = session.getServletContext().getRealPath("/");
+		String uploadDir = webAppRoot + File.separator + "resources" + File.separator + "img" + File.separator
+				+ "hotel-images" + File.separator;
 		Path uploadPath = Paths.get(uploadDir);
 
-		if (!Files.exists(uploadPath)) {
+		if (Files.exists(uploadPath)) {
 			Files.createDirectories(uploadPath);
 		}
-		File serverFile = new File(uploadDir + fileName);
-		BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-		stream.write(hotelImg.getBytes());
-		stream.close();
+		try (InputStream inputStream = hotelImg.getInputStream()) {
+			String fileName = StringUtils.cleanPath(hotelImg.getOriginalFilename());
+			hotelForm.setHotelImg(fileName);
+			Hotel hotel = new Hotel(hotelForm);
+			hotelDAO.dbSaveHotel(hotel);
+			Path filePath = uploadPath.resolve(fileName);
+			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 	/**
@@ -126,8 +138,32 @@ public class HotelServiceImpl implements HotelService {
 	 * @throws IOException
 	 */
 	@Override
-	public void doUpdateHotel(HotelForm hotelForm, MultipartFile image) throws IOException {
+	public void doUpdateHotel(HotelForm hotelForm, @RequestParam(value = "image", required = false) MultipartFile image)
+			throws IOException {
 		Hotel existingHotel = new Hotel(hotelForm);
+
+		if (image != null) {
+			String webAppRoot = session.getServletContext().getRealPath("/");
+			String uploadDir = webAppRoot + File.separator + "resources" + File.separator + "img" + File.separator
+					+ "hotel-images" + File.separator;
+			Path uploadPath = Paths.get(uploadDir);
+
+			try (InputStream inputStream = image.getInputStream()) {
+				String fileName = StringUtils.cleanPath(image.getOriginalFilename());
+				existingHotel.setHotelImg(fileName);
+				hotelDAO.dbUpdateHotel(existingHotel);
+
+				if (Files.notExists(uploadPath)) {
+					Files.createDirectories(uploadPath);
+				}
+
+				Path filePath = uploadPath.resolve(fileName);
+				Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
+				System.out.println("Error saving image: " + e.getMessage());
+			}
+		}
+		hotelForm.setFile(hotelForm.getFile());
 		hotelDAO.dbUpdateHotel(existingHotel);
 	}
 

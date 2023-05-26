@@ -126,6 +126,7 @@ public class HotelForm {
 	 * file
 	 * </p>
 	 */
+	
 	private MultipartFile file;
 
 	/**
