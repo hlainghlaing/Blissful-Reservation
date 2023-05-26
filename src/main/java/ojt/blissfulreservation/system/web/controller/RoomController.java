@@ -95,7 +95,7 @@ public class RoomController {
      * @return ModelAndView
      */
     @RequestMapping(value = "/saveroom", method = RequestMethod.POST)
-    public ModelAndView saveContact(@ModelAttribute("room") RoomForm roomForm, HttpServletRequest request)
+    public ModelAndView saveRoom(@ModelAttribute("room") RoomForm roomForm, HttpServletRequest request)
             throws IOException {
         HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
         roomForm.setHotel(new Hotel(hotel));
