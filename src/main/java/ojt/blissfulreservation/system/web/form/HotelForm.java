@@ -2,7 +2,9 @@ package ojt.blissfulreservation.system.web.form;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
@@ -55,7 +57,7 @@ public class HotelForm {
 	 * rating
 	 * </p>
 	 */
-	@NotEmpty
+	@Range(min = 1 , max = 5)
 	private int rating;
 
 	/**
@@ -91,7 +93,6 @@ public class HotelForm {
 	 * hotelImg
 	 * </p>
 	 */
-	@NotEmpty
 	private String hotelImg;
 
 	/**

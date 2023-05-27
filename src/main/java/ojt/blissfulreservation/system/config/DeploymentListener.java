@@ -42,8 +42,6 @@ public class DeploymentListener {
             admin.setUserName("Mi Mi Soe");
             admin.setCreatedAt(LocalDateTime.now());
             this.userDao.dbSave(admin);
-        } else {
-            System.out.println("User already exits.");
         }
     }
 }

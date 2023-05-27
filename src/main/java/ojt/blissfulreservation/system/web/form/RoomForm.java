@@ -2,10 +2,12 @@ package ojt.blissfulreservation.system.web.form;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,7 +43,6 @@ public class RoomForm {
      * roomType
      * </p>
      */
-    @SuppressWarnings("deprecation")
     @NotEmpty
     private String roomType;
 
@@ -51,7 +52,7 @@ public class RoomForm {
      * price
      * </p>
      */
-    @Size(min = 5 , max = 10)
+    @NotNull
     private Double price;
     
     /**
@@ -68,7 +69,7 @@ public class RoomForm {
      * totalRoom
      * </p>
      */
-    @Size(min = 1 , max = 3)
+    @Range(min = 1, max = 100)
     private int totalRoom;
  
     /**

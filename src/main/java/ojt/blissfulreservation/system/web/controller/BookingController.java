@@ -21,6 +21,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -128,8 +130,15 @@ public class BookingController {
      * @return String
      */
     @RequestMapping(value = "booking-success", method = RequestMethod.POST)
-    public String successBooking(@ModelAttribute("booking") BookingForm booking, Model model,
-            Authentication authentication, HttpServletRequest request) {
+    public String successBooking(@ModelAttribute("booking") @Validated BookingForm booking, BindingResult bindingResult,
+            Model model, Authentication authentication, HttpServletRequest request) {
+        if (bindingResult.hasErrors()) {
+            RoomForm room = roomService.doGetById(booking.getRoomId());
+            model.addAttribute("room", room);
+            HotelForm hotel = hotelService.doGetHotelById(room.getHotelId());
+            model.addAttribute("hotel", hotel);
+            return "bookingRegister";
+        }
         RoomForm roomForm = roomService.doGetById(booking.getRoomId());
         booking.setRoom(new Room(roomForm));
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();

@@ -26,7 +26,7 @@
     <!-- Message -->
     <bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basenames" value="classpath:messages.properties" />
+        <property name="basenames" value="classpath:messages" />
     </bean>
 
     <bean

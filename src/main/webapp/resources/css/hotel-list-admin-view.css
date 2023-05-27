@@ -11,7 +11,7 @@
 		border-collapse: collapse;
 }
 
-.list-tb th, td {
+.list-tb th,.list-tb td {
 		padding: 15px 10px;
 		text-align: left;
 }

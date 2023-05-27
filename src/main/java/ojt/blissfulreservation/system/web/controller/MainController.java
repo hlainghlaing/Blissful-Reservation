@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -160,7 +162,11 @@ public class MainController {
      * @return String
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute("user") UserForm user, Model model, Authentication authentication , HttpServletRequest request) {
+    public String createUser(@ModelAttribute("user") @Validated UserForm user, BindingResult bindingResult, Model model,
+            Authentication authentication, HttpServletRequest request) {
+        if (bindingResult.hasErrors()) {
+            return "userRegister";
+        }
         UserForm userForm = userService.doFindByEmail(user.getEmail());
         UserForm userForm2 = userService.doFindUserByPhoneNo(user.getPhoneNo());
         if (userForm != null) {
@@ -189,7 +195,7 @@ public class MainController {
     }
 
     /**
-     * <h2> aboutUs</h2>
+     * <h2>aboutUs</h2>
      * <p>
      * 
      * </p>
@@ -208,7 +214,7 @@ public class MainController {
     }
 
     /**
-     * <h2> contactUs</h2>
+     * <h2>contactUs</h2>
      * <p>
      * 
      * </p>

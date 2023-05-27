@@ -5,14 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import jakarta.validation.constraints.Size;
-
-//import javax.validation.constraints.Email;
-//import javax.validation.constraints.NotEmpty;
-//import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,7 +50,6 @@ public class UserForm {
      * </p>
      */
     @NotEmpty
-    @Email
     private String email;
 
     /**
@@ -75,7 +68,6 @@ public class UserForm {
      * roleType
      * </p>
      */
-    @NotEmpty
     private String roleType;
 
     /**

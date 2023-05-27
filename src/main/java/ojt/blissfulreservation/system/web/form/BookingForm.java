@@ -7,10 +7,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,7 +40,6 @@ public class BookingForm {
      * bookingId
      * </p>
      */
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingId;
 
     /**
@@ -67,7 +66,7 @@ public class BookingForm {
      * roomNum
      * </p>
      */
-    @NotEmpty
+    @Range(min = 1)
     private int roomNum;
 
     /**
@@ -76,7 +75,6 @@ public class BookingForm {
      * totalPrice
      * </p>
      */
-    @NotEmpty
     private Double totalPrice;
 
     /**
@@ -85,7 +83,7 @@ public class BookingForm {
      * nrc
      * </p>
      */
-    @NotEmpty
+    @Pattern(regexp = "\\d{1,2}/[a-zA-Z]+\\([a-zA-Z]\\)\\d{6}")
     private String nrc;
 
     /**
@@ -94,7 +92,6 @@ public class BookingForm {
      * status
      * </p>
      */
-    @NotEmpty
     private int status;
 
     /**

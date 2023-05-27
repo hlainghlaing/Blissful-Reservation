@@ -14,11 +14,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -114,7 +117,7 @@ public class HotelController {
             UserForm user = userService.doFindByEmail(email);
             String role = user.getRoleType();
             if (role.equals("0")) {
-                return "redirect:/form";
+                return "redirect:/hotel-view";
             }else {
                 return "redirect:/searchform";
             }  
@@ -179,8 +182,18 @@ public class HotelController {
      * @return ModelAndView
      */
     @RequestMapping(value = "/register-hotel", method = RequestMethod.POST)
-    public String registerNewHotel(@ModelAttribute("hotel") HotelForm hotel, HttpServletRequest request)
+    public String registerNewHotel(@ModelAttribute("hotel") @Validated HotelForm hotel,BindingResult bindingResult, HttpServletRequest request)
             throws IOException {
+        if(bindingResult.hasErrors()) {
+            return "hotelRegister";
+        }
+        MultipartFile file = hotel.getFile();
+        if (file == null || file.isEmpty()) {
+            // Handle the case when the file is not selected
+            bindingResult.rejectValue("file", "error.file", "Please select Image file");
+            return "hotelRegister";
+        }
+        
         HotelForm hotelform = hotelService.doFindHotelByPhoneNo(hotel.getPhone());
         if (hotelform != null) {
             HttpSession session = request.getSession();
