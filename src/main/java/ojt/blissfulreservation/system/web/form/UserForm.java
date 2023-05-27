@@ -27,7 +27,7 @@ import ojt.blissfulreservation.system.persistence.entity.User;
 @Getter
 public class UserForm {
     /**
-     * <h2> userId</h2>
+     * <h2>userId</h2>
      * <p>
      * userId
      * </p>
@@ -35,7 +35,7 @@ public class UserForm {
     private int userId;
 
     /**
-     * <h2> userName</h2>
+     * <h2>userName</h2>
      * <p>
      * userName
      * </p>
@@ -44,7 +44,7 @@ public class UserForm {
     private String userName;
 
     /**
-     * <h2> email</h2>
+     * <h2>email</h2>
      * <p>
      * email
      * </p>
@@ -53,7 +53,7 @@ public class UserForm {
     private String email;
 
     /**
-     * <h2> password</h2>
+     * <h2>password</h2>
      * <p>
      * password
      * </p>
@@ -63,7 +63,7 @@ public class UserForm {
     private String password;
 
     /**
-     * <h2> roleType</h2>
+     * <h2>roleType</h2>
      * <p>
      * roleType
      * </p>
@@ -71,7 +71,7 @@ public class UserForm {
     private String roleType;
 
     /**
-     * <h2> phoneNo</h2>
+     * <h2>phoneNo</h2>
      * <p>
      * phoneNo
      * </p>
@@ -80,7 +80,7 @@ public class UserForm {
     private String phoneNo;
 
     /**
-     * <h2> createdAt</h2>
+     * <h2>createdAt</h2>
      * <p>
      * createdAt
      * </p>
@@ -88,7 +88,7 @@ public class UserForm {
     private LocalDateTime createdAt;
 
     /**
-     * <h2> updatedAt</h2>
+     * <h2>updatedAt</h2>
      * <p>
      * updatedAt
      * </p>
@@ -96,7 +96,7 @@ public class UserForm {
     private LocalDateTime updatedAt;
 
     /**
-     * <h2> deletedAt</h2>
+     * <h2>deletedAt</h2>
      * <p>
      * deletedAt
      * </p>
@@ -131,7 +131,7 @@ public class UserForm {
      */
     private static final Map<String, String> STATUS_MAP = new HashMap<String, String>() {
         /**
-         * <h2> serialVersionUID</h2>
+         * <h2>serialVersionUID</h2>
          * <p>
          * serialVersionUID
          * </p>
@@ -156,17 +156,17 @@ public class UserForm {
     public String getRoleType2() {
         return STATUS_MAP.get(roleType);
     }
-    
+
     /**
-     * <h2> formatter</h2>
+     * <h2>formatter</h2>
      * <p>
      * formatter
      * </p>
      */
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    
+
     /**
-     * <h2> getFormattedCT</h2>
+     * <h2>getFormattedCT</h2>
      * <p>
      * 
      * </p>
@@ -180,9 +180,9 @@ public class UserForm {
         }
         return null;
     }
-    
+
     /**
-     * <h2> getFormattedUT</h2>
+     * <h2>getFormattedUT</h2>
      * <p>
      * 
      * </p>
@@ -196,9 +196,9 @@ public class UserForm {
         }
         return null;
     }
-    
+
     /**
-     * <h2> getFormattedDT</h2>
+     * <h2>getFormattedDT</h2>
      * <p>
      * 
      * </p>

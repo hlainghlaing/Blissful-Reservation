@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <section class="hh-user-bd">
   <div class="cmn-inner">
-   <c:if test="${not empty sessionScope.successMessage}">
+    <c:if test="${not empty sessionScope.successMessage}">
       <p class="cmn-success-msg">${sessionScope.successMessage}</p>
-      <% session.removeAttribute("successMessage"); %>
+      <%
+      session.removeAttribute("successMessage");
+      %>
     </c:if>
     <c:forEach items="${bookingList}" var="b" varStatus="status">
       <div class="hh-b-list clearfix">
@@ -13,12 +15,12 @@
           <h2>${b.room.hotel.hotelName}</h2>
           <p>Address : ${b.room.hotel.address}</p>
           <p class="pc-blk">
-            <span>City : ${b.room.hotel.city}</span> <span>
-              Phone : ${b.room.hotel.phone}</span>
+            <span>City : ${b.room.hotel.city}</span> <span> Phone
+              : ${b.room.hotel.phone}</span>
           </p>
           <p class="b-date">
-            <span class="check-in">From : ${b.checkIn}</span> <span class="check-out">To :
-              ${b.checkOut}</span>
+            <span class="check-in">From : ${b.checkIn}</span> <span
+              class="check-out">To : ${b.checkOut}</span>
           </p>
           <p>Room Type : ${b.room.roomType}</p>
           <p>Price For One Room : ${b.room.price}</p>

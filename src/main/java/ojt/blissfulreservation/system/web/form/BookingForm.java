@@ -35,7 +35,7 @@ import ojt.blissfulreservation.system.persistence.entity.User;
 @Setter
 public class BookingForm {
     /**
-     * <h2> bookingId</h2>
+     * <h2>bookingId</h2>
      * <p>
      * bookingId
      * </p>
@@ -43,7 +43,7 @@ public class BookingForm {
     private int bookingId;
 
     /**
-     * <h2> checkIn</h2>
+     * <h2>checkIn</h2>
      * <p>
      * checkIn
      * </p>
@@ -52,7 +52,7 @@ public class BookingForm {
     private String checkIn;
 
     /**
-     * <h2> checkOut</h2>
+     * <h2>checkOut</h2>
      * <p>
      * checkOut
      * </p>
@@ -61,7 +61,7 @@ public class BookingForm {
     private String checkOut;
 
     /**
-     * <h2> roomNum</h2>
+     * <h2>roomNum</h2>
      * <p>
      * roomNum
      * </p>
@@ -70,7 +70,7 @@ public class BookingForm {
     private int roomNum;
 
     /**
-     * <h2> totalPrice</h2>
+     * <h2>totalPrice</h2>
      * <p>
      * totalPrice
      * </p>
@@ -78,7 +78,7 @@ public class BookingForm {
     private Double totalPrice;
 
     /**
-     * <h2> nrc</h2>
+     * <h2>nrc</h2>
      * <p>
      * nrc
      * </p>
@@ -87,7 +87,7 @@ public class BookingForm {
     private String nrc;
 
     /**
-     * <h2> status</h2>
+     * <h2>status</h2>
      * <p>
      * status
      * </p>
@@ -95,7 +95,7 @@ public class BookingForm {
     private int status;
 
     /**
-     * <h2> roomId</h2>
+     * <h2>roomId</h2>
      * <p>
      * roomId
      * </p>
@@ -103,7 +103,7 @@ public class BookingForm {
     private int roomId;
 
     /**
-     * <h2> userId</h2>
+     * <h2>userId</h2>
      * <p>
      * userId
      * </p>
@@ -111,7 +111,7 @@ public class BookingForm {
     private int userId;
 
     /**
-     * <h2> createdAt</h2>
+     * <h2>createdAt</h2>
      * <p>
      * createdAt
      * </p>
@@ -119,7 +119,7 @@ public class BookingForm {
     private LocalDateTime createdAt;
 
     /**
-     * <h2> updatedAt</h2>
+     * <h2>updatedAt</h2>
      * <p>
      * updatedAt
      * </p>
@@ -127,7 +127,7 @@ public class BookingForm {
     private LocalDateTime updatedAt;
 
     /**
-     * <h2> deletedAt</h2>
+     * <h2>deletedAt</h2>
      * <p>
      * deletedAt
      * </p>
@@ -135,7 +135,7 @@ public class BookingForm {
     private LocalDateTime deletedAt;
 
     /**
-     * <h2> room</h2>
+     * <h2>room</h2>
      * <p>
      * room
      * </p>
@@ -143,7 +143,7 @@ public class BookingForm {
     private Room room;
 
     /**
-     * <h2> user</h2>
+     * <h2>user</h2>
      * <p>
      * user
      * </p>
@@ -191,7 +191,7 @@ public class BookingForm {
      */
     private static final Map<Integer, String> STATUS_MAP = new HashMap<Integer, String>() {
         /**
-         * <h2> serialVersionUID</h2>
+         * <h2>serialVersionUID</h2>
          * <p>
          * serialVersionUID
          * </p>

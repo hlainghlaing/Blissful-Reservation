@@ -43,8 +43,8 @@
               <td><form:errors path="totalRoom" cssClass="error" /></td>
             </tr>
             <tr>
-              <td colspan="2"><form:input type="file" id="image" path="file"
-                  accept="image/*" /></td>
+              <td colspan="2"><form:input type="file" id="image"
+                  path="file" accept="image/*" /></td>
               <td><form:errors path="file" cssClass="error" /></td>
             </tr>
           </table>

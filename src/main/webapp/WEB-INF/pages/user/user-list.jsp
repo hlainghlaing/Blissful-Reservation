@@ -6,7 +6,9 @@
   <div class="cmn-inner">
     <c:if test="${not empty sessionScope.successMessage}">
       <p class="cmn-success-msg">${sessionScope.successMessage}</p>
-      <% session.removeAttribute("successMessage"); %>
+      <%
+      session.removeAttribute("successMessage");
+      %>
     </c:if>
     <a class="cmn-btn" href="downloaduserexcel">Download</a>
     <h2>User List Table</h2>

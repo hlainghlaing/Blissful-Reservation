@@ -28,11 +28,11 @@
     <div class="right">
       <form:form action="booking-success" method="post"
         modelAttribute="booking">
-      <form:errors path = "*" cssClass = "errorblock" element = "div">
-        <div class="errorblock">
-          <spring:message code="defaultError" />
-        </div>
-      </form:errors>
+        <form:errors path="*" cssClass="errorblock" element="div">
+          <div class="errorblock">
+            <spring:message code="defaultError" />
+          </div>
+        </form:errors>
 
         <form:hidden path="roomId" />
         <form:hidden path="userId" />
@@ -42,22 +42,22 @@
             <td><label for="roomNum">Num of Room : </label></td>
             <td><form:input type="number" path="roomNum" min="1"
                 max="${room.avaRoom}" /></td>
-            <td><form:errors path = "roomNum" cssClass = "error" /></td>
+            <td><form:errors path="roomNum" cssClass="error" /></td>
           </tr>
           <tr>
             <td><label for="checkIn">CheckIn:</label></td>
             <td><form:input type="date" path="checkIn" /></td>
-            <td><form:errors path = "checkIn" cssClass = "error" /></td>
+            <td><form:errors path="checkIn" cssClass="error" /></td>
           </tr>
           <tr>
             <td><label for="checkOut">CheckOut:</label></td>
             <td><form:input type="date" path="checkOut" /></td>
-            <td><form:errors path = "checkOut" cssClass = "error" /></td>
+            <td><form:errors path="checkOut" cssClass="error" /></td>
           </tr>
           <tr>
             <td><label for="nrc">Nrc:</label></td>
-            <td><form:input path="nrc"/></td>
-            <td><form:errors path = "nrc" cssClass = "error" /></td>
+            <td><form:input path="nrc" /></td>
+            <td><form:errors path="nrc" cssClass="error" /></td>
           </tr>
           <tr>
             <td><input class="cmn-btn" type="submit"

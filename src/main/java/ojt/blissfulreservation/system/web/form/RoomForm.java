@@ -16,7 +16,7 @@ import ojt.blissfulreservation.system.persistence.entity.Hotel;
 import ojt.blissfulreservation.system.persistence.entity.Room;
 
 /**
- * <h2> RoomForm Class</h2>
+ * <h2>RoomForm Class</h2>
  * <p>
  * Process for Displaying RoomForm
  * </p>
@@ -30,15 +30,15 @@ import ojt.blissfulreservation.system.persistence.entity.Room;
 @AllArgsConstructor
 public class RoomForm {
     /**
-     * <h2> roomId</h2>
+     * <h2>roomId</h2>
      * <p>
      * roomId
      * </p>
      */
     private int roomId;
- 
+
     /**
-     * <h2> roomType</h2>
+     * <h2>roomType</h2>
      * <p>
      * roomType
      * </p>
@@ -47,16 +47,16 @@ public class RoomForm {
     private String roomType;
 
     /**
-     * <h2> price</h2>
+     * <h2>price</h2>
      * <p>
      * price
      * </p>
      */
     @NotNull
     private Double price;
-    
+
     /**
-     * <h2> roomImg</h2>
+     * <h2>roomImg</h2>
      * <p>
      * roomImg
      * </p>
@@ -64,56 +64,56 @@ public class RoomForm {
     private String roomImg;
 
     /**
-     * <h2> totalRoom</h2>
+     * <h2>totalRoom</h2>
      * <p>
      * totalRoom
      * </p>
      */
     @Range(min = 1, max = 100)
     private int totalRoom;
- 
+
     /**
-     * <h2> avaRoom</h2>
+     * <h2>avaRoom</h2>
      * <p>
      * avaRoom
      * </p>
      */
     private int avaRoom;
-  
+
     /**
-     * <h2> createdAt</h2>
+     * <h2>createdAt</h2>
      * <p>
      * createdAt
      * </p>
      */
     private LocalDateTime createdAt;
-   
+
     /**
-     * <h2> deleteAt</h2>
+     * <h2>deleteAt</h2>
      * <p>
      * deleteAt
      * </p>
      */
     private LocalDateTime deleteAt;
-  
+
     /**
-     * <h2> updatedAt</h2>
+     * <h2>updatedAt</h2>
      * <p>
      * updatedAt
      * </p>
      */
     private LocalDateTime updatedAt;
-  
+
     /**
-     * <h2> hotelId</h2>
+     * <h2>hotelId</h2>
      * <p>
      * hotelId
      * </p>
      */
     private int hotelId;
-    
+
     /**
-     * <h2> hotel</h2>
+     * <h2>hotel</h2>
      * <p>
      * hotel
      * </p>

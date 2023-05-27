@@ -5,7 +5,9 @@
   <div class="cmn-inner">
     <c:if test="${not empty sessionScope.successMessage}">
       <p class="cmn-success-msg">${sessionScope.successMessage}</p>
-      <% session.removeAttribute("successMessage"); %>
+      <%
+      session.removeAttribute("successMessage");
+      %>
     </c:if>
     <c:forEach items="${bookingList}" var="b" varStatus="loop">
       <c:if test="${loop.index % 2 != 0}">

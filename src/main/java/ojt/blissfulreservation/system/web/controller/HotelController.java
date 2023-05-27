@@ -118,9 +118,9 @@ public class HotelController {
             String role = user.getRoleType();
             if (role.equals("0")) {
                 return "redirect:/hotel-view";
-            }else {
+            } else {
                 return "redirect:/searchform";
-            }  
+            }
         }
         return "redirect:/searchform";
     }
@@ -182,9 +182,9 @@ public class HotelController {
      * @return ModelAndView
      */
     @RequestMapping(value = "/register-hotel", method = RequestMethod.POST)
-    public String registerNewHotel(@ModelAttribute("hotel") @Validated HotelForm hotel,BindingResult bindingResult, HttpServletRequest request)
-            throws IOException {
-        if(bindingResult.hasErrors()) {
+    public String registerNewHotel(@ModelAttribute("hotel") @Validated HotelForm hotel, BindingResult bindingResult,
+            HttpServletRequest request) throws IOException {
+        if (bindingResult.hasErrors()) {
             return "hotelRegister";
         }
         MultipartFile file = hotel.getFile();
@@ -193,7 +193,7 @@ public class HotelController {
             bindingResult.rejectValue("file", "error.file", "Please select Image file");
             return "hotelRegister";
         }
-        
+
         HotelForm hotelform = hotelService.doFindHotelByPhoneNo(hotel.getPhone());
         if (hotelform != null) {
             HttpSession session = request.getSession();
