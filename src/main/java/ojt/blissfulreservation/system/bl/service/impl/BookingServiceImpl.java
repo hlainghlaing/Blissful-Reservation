@@ -70,7 +70,6 @@ public class BookingServiceImpl implements BookingService {
             if (bForm.getStatus() == 1) {
                 bFormList.add(bForm);
             }
-            bFormList.add(bForm);
         }
         return bFormList;
     }

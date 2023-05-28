@@ -46,7 +46,7 @@
   </div>
   <div id="confirmationBookingModal" class="modal">
     <div class="modal-content">
-      <h2>Are you sure you want to delete this booking?</h2>
+      <h2>Are you sure you want to reject this booking?</h2>
       <a id="reject" class="cmn-btn" href="#">Yes</a>
       <button class="cmn-btn" onclick="hideBookingConfirmation()">No</button>
     </div>
