@@ -167,12 +167,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      */
     @Override
     public void doDelete(UserForm userForm) {
-        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?");
-        if (option == JOptionPane.YES_OPTION) {
+
             userForm.setDeletedAt(LocalDateTime.now());
             User user = new User(userForm);
             userDao.dbDelete(user);
-        }
+
     }
 
     /**

@@ -80,7 +80,7 @@ public class UserContorller {
         UserForm user = userService.doGetById(userId);
         userService.doDelete(user);
         HttpSession session = request.getSession();
-        session.setAttribute("successMessage", "User Deleted Successfully!");
+        session.setAttribute("successUMessage", "User Deleted Successfully!"); 
         return "redirect:/UserList";
     }
 
