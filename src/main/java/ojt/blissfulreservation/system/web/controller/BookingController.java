@@ -230,12 +230,12 @@ public class BookingController {
     public String rejectBooking(@RequestParam("id") int id, HttpServletRequest request) {
         BookingForm bookingForm = bService.doGetBookingById(id);
         bookingForm.setStatus(3);
-        int option = JOptionPane.showConfirmDialog(null, "Are you sure to Reject?");
-        if (option == JOptionPane.YES_OPTION) {
+//        int option = JOptionPane.showConfirmDialog(null, "Are you sure to Reject?");
+//        if (option == JOptionPane.YES_OPTION) {
             bService.doUpdateBooking(bookingForm);
             HttpSession session = request.getSession();
             session.setAttribute("successMessage", "Booking Rejected!");
-        }
+//            }
         return "redirect:/booking-lists";
     }
 

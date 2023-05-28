@@ -35,12 +35,22 @@
             <p class="status-lblk">Status : ${b.getStatusName()}</p>
             <p class="status-rblk">
               <a class="cmn-btn"
-                href="accept?id=${b.bookingId}&email=${b.user.email}">Accept</a><a
-                class="cmn-btn" href="reject?id=${b.bookingId}">Reject</a>
+                href="accept?id=${b.bookingId}&email=${b.user.email}">Accept</a>
+              <a class="cmn-btn" href="#"
+                onclick="showBookingConfirmation(${b.bookingId})">Reject</a>
             </p>
           </div>
         </div>
       </c:if>
     </c:forEach>
   </div>
+  <div id="confirmationBookingModal" class="modal">
+    <div class="modal-content">
+      <h2>Are you sure you want to delete this booking?</h2>
+      <a id="reject" class="cmn-btn" href="#">Yes</a>
+      <button class="cmn-btn" onclick="hideBookingConfirmation()">No</button>
+    </div>
+  </div>
 </section>
+
+

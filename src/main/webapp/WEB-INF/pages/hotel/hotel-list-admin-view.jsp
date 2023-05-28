@@ -39,14 +39,23 @@
               <td>${hotel.phone}</td>
               <td>${hotel.rating}</td>
               <td><a class="cmn-btn"
-                href="edit-hotel?id=${hotel.hotelId}">Edit</a> <a
-                href="delete-hotel?id=${hotel.hotelId}" class="cmn-btn">Delete</a>
+                href="edit-hotel?id=${hotel.hotelId}">Edit</a> <%-- <a
+                href="delete-hotel?id=${hotel.hotelId}" class="cmn-btn">Delete</a>--%>
+                <a class="cmn-btn" href="#"
+                onclick="showHotelConfirmation(${hotel.hotelId})">Delete</a>
                 <a href="add-room?id=${hotel.hotelId}" class="cmn-btn">Add
                   New Room</a></td>
             </tr>
           </c:forEach>
         </tbody>
       </table>
+      <div id="confirmationHotelModal" class="modal">
+        <div class="modal-content">
+          <h2>Are you sure you want to delete this hotel?</h2>
+          <a id="deleteHotel" class="cmn-btn" href="#">Yes</a>
+          <button class="cmn-btn" onclick="hideConfirmation()">No</button>
+        </div>
+      </div>
     </div>
     <br> <br>
     <h2>Room List</h2>
@@ -55,8 +64,7 @@
         <tr>
           <th>RoomId</th>
           <th>Room Type</th>
-          <th>Total Rooms
-          <th>Available Rooms</th>
+          <th>Total Rooms <th>Available Rooms</th>
           <th>Price</th>
           <th>Hotel Name</th>
           <th>Hotel Address</th>
@@ -76,11 +84,23 @@
             <td>${r.hotel.city }</td>
             <td>${r.hotel.phone }</td>
             <td><a class="cmn-btn" href="edit-room?id=${r.roomId}">Edit</a>
-              <a class="cmn-btn" href="deleteroom?id=${r.roomId}">Delete</a></td>
+              <%--<a class="cmn-btn" href="deleteroom?id=${r.roomId}">Delete</a> --%><a class="cmn-btn" href="#"
+            onclick="showRoomConfirmation(${r.roomId})">Delete</a>
+
+            </td>
           </tr>
         </c:forEach>
       </table>
+      <!-- Modal confirmation box -->
+      <div id="confirmationRoomModal" class="modal">
+        <div class="modal-content">
+          <h2>Are you sure you want to delete this room?</h2>
+          <a id="deleteRoom" class="cmn-btn" href="#">Yes</a>
+          <button class="cmn-btn" onclick="hideRoomConfirmation()">No</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
 

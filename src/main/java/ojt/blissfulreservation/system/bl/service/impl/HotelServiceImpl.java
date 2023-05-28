@@ -148,23 +148,20 @@ public class HotelServiceImpl implements HotelService {
         return null;
     }
 
-    /**
-     * <h2>doDeleteHotel</h2>
-     * <p>
-     * 
-     * </p>
-     * 
-     * @param hotelform
-     */
-    @Override
-    public void doDeleteHotel(HotelForm hotelform) {
-        int option = JOptionPane.showConfirmDialog(null, "Are you sure to delete?");
-        if (option == JOptionPane.YES_OPTION) {
-            hotelform.setDeletedAt(LocalDateTime.now());
-            Hotel hotel = new Hotel(hotelform);
-            hotelDAO.dbDeleteHotel(hotel);
-        }
-    }
+	/**
+	 * <h2>doDeleteHotel</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 * 
+	 * @param hotelform
+	 */
+	@Override
+	public void doDeleteHotel(HotelForm hotelform) {
+			hotelform.setDeletedAt(LocalDateTime.now());
+			Hotel hotel = new Hotel(hotelform);
+			hotelDAO.dbDeleteHotel(hotel);
+	}
 
     /**
      * <h2>getCities</h2>
