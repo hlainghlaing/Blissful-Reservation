@@ -3,8 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <section class="hh-b-admin-view">
   <div class="cmn-inner">
-    <c:if test="${not empty successMessage}">
-      <p class="cmn-success-msg">${successMessage}</p>
+    <c:if test="${not empty sessionScope.successMessage}">
+      <p class="cmn-success-msg">${sessionScope.successMessage}</p>
+      <%
+      session.removeAttribute("successMessage");
+      %>
     </c:if>
     <c:forEach items="${bookingList}" var="b" varStatus="loop">
       <c:if test="${loop.index % 2 != 0}">
@@ -33,8 +36,6 @@
             <p class="status-rblk">
               <a class="cmn-btn"
                 href="accept?id=${b.bookingId}&email=${b.user.email}">Accept</a>
-              <%-- <a
-                class="cmn-btn" href="reject?id=${b.bookingId}" onclick="return confirmReject()" >Reject</a>--%>
               <a class="cmn-btn" href="#"
                 onclick="showBookingConfirmation(${b.bookingId})">Reject</a>
             </p>
@@ -45,7 +46,7 @@
   </div>
   <div id="confirmationBookingModal" class="modal">
     <div class="modal-content">
-      <h2>Are you sure you want to delete this booking?</h2>
+      <h2>Are you sure you want to reject this booking?</h2>
       <a id="reject" class="cmn-btn" href="#">Yes</a>
       <button class="cmn-btn" onclick="hideBookingConfirmation()">No</button>
     </div>

@@ -1,22 +1,18 @@
 package ojt.blissfulreservation.system.web.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.nio.file.Files;
-import java.io.File;
-import java.io.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,10 +22,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ojt.blissfulreservation.system.bl.service.HotelService;
 import ojt.blissfulreservation.system.bl.service.RoomService;
+import ojt.blissfulreservation.system.bl.service.UserService;
 import ojt.blissfulreservation.system.persistence.entity.Hotel;
-import ojt.blissfulreservation.system.persistence.entity.Room;
 import ojt.blissfulreservation.system.web.form.HotelForm;
 import ojt.blissfulreservation.system.web.form.RoomForm;
+import ojt.blissfulreservation.system.web.form.UserForm;
 
 /**
  * <h2>RoomController Class</h2>
@@ -59,6 +56,15 @@ public class RoomController {
      */
     @Autowired
     private RoomService roomService;
+
+    /**
+     * <h2>userService</h2>
+     * <p>
+     * userService
+     * </p>
+     */
+    @Autowired
+    private UserService userService;
 
     /**
      * <h2>view</h2>
@@ -95,8 +101,21 @@ public class RoomController {
      * @return ModelAndView
      */
     @RequestMapping(value = "/saveroom", method = RequestMethod.POST)
-    public ModelAndView saveRoom(@ModelAttribute("room") RoomForm roomForm, HttpServletRequest request)
-            throws IOException {
+    public ModelAndView saveContact(@ModelAttribute("room") @Validated RoomForm roomForm, BindingResult bindingResult,
+            HttpServletRequest request, Model model) throws IOException {
+        if (bindingResult.hasErrors()) {
+            HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
+            model.addAttribute("hotel", hotel);
+            return new ModelAndView("addRoom");
+        }
+        MultipartFile file = roomForm.getFile();
+        if (file == null || file.isEmpty()) {
+            HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
+            model.addAttribute("hotel", hotel);
+            // Handle the case when the file is not selected
+            bindingResult.rejectValue("file", "error.file", "Please select Image file");
+            return new ModelAndView("addRoom");
+        }
         HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
         roomForm.setHotel(new Hotel(hotel));
         roomService.doSave(roomForm, roomForm.getFile());
@@ -187,8 +206,17 @@ public class RoomController {
         List<RoomForm> roomList = roomService.doGetRoomList(id);
         model.addObject("roomList", roomList);
         if (authentication != null && authentication.isAuthenticated()) {
-            model.setViewName("roomListUserView");
-            return model;
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            String email = userDetails.getUsername();
+            UserForm user = userService.doFindByEmail(email);
+            String role = user.getRoleType();
+            if (role.equals("0")) {
+                model.setViewName("redirect:/hotel-view");
+                return model;
+            } else {
+                model.setViewName("roomListUserView");
+                return model;
+            }
         }
         model.setViewName("roomListAllView");
         return model;

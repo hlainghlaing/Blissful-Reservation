@@ -1,78 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans
-	xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
     http://www.springframework.org/schema/beans/spring-beans.xsd  
     http://www.springframework.org/schema/security  
     http://www.springframework.org/schema/security/spring-security-5.5.xsd">
 
-	<http auto-config="true">
-		<intercept-url pattern="/Home" access="permitAll" />
-		<intercept-url pattern="/searchform" access="permitAll" />
-		<intercept-url pattern="/hotelByCityName"
-			access="permitAll" />
-		<intercept-url pattern="/viewRoomByHotelId"
-			access="permitAll" />
-		<intercept-url pattern="/ContactUsPage"
-			access="permitAll" />
-		<intercept-url pattern="/AboutUsPage" access="permitAll" />
+    <http auto-config="true">
+        <intercept-url pattern="/Home" access="permitAll" />
+        <intercept-url pattern="/searchform"
+            access="permitAll" />
+        <intercept-url pattern="/hotelByCityName"
+            access="permitAll" />
+        <intercept-url pattern="/viewRoomByHotelId"
+            access="permitAll" />
+        <intercept-url pattern="/ContactUsPage"
+            access="permitAll" />
+        <intercept-url pattern="/AboutUsPage"
+            access="permitAll" />
+        <intercept-url pattern="/hotel-view-url"
+            access="permitAll" />
 
-		<intercept-url pattern="/userdashboard"
-			access="hasAnyRole('USER','ADMIN')" />
-		<intercept-url pattern="/booking-register"
-			access="hasAnyRole('USER','ADMIN')" />
-		<intercept-url pattern="/booking-success"
-			access="hasAnyRole('USER','ADMIN')" />
-		<intercept-url pattern="/booking-list"
-			access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/userdashboard"
+            access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/booking-register"
+            access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/booking-success"
+            access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/booking-list"
+            access="hasAnyRole('USER','ADMIN')" />
 
-		<intercept-url pattern="/admindashboard"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/form" access="hasRole('ADMIN')" />
-		<intercept-url pattern="/register-hotel" method="POST"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/UserList" method="POST"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/add-room"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/edit-user"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/update-user"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/hotel-view"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/saveroom" method="POST"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/edit-room"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/editsaveRoom"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/deleteroom"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/delete-hotel"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/booking-lists"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/accept"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/reject"
-			access="hasRole('ADMIN')" />
-		<intercept-url pattern="/mail"
-			access="hasRole('ADMIN')" />
+        <intercept-url pattern="/admindashboard"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/form"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/register-hotel"
+            method="POST" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/UserList" method="POST"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/add-room"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/edit-user"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/update-user"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/hotel-view"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/saveroom" method="POST"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/edit-room"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/editsaveRoom"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/deleteroom"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/delete-hotel"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/booking-lists"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/accept"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/reject"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/mail"
+            access="hasRole('ADMIN')" />
 
-		<form-login login-page="/Login"
-			login-processing-url="/Login" username-parameter="email"
-			password-parameter="password" default-target-url="/dashboard" />
-		<logout logout-url="/logout" logout-success-url="/Login" />
-		<csrf disabled="true" />
-	</http>
+        <form-login login-page="/Login"
+            login-processing-url="/Login" username-parameter="email"
+            password-parameter="password"
+            default-target-url="/dashboard" />
+        <logout logout-url="/logout" logout-success-url="/Login" />
+        <csrf disabled="true" />
+    </http>
 
-	<authentication-manager>
-		<authentication-provider
-			user-service-ref="userService">
-			<password-encoder ref="bCryptPasswordEncoder" />
-		</authentication-provider>
-	</authentication-manager>
+    <authentication-manager>
+        <authentication-provider
+            user-service-ref="userService">
+            <password-encoder
+                ref="bCryptPasswordEncoder" />
+        </authentication-provider>
+    </authentication-manager>
 </beans:beans>

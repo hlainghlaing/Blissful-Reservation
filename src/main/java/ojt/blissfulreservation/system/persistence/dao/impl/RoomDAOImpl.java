@@ -3,22 +3,11 @@ package ojt.blissfulreservation.system.persistence.dao.impl;
 import java.util.*;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import ojt.blissfulreservation.system.persistence.entity.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import antlr.StringUtils;
-import java.io.File;
-import java.io.IOException;
-import java.io.FileOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.io.BufferedOutputStream;
 import ojt.blissfulreservation.system.persistence.dao.RoomDAO;
 import ojt.blissfulreservation.system.persistence.entity.Room;
 
@@ -31,6 +20,7 @@ import ojt.blissfulreservation.system.persistence.entity.Room;
  * @author MiMiSoe
  *
  */
+@SuppressWarnings("deprecation")
 @Repository
 @Transactional
 public class RoomDAOImpl implements RoomDAO {
@@ -81,6 +71,7 @@ public class RoomDAOImpl implements RoomDAO {
      * @param hotelId
      * @return List<Room>
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Room> dbGetRoomList(int hotelId) {
         String hql = "FROM Room WHERE hotelId = :hotelId";
@@ -112,6 +103,7 @@ public class RoomDAOImpl implements RoomDAO {
      * @param id
      * @return Room
      */
+    @SuppressWarnings("unchecked")
     @Override
     public Room dbGetById(int id) {
         Query<Room> queryPetById = this.sessionFactory.getCurrentSession().createQuery(SELECT_ROOM_BY_ID_HQL);
@@ -128,6 +120,7 @@ public class RoomDAOImpl implements RoomDAO {
      * 
      * @return List<Room>
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Room> dbGetHotelsAndRoomList() {
         Query<Room> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_HOTEL_AND_ROOMS);

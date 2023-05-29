@@ -7,9 +7,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Range;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,39 +34,120 @@ import ojt.blissfulreservation.system.persistence.entity.User;
 @Getter
 @Setter
 public class BookingForm {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * <h2>bookingId</h2>
+     * <p>
+     * bookingId
+     * </p>
+     */
     private int bookingId;
 
+    /**
+     * <h2>checkIn</h2>
+     * <p>
+     * checkIn
+     * </p>
+     */
     @NotEmpty
     private String checkIn;
 
+    /**
+     * <h2>checkOut</h2>
+     * <p>
+     * checkOut
+     * </p>
+     */
     @NotEmpty
     private String checkOut;
 
-    @NotEmpty
+    /**
+     * <h2>roomNum</h2>
+     * <p>
+     * roomNum
+     * </p>
+     */
+    @Range(min = 1)
     private int roomNum;
 
-    @NotEmpty
+    /**
+     * <h2>totalPrice</h2>
+     * <p>
+     * totalPrice
+     * </p>
+     */
     private Double totalPrice;
 
-    @NotEmpty
+    /**
+     * <h2>nrc</h2>
+     * <p>
+     * nrc
+     * </p>
+     */
+    @Pattern(regexp = "\\d{1,2}/[a-zA-Z]+\\([a-zA-Z]\\)\\d{6}")
     private String nrc;
 
-    @NotEmpty
+    /**
+     * <h2>status</h2>
+     * <p>
+     * status
+     * </p>
+     */
     private int status;
 
+    /**
+     * <h2>roomId</h2>
+     * <p>
+     * roomId
+     * </p>
+     */
     private int roomId;
 
+    /**
+     * <h2>userId</h2>
+     * <p>
+     * userId
+     * </p>
+     */
     private int userId;
 
+    /**
+     * <h2>createdAt</h2>
+     * <p>
+     * createdAt
+     * </p>
+     */
     private LocalDateTime createdAt;
 
+    /**
+     * <h2>updatedAt</h2>
+     * <p>
+     * updatedAt
+     * </p>
+     */
     private LocalDateTime updatedAt;
 
+    /**
+     * <h2>deletedAt</h2>
+     * <p>
+     * deletedAt
+     * </p>
+     */
     private LocalDateTime deletedAt;
 
+    /**
+     * <h2>room</h2>
+     * <p>
+     * room
+     * </p>
+     */
     private Room room;
 
+    /**
+     * <h2>user</h2>
+     * <p>
+     * user
+     * </p>
+     */
     private User user;
 
     /**
@@ -108,6 +190,14 @@ public class BookingForm {
      * </p>
      */
     private static final Map<Integer, String> STATUS_MAP = new HashMap<Integer, String>() {
+        /**
+         * <h2>serialVersionUID</h2>
+         * <p>
+         * serialVersionUID
+         * </p>
+         */
+        private static final long serialVersionUID = 3144772033711356967L;
+
         {
             put(1, "Pending");
             put(2, "Accept");

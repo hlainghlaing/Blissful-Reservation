@@ -127,5 +127,15 @@ public interface HotelDAO {
      */
     public List<Hotel> dbGetHotels(String city);
     
+    /**
+     * <h2> dbGetRoomsForHotel</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param hotelId
+     * @return
+     * @return List<Room>
+     */
     List<Room> dbGetRoomsForHotel(int hotelId);
 }

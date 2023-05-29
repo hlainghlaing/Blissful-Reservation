@@ -75,6 +75,7 @@ public class BookingDAOImpl implements BookingDAO {
      * 
      * @return List<Booking>
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Booking> dbGetBookingList() {
         Query<Booking> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_All_Booking_HQL);
@@ -91,6 +92,7 @@ public class BookingDAOImpl implements BookingDAO {
      * @param userId
      * @return List<Booking>
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Booking> dbGetBookingByuser(int userId) {
         Query<Booking> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_Booking_BY_User_HQL);
@@ -125,6 +127,16 @@ public class BookingDAOImpl implements BookingDAO {
         this.sessionFactory.getCurrentSession().update(booking);
     }
 
+    /**
+     * <h2> dbGetBookingById </h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param id
+     * @return Booking
+     */
+    @SuppressWarnings("unchecked")
     @Override
     public Booking dbGetBookingById(int id) {
         Query<Booking> query = this.sessionFactory.getCurrentSession().createQuery(SELECT_Booking_BY_ID_HQL);
