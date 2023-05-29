@@ -7,7 +7,7 @@
   <h2>Frequently Asked Questions</h2>
   <div class="faq-sec">
     <div class="faq-question">
-      <h3>Can we cancel after booking?</h3>
+      <h3>Can we cancel after booking?<span class="icon"></span></h3>
       <div class="faq-answer">
         <p>Can I cancel my booking? No,you can't cancel your
           booking.Cancellation policies vary depending on the hotel.
@@ -16,18 +16,18 @@
       </div>
     </div>
     <div class="faq-question">
-      <h3>How do I make a hotel reservation?</h3>
+      <h3>How do I make a hotel reservation?<span class="icon"></span></h3>
       <div class="faq-answer">
         <p>Making a hotel reservation is easy on our website. Simply
           enter your destination, travel dates, and the number of
           guests. Browse the available hotels and select the one that
           suits your preferences. Follow the prompts to complete the
-          reservation process, including providing your personal</p>
+          reservation process, including providing your personal information.</p>
       </div>
     </div>
     <div class="faq-question">
       <h3>What should I do if I encounter any issues during my
-        stay?</h3>
+        stay?<span class="icon"></span></h3>
       <div class="faq-answer">
         <p>If you encounter any issues during your stay, it's best
           to contact the hotel's front desk or reception first. They
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="faq-question">
-      <h3>What should I do if I forget my password?</h3>
+      <h3>What should I do if I forget my password?<span class="icon"></span></h3>
       <div class="faq-answer">
         <p>You can update your password in the forget password
           section.If you had something you can't make it ,fill the
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="faq-question">
-      <h3>What should I do if I want to book a hotel?</h3>
+      <h3>What should I do if I want to book a hotel?<span class="icon"></span></h3>
       <div class="faq-answer">
         <p>You can find the hotels and click the book now button
           filling your personal information such as name,email and phone
@@ -54,7 +54,7 @@
     </div>
     <div class="faq-question">
       <h3>What should I do if I encounter any issues during my
-        stay?</h3>
+        stay?<span class="icon"></span></h3>
       <div class="faq-answer">
         <p>If you encounter any issues during your stay, it's best
           to contact the hotel's front desk or reception first. They

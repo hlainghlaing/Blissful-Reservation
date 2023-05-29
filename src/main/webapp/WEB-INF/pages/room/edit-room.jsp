@@ -8,16 +8,18 @@
     <div class="left">
       <img
         src="${pageContext.request.contextPath}/resources/img/hotel-images/${room.roomImg}"
-        alt="Hotel Image">
+        alt="Hotel Image" id="previewImage">
     </div>
     <div class="right">
       <form:form method="POST" action="editsaveRoom"
-        modelAttribute="room">
+        modelAttribute="room" enctype="multipart/form-data">
         <form:hidden path="roomId" />
         <form:hidden path="hotelId" />
         <form:hidden path="createdAt" />
         <form:hidden path="deleteAt" />
         <form:hidden path="updatedAt" />
+        <form:hidden path="roomImg" value="${room.roomImg}"
+          readonly="readonly" />
         <table>
           <tr>
             <td>Room Type :</td>
@@ -35,11 +37,12 @@
             <td><form:input path="price" /></td>
           </tr>
           <tr>
-            <td><form:hidden path="roomImg" readonly="readonly" /></td>
+            <td><label for="image">Image:</label></td>
+            <td><input type="file" name="image" id="image"
+              onchange="showPreviewImage(this)" accept="image/*" /></td>
           </tr>
           <tr>
-            <td><input class="cmn-btn" type="submit" value="Save"
-              onclick="showPreviewImage()" /></td>
+            <td><input class="cmn-btn" type="submit" value="Save"/></td>
           </tr>
         </table>
       </form:form>

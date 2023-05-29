@@ -9,6 +9,8 @@
 		width: 100%;
 		margin-bottom: 20px;
 		border-collapse: collapse;
+		background-color: #fff;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .list-tb th,.list-tb td {
@@ -17,7 +19,7 @@
 }
 
 .list-tb th {
-		background-color: #c1fc9f;
+		background-color: #13bb99;
 		color: #fff;
 }
 
@@ -31,15 +33,12 @@
 
 .list-tb .cmn-btn {
 		margin-bottom: 20px;
-}
+}rgb(113, 46, 46)
 
 /* Ipad */
 @media screen and (min-width: 768px) and (max-width: 1180px) {
 		.list-tb .ht-table {
 				overflow-x: auto;
-		}
-		.list-tb button {
-				font-size: 2.083vw
 		}
 		.list-tb h2 {
 				font-size: 2.604vw;
@@ -50,9 +49,6 @@
 @media screen and (max-width:767.9px) {
 		.list-tb .ht-table {
 				overflow-x: auto;
-		}
-		.list-tb button {
-				font-size: 2.5vw;
 		}
 		.list-tb h2 {
 				font-size: 2.813vw;

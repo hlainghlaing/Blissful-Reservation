@@ -39,23 +39,23 @@ import ojt.blissfulreservation.system.web.form.UserForm;
  */
 @Controller
 public class RoomController {
-    /**
-     * <h2>hotelService</h2>
-     * <p>
-     * hotelService
-     * </p>
-     */
-    @Autowired
-    private HotelService hotelService;
+	/**
+	 * <h2>hotelService</h2>
+	 * <p>
+	 * hotelService
+	 * </p>
+	 */
+	@Autowired
+	private HotelService hotelService;
 
-    /**
-     * <h2>roomService</h2>
-     * <p>
-     * roomService
-     * </p>
-     */
-    @Autowired
-    private RoomService roomService;
+	/**
+	 * <h2>roomService</h2>
+	 * <p>
+	 * roomService
+	 * </p>
+	 */
+	@Autowired
+	private RoomService roomService;
 
     /**
      * <h2>userService</h2>
@@ -124,70 +124,78 @@ public class RoomController {
         return new ModelAndView("redirect:/hotel-view");
     }
 
-    /**
-     * <h2>deleteRoom</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param request
-     * @param id
-     * @return
-     * @return String
-     */
-    @RequestMapping(value = "/deleteroom", method = RequestMethod.GET)
-    public String deleteRoom(HttpServletRequest request, @RequestParam("id") int id) {
-        RoomForm roomForm = roomService.doGetById(id);
-        roomService.doDelete(roomForm);
-        HttpSession session = request.getSession();
-        session.setAttribute("successMessage", "Room deleted successfully!");
-        return "redirect:/hotel-view";
-    }
+	/**
+	 * <h2>deleteRoom</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param request
+	 * @param id
+	 * @return
+	 * @return String
+	 */
+	@RequestMapping(value = "/deleteroom", method = RequestMethod.GET)
+	public String deleteRoom(HttpServletRequest request, @RequestParam("id") int id) {
+		RoomForm roomForm = roomService.doGetById(id);
+		roomService.doDelete(roomForm);
+		HttpSession session = request.getSession();
+		session.setAttribute("successMessage", "Room deleted successfully!");
+		return "redirect:/hotel-view";
+	}
 
-    /**
-     * <h2>editRoom</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param request
-     * @param m
-     * @param id
-     * @return
-     * @return String
-     */
-    @RequestMapping(value = "/edit-room", method = RequestMethod.GET)
-    public String editRoom(HttpServletRequest request, Model m, @RequestParam("id") int id) {
-        RoomForm room = roomService.doGetById(id);
-        m.addAttribute("room", room);
-        return "editRoom";
-    }
+	/**
+	 * <h2>editRoom</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param request
+	 * @param m
+	 * @param id
+	 * @return
+	 * @return String
+	 */
+	@RequestMapping(value = "/edit-room", method = RequestMethod.GET)
+	public String editRoom(HttpServletRequest request, Model m, @RequestParam("id") int id) {
+		RoomForm room = roomService.doGetById(id);
+		m.addAttribute("room", room);
+		return "editRoom";
+	}
 
-    /**
-     * <h2>editsaveRoom</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param roomForm
-     * @param request
-     * @return
-     * @throws IOException
-     * @return String
-     */
-    @RequestMapping(value = "/editsaveRoom", method = RequestMethod.POST)
-    public String editsaveRoom(@ModelAttribute("room") RoomForm roomForm, HttpServletRequest request)
-            throws IOException {
-        System.out.println(roomForm.getAvaRoom() + roomForm.getPrice());
-        HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
-        roomForm.setHotel(new Hotel(hotel));
-        roomService.doUpdate(roomForm, roomForm.getFile());
-        HttpSession session = request.getSession();
-        session.setAttribute("successMessage", "Room updated successfully!");
-        return "redirect:/hotel-view";
-    }
+	/**
+	 * <h2>updateHotel</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param roomForm
+	 * @param image
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 * @return String
+	 */
+	@RequestMapping(value = "/editsaveRoom", method = RequestMethod.POST)
+	public String updateHotel(@ModelAttribute("room") RoomForm roomForm,
+			@RequestParam(value = "image", required = false) MultipartFile image, HttpServletRequest request)
+			throws IOException {
+		HotelForm hotel = hotelService.doGetHotelById(roomForm.getHotelId());
+		roomForm.setHotel(new Hotel(hotel));
+		String originalImage = roomForm.getRoomImg();
+		if (image != null && !image.isEmpty()) {
+			roomForm.setFile(image);
+		} else {
+			roomForm.setFile(null);
+		}
 
-    /**
+		roomService.doUpdate(roomForm, roomForm.getFile());
+		HttpSession session = request.getSession();
+		session.setAttribute("successMessage", "Room Updated Successfully!");
+		return "redirect:/hotel-view";
+	}
+	
+/**
      * <h2>roomList</h2>
      * <p>
      * 

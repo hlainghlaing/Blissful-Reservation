@@ -1,11 +1,13 @@
 $(document).ready(function() {
-  $('.faq-question').click(function() {
-    $('.faq-question').not(this).removeClass('active');
-    $('.faq-answer').not($(this).find('.faq-answer')).slideUp();
+    $('.faq-question .icon').click(function(e) {
+      e.stopPropagation();
 
-    $(this).toggleClass('active');
-    var answer = $(this).find('.faq-answer');
-    answer.slideToggle();
+      var question = $(this).closest('.faq-question');
+      var answer = question.find('.faq-answer');
+
+      question.toggleClass('active');
+      answer.slideToggle();
+    });
   });
-});
+
 

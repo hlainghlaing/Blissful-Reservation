@@ -26,9 +26,28 @@
   margin: 0;
   padding: 15px;
   background-color: #9bbfc5;
-  color: #fff;
   font-size: 22px;
+  color:#fff;
+  position:relative;
 }
+
+.ht-form-first .faq-sec .faq-question h3 .icon {
+		position: absolute;
+  right: 20px;
+  top: 32%;
+  color: #fff;
+  text-align: center;
+    width: 16px;
+    height: 16px;
+    background: url("../img/img_plus.png") center center/cover
+    no-repeat;
+    background-size: contain;
+  }
+  
+ .ht-form-first .faq-sec .faq-question.active h3 .icon {
+     background: url("../img/img_minus.png") center center/cover
+    no-repeat;
+  }
 
 .ht-form-first .faq-sec .faq-answer {
   display: none;

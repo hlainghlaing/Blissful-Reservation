@@ -13,7 +13,7 @@
     </c:if>
     <a class="cmn-btn"
       href="${pageContext.request.contextPath}/downloadexcel">Download</a>
-    <button class="cmn-btn" id="roomListBtn">Room List</button>
+    <a class="cmn-btn" id="roomListBtn">Room List</a>
     <h2>Hotel List</h2>
     <div class="ht-table">
       <table border=1>
@@ -58,9 +58,10 @@
       </div>
     </div>
     <br> <br>
-    <h2>Room List</h2>
-    <div class=" ht-table ">
-      <table border=1 id="roomlist">
+    <h2 id="roomlist">Room List</h2>
+    <div class=" ht-table">
+      <table border=1>
+        <thead>
         <tr>
           <th>RoomId</th>
           <th>Room Type</th>
@@ -72,6 +73,7 @@
           <th>Phone Number</th>
           <th>Actions</th>
         </tr>
+        </thead>
         <c:forEach var="r" items="${list}">
           <tr>
             <td>${r.roomId}</td>
