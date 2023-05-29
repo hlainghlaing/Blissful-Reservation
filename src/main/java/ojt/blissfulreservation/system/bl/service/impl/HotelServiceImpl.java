@@ -50,30 +50,30 @@ public class HotelServiceImpl implements HotelService {
     @Autowired
     private HotelDAO hotelDAO;
 
-	/**
-	 * <h2>session</h2>
-	 * <p>
-	 * session
-	 * </p>
-	 */
-	@Autowired
-	private ServletRequest session;
+    /**
+     * <h2>session</h2>
+     * <p>
+     * session
+     * </p>
+     */
+    @Autowired
+    private ServletRequest session;
 
-	/**
-	 * <h2>doGetHotelById</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param id
-	 * @return
-	 */
-	@Override
-	public HotelForm doGetHotelById(int id) {
-		Hotel hotel = hotelDAO.dbGetHotelById(id);
-		HotelForm hotelForm = new HotelForm(hotel);
-		return hotelForm;
-	}
+    /**
+     * <h2>doGetHotelById</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param id
+     * @return
+     */
+    @Override
+    public HotelForm doGetHotelById(int id) {
+        Hotel hotel = hotelDAO.dbGetHotelById(id);
+        HotelForm hotelForm = new HotelForm(hotel);
+        return hotelForm;
+    }
 
     /**
      * <h2>doGetAllHotels</h2>
@@ -94,78 +94,78 @@ public class HotelServiceImpl implements HotelService {
         return hotelList;
     }
 
-	/**
-	 * <h2>doRegisterNewHotel</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param hotelForm
-	 * @param hotelImg
-	 * @throws IOException
-	 */
-	@Override
-	public void doRegisterNewHotel(HotelForm hotelForm, MultipartFile hotelImg) throws IOException {
-		String webAppRoot = session.getServletContext().getRealPath("/");
-		String uploadDir = webAppRoot + File.separator + "resources" + File.separator + "img" + File.separator
-				+ "hotel-images" + File.separator;
-		Path uploadPath = Paths.get(uploadDir);
+    /**
+     * <h2>doRegisterNewHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotelForm
+     * @param hotelImg
+     * @throws IOException
+     */
+    @Override
+    public void doRegisterNewHotel(HotelForm hotelForm, MultipartFile hotelImg) throws IOException {
+        String webAppRoot = session.getServletContext().getRealPath("/");
+        String uploadDir = webAppRoot + File.separator + "resources" + File.separator + "img" + File.separator
+                + "hotel-images" + File.separator;
+        Path uploadPath = Paths.get(uploadDir);
 
-		if (Files.exists(uploadPath)) {
-			Files.createDirectories(uploadPath);
-		}
-		try (InputStream inputStream = hotelImg.getInputStream()) {
-			String fileName = StringUtils.cleanPath(hotelImg.getOriginalFilename());
-			hotelForm.setHotelImg(fileName);
-			Hotel hotel = new Hotel(hotelForm);
-			hotelDAO.dbSaveHotel(hotel);
-			Path filePath = uploadPath.resolve(fileName);
-			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+        if (Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+        try (InputStream inputStream = hotelImg.getInputStream()) {
+            String fileName = StringUtils.cleanPath(hotelImg.getOriginalFilename());
+            hotelForm.setHotelImg(fileName);
+            Hotel hotel = new Hotel(hotelForm);
+            hotelDAO.dbSaveHotel(hotel);
+            Path filePath = uploadPath.resolve(fileName);
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
-	}
+    }
 
-	/**
-	 * <h2>doUpdateHotel</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param hotelForm
-	 * @param image
-	 * @throws IOException
-	 */
-	@Override
-	public void doUpdateHotel(HotelForm hotelForm, @RequestParam(value = "image", required = false) MultipartFile image)
-			throws IOException {
-		Hotel existingHotel = new Hotel(hotelForm);
+    /**
+     * <h2>doUpdateHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotelForm
+     * @param image
+     * @throws IOException
+     */
+    @Override
+    public void doUpdateHotel(HotelForm hotelForm, @RequestParam(value = "image", required = false) MultipartFile image)
+            throws IOException {
+        Hotel existingHotel = new Hotel(hotelForm);
 
-		if (image != null) {
-			String webAppRoot = session.getServletContext().getRealPath("/");
-			String uploadDir = webAppRoot + File.separator + "resources" + File.separator + "img" + File.separator
-					+ "hotel-images" + File.separator;
-			Path uploadPath = Paths.get(uploadDir);
+        if (image != null) {
+            String webAppRoot = session.getServletContext().getRealPath("/");
+            String uploadDir = webAppRoot + File.separator + "resources" + File.separator + "img" + File.separator
+                    + "hotel-images" + File.separator;
+            Path uploadPath = Paths.get(uploadDir);
 
-			try (InputStream inputStream = image.getInputStream()) {
-				String fileName = StringUtils.cleanPath(image.getOriginalFilename());
-				existingHotel.setHotelImg(fileName);
-				hotelDAO.dbUpdateHotel(existingHotel);
+            try (InputStream inputStream = image.getInputStream()) {
+                String fileName = StringUtils.cleanPath(image.getOriginalFilename());
+                existingHotel.setHotelImg(fileName);
+                hotelDAO.dbUpdateHotel(existingHotel);
 
-				if (Files.notExists(uploadPath)) {
-					Files.createDirectories(uploadPath);
-				}
+                if (Files.notExists(uploadPath)) {
+                    Files.createDirectories(uploadPath);
+                }
 
-				Path filePath = uploadPath.resolve(fileName);
-				Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-			} catch (IOException e) {
-				System.out.println("Error saving image: " + e.getMessage());
-			}
-		}
-		hotelForm.setFile(hotelForm.getFile());
-		hotelDAO.dbUpdateHotel(existingHotel);
-	}
+                Path filePath = uploadPath.resolve(fileName);
+                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                System.out.println("Error saving image: " + e.getMessage());
+            }
+        }
+        hotelForm.setFile(hotelForm.getFile());
+        hotelDAO.dbUpdateHotel(existingHotel);
+    }
 
     /**
      * <h2>doFindHotelByPhoneNo</h2>
@@ -186,20 +186,20 @@ public class HotelServiceImpl implements HotelService {
         return null;
     }
 
-	/**
-	 * <h2>doDeleteHotel</h2>
-	 * <p>
-	 * 
-	 * </p>
-	 * 
-	 * @param hotelform
-	 */
-	@Override
-	public void doDeleteHotel(HotelForm hotelform) {
-			hotelform.setDeletedAt(LocalDateTime.now());
-			Hotel hotel = new Hotel(hotelform);
-			hotelDAO.dbDeleteHotel(hotel);
-	}
+    /**
+     * <h2>doDeleteHotel</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param hotelform
+     */
+    @Override
+    public void doDeleteHotel(HotelForm hotelform) {
+        hotelform.setDeletedAt(LocalDateTime.now());
+        Hotel hotel = new Hotel(hotelform);
+        hotelDAO.dbDeleteHotel(hotel);
+    }
 
     /**
      * <h2>getCities</h2>
@@ -228,8 +228,10 @@ public class HotelServiceImpl implements HotelService {
         List<Hotel> hotelList = hotelDAO.dbGetHotels(city);
         List<HotelForm> hotelFormList = new ArrayList<>();
         for (Hotel hotel : hotelList) {
-            HotelForm hotelForm = new HotelForm(hotel);
-            hotelFormList.add(hotelForm);
+            if (hotel.getDeleteAt() == null) {
+                HotelForm hotelForm = new HotelForm(hotel);
+                hotelFormList.add(hotelForm);
+            }
         }
         return hotelFormList;
     }
@@ -247,8 +249,8 @@ public class HotelServiceImpl implements HotelService {
         List<Hotel> list = hotelDAO.dbGetAllHotels();
         List<HotelForm> hotelList = new ArrayList<>();
         for (Hotel hotel : list) {
-            HotelForm hotelForm = new HotelForm(hotel);
             if (hotel.getDeleteAt() == null) {
+                HotelForm hotelForm = new HotelForm(hotel);
                 hotelList.add(hotelForm);
             }
         }
