@@ -276,26 +276,6 @@ public class HotelController {
     }
 
     /**
-     * <h2>updateHotel</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param hotelForm
-     * @return
-     * @throws IOException
-     * @return String
-     */
-    @RequestMapping(value = "/update-hotel", method = RequestMethod.POST)
-    public String updateHotel(@ModelAttribute("hotel") HotelForm hotelForm, HttpServletRequest request)
-            throws IOException {
-        hotelService.doUpdateHotel(hotelForm, hotelForm.getFile());
-        HttpSession session = request.getSession();
-        session.setAttribute("successMessage", "Hotel Updated Successfully!");
-        return "redirect:/hotel-view";
-    }
-
-    /**
      * <h2>deleteUser</h2>
      * <p>
      * 
