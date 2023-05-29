@@ -1,7 +1,6 @@
 package ojt.blissfulreservation.system.web.controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -15,14 +14,14 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -130,8 +129,15 @@ public class BookingController {
      * @return String
      */
     @RequestMapping(value = "booking-success", method = RequestMethod.POST)
-    public String successBooking(@ModelAttribute("booking") BookingForm booking, Model model,
-            Authentication authentication, HttpServletRequest request) {
+    public String successBooking(@ModelAttribute("booking") @Validated BookingForm booking, BindingResult bindingResult,
+            Model model, Authentication authentication, HttpServletRequest request) {
+        if (bindingResult.hasErrors()) {
+            RoomForm room = roomService.doGetById(booking.getRoomId());
+            model.addAttribute("room", room);
+            HotelForm hotel = hotelService.doGetHotelById(room.getHotelId());
+            model.addAttribute("hotel", hotel);
+            return "bookingRegister";
+        }
         RoomForm roomForm = roomService.doGetById(booking.getRoomId());
         booking.setRoom(new Room(roomForm));
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -223,12 +229,12 @@ public class BookingController {
     public String rejectBooking(@RequestParam("id") int id, HttpServletRequest request) {
         BookingForm bookingForm = bService.doGetBookingById(id);
         bookingForm.setStatus(3);
-        int option = JOptionPane.showConfirmDialog(null, "Are you sure to Reject?");
-        if (option == JOptionPane.YES_OPTION) {
+//        int option = JOptionPane.showConfirmDialog(null, "Are you sure to Reject?");
+//        if (option == JOptionPane.YES_OPTION) {
             bService.doUpdateBooking(bookingForm);
             HttpSession session = request.getSession();
             session.setAttribute("successMessage", "Booking Rejected!");
-        }
+//            }
         return "redirect:/booking-lists";
     }
 

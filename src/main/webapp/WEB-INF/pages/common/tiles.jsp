@@ -26,6 +26,8 @@
   href="<%=request.getContextPath()%>/resources/css/hotel-room.css" />
 <link rel="stylesheet"
   href="<%=request.getContextPath()%>/resources/css/register.css" />
+<link rel="stylesheet"
+  href="<%=request.getContextPath()%>/resources/css/confirm-box.css" />
 </head>
 <body>
   <div class="wrapper">
@@ -48,5 +50,7 @@
   <script src="<%=request.getContextPath()%>/resources/js/list.js"></script>
   <script
     src="<%=request.getContextPath()%>/resources/js/show-preview-img.js"></script>
+    <script
+  src="<%=request.getContextPath()%>/resources/js/confirm-box.js"></script>
 </body>
 </html>

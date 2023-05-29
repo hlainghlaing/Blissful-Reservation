@@ -13,12 +13,7 @@
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.list-tb th {
-		padding: 15px 10px;
-		text-align: left;
-}
-
-.list-tb  td {
+.list-tb th,.list-tb td {
 		padding: 15px 10px;
 		text-align: left;
 }
@@ -38,7 +33,7 @@
 
 .list-tb .cmn-btn {
 		margin-bottom: 20px;
-}
+}rgb(113, 46, 46)
 
 /* Ipad */
 @media screen and (min-width: 768px) and (max-width: 1180px) {

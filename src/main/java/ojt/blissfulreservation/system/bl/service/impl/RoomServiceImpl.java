@@ -83,12 +83,9 @@ public class RoomServiceImpl implements RoomService {
 	 */
 	@Override
 	public void doDelete(RoomForm roomForm) {
-		int option = JOptionPane.showConfirmDialog(null, "Are you sure to delete?");
-		if (option == JOptionPane.YES_OPTION) {
-			roomForm.setDeleteAt(LocalDateTime.now());
-			Room room = new Room(roomForm);
-			roomDao.dbDelete(room);
-		}
+		roomForm.setDeleteAt(LocalDateTime.now());
+		Room room = new Room(roomForm);
+		roomDao.dbDelete(room);
 	}
 
 	/**

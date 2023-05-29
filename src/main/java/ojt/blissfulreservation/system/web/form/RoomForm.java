@@ -2,6 +2,10 @@ package ojt.blissfulreservation.system.web.form;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
@@ -12,7 +16,7 @@ import ojt.blissfulreservation.system.persistence.entity.Hotel;
 import ojt.blissfulreservation.system.persistence.entity.Room;
 
 /**
- * <h2> RoomForm Class</h2>
+ * <h2>RoomForm Class</h2>
  * <p>
  * Process for Displaying RoomForm
  * </p>
@@ -25,48 +29,95 @@ import ojt.blissfulreservation.system.persistence.entity.Room;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoomForm {
-
     /**
+     * <h2>roomId</h2>
+     * <p>
      * roomId
+     * </p>
      */
     private int roomId;
+
     /**
+     * <h2>roomType</h2>
+     * <p>
      * roomType
+     * </p>
      */
+    @NotEmpty
     private String roomType;
+
     /**
-     * roomPrice
+     * <h2>price</h2>
+     * <p>
+     * price
+     * </p>
      */
+    @NotNull
     private Double price;
+
     /**
-     * roomImage
+     * <h2>roomImg</h2>
+     * <p>
+     * roomImg
+     * </p>
      */
     private String roomImg;
+
     /**
+     * <h2>totalRoom</h2>
+     * <p>
      * totalRoom
+     * </p>
      */
+    @Range(min = 1, max = 100)
     private int totalRoom;
+
     /**
-     * Available Room
+     * <h2>avaRoom</h2>
+     * <p>
+     * avaRoom
+     * </p>
      */
     private int avaRoom;
+
     /**
-     * Created Date
+     * <h2>createdAt</h2>
+     * <p>
+     * createdAt
+     * </p>
      */
     private LocalDateTime createdAt;
+
     /**
-     * Deleted Date
+     * <h2>deleteAt</h2>
+     * <p>
+     * deleteAt
+     * </p>
      */
     private LocalDateTime deleteAt;
+
     /**
-     * Updated Date
+     * <h2>updatedAt</h2>
+     * <p>
+     * updatedAt
+     * </p>
      */
     private LocalDateTime updatedAt;
+
     /**
-     * Hotel id
+     * <h2>hotelId</h2>
+     * <p>
+     * hotelId
+     * </p>
      */
     private int hotelId;
-    
+
+    /**
+     * <h2>hotel</h2>
+     * <p>
+     * hotel
+     * </p>
+     */
     private Hotel hotel;
     /**
      * <h2>file</h2>

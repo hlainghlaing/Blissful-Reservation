@@ -15,7 +15,8 @@
           </tr>
           <tr>
             <td><label for="email">Email:</label></td>
-            <td><form:input path="email" required="required" /></td>
+            <td><form:input path="email" required="required"
+                readonly="true" /></td>
           </tr>
           <tr>
             <td><label for="password">Password:</label></td>
@@ -25,7 +26,8 @@
           <tr>
           <tr>
             <td><label for="phoneNo">Phone No:</label></td>
-            <td><form:input path="phoneNo" required="required" /></td>
+            <td><form:input path="phoneNo" required="required"
+                readonly="true" /></td>
           </tr>
 
           <form:hidden path="roleType" />

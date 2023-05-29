@@ -3,11 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <section class="hh-city-cus">
   <div class="cmn-inner">
+    <h2>Enjoy Your Dream Vacation</h2>
     <div class="hh-search">
-      <h2>Enjoy Your Dream Vacation</h2>
       <form action="hotelByCityName" method="post">
-        <label for="city">Select City :</label> <select
+        <label for="city">Select Location :</label> <select
           name="selectedCity">
+          <option>Location</option>
           <c:forEach items="${cityList}" var="city">
             <option value="${city}">${city}</option>
           </c:forEach>

@@ -33,7 +33,7 @@
   <div class="cmn-inner">
     <div class="home-txt clearfix">
       <h2>Most Popular</h2>
-      <a href="searchform">Go to Hotels</a>
+      <a href="hotel-view-url">Go to Hotels</a>
     </div>
     <ul class="clearfix">
       <c:forEach items="${hotelList}" var="h" begin="0" end="11">
