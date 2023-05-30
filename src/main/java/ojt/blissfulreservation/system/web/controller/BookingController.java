@@ -152,7 +152,7 @@ public class BookingController {
         bService.doCreateBooking(booking);
         HttpSession session = request.getSession();
         session.setAttribute("successMessage",
-                "Thank you for booking with us! Your hotel reservation has been confirmed.");
+                "Thank you for booking with us! If Booking success , we will send you email!");
         return "redirect:/booking-list";
     }
 
